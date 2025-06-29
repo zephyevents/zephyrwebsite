@@ -3,19 +3,18 @@ import { motion } from 'framer-motion';
 
 const Hero = () => {
   return (
-    <section className="relative h-[95vh] flex items-center justify-center overflow-hidden">
+    <section className="relative h-[95vh] flex items-center justify-center overflow-hidden w-full">
       {/* Vimeo Video Background */}
-      <div className="absolute inset-0 w-full h-full">
+      <div className="absolute inset-0 w-full h-full overflow-hidden">
         <div className="relative w-full h-full">
           <iframe 
             src="https://player.vimeo.com/video/1097212920?badge=0&autopause=0&player_id=0&app_id=58479&autoplay=1&loop=1&muted=1&background=1"
-            className="absolute top-1/2 left-1/2 w-full h-full object-cover"
+            className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
             style={{
               width: '100vw',
               height: '56.25vw', // 16:9 aspect ratio
               minHeight: '100vh',
               minWidth: '177.78vh', // 16:9 aspect ratio
-              transform: 'translate(-50%, -50%)',
             }}
             frameBorder="0"
             allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"

@@ -42,7 +42,7 @@ const InstagramFeed = () => {
   ];
 
   return (
-    <section ref={ref} className="py-20 lg:py-32 bg-gradient-to-br from-primary-50 to-secondary-50">
+    <section ref={ref} className="py-20 lg:py-32 bg-gradient-to-br from-primary-50 to-secondary-50 overflow-x-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div
@@ -52,8 +52,8 @@ const InstagramFeed = () => {
           className="text-center mb-16"
         >
           <div className="flex items-center justify-center mb-6">
-            <Instagram className="h-12 w-12 text-primary-600 mr-4" />
-            <h2 className="text-4xl lg:text-5xl font-heading font-bold text-neutral-800">
+            <Instagram className="h-8 w-8 sm:h-12 sm:w-12 text-primary-600 mr-4" />
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-heading font-bold text-neutral-800">
               Follow Our Journey
             </h2>
           </div>
@@ -64,7 +64,7 @@ const InstagramFeed = () => {
         </motion.div>
 
         {/* Instagram Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mb-12">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4 mb-12">
           {instagramPosts.map((post, index) => (
             <motion.div
               key={index}
@@ -81,21 +81,21 @@ const InstagramFeed = () => {
               
               {/* Hover Overlay */}
               <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                <div className="flex items-center space-x-4 text-white">
+                <div className="flex items-center space-x-3 sm:space-x-4 text-white">
                   <div className="flex items-center space-x-1">
-                    <Heart className="h-5 w-5" />
-                    <span className="text-sm font-medium">{post.likes}</span>
+                    <Heart className="h-4 w-4 sm:h-5 sm:w-5" />
+                    <span className="text-xs sm:text-sm font-medium">{post.likes}</span>
                   </div>
                   <div className="flex items-center space-x-1">
-                    <MessageCircle className="h-5 w-5" />
-                    <span className="text-sm font-medium">{post.comments}</span>
+                    <MessageCircle className="h-4 w-4 sm:h-5 sm:w-5" />
+                    <span className="text-xs sm:text-sm font-medium">{post.comments}</span>
                   </div>
                 </div>
               </div>
 
               {/* Instagram Icon */}
-              <div className="absolute top-3 right-3 p-2 bg-white/90 backdrop-blur-sm rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <Instagram className="h-4 w-4 text-neutral-700" />
+              <div className="absolute top-2 sm:top-3 right-2 sm:right-3 p-1.5 sm:p-2 bg-white/90 backdrop-blur-sm rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <Instagram className="h-3 w-3 sm:h-4 sm:w-4 text-neutral-700" />
               </div>
             </motion.div>
           ))}
@@ -112,9 +112,9 @@ const InstagramFeed = () => {
             href="https://instagram.com/zephyrevents"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center space-x-3 bg-gradient-to-r from-purple-500 to-pink-500 text-white px-8 py-4 rounded-full text-lg font-semibold hover:from-purple-600 hover:to-pink-600 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
+            className="inline-flex items-center space-x-3 bg-gradient-to-r from-purple-500 to-pink-500 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full text-base sm:text-lg font-semibold hover:from-purple-600 hover:to-pink-600 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
           >
-            <Instagram className="h-6 w-6" />
+            <Instagram className="h-5 w-5 sm:h-6 sm:w-6" />
             <span>Follow @ZephyrEvents</span>
           </a>
         </motion.div>

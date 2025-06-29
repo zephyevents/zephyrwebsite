@@ -13,9 +13,9 @@ import Footer from './components/Footer';
 function App() {
   return (
     <Router>
-      <div className="min-h-screen bg-background-500">
+      <div className="min-h-screen bg-background-500 overflow-x-hidden">
         <Header />
-        <main>
+        <main className="overflow-x-hidden">
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/about" element={<AboutPage />} />

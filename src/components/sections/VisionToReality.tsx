@@ -26,7 +26,7 @@ const VisionToReality = () => {
   };
 
   return (
-    <section ref={ref} className="py-20 lg:py-32 bg-white">
+    <section ref={ref} className="py-20 lg:py-32 bg-white overflow-x-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div
@@ -35,7 +35,7 @@ const VisionToReality = () => {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl lg:text-5xl font-heading font-normal text-neutral-800 mb-6">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-heading font-normal text-neutral-800 mb-6">
             From vision to reality
           </h2>
           <p className="text-lg text-rose-500 font-medium tracking-wider uppercase">
@@ -48,30 +48,30 @@ const VisionToReality = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="relative max-w-6xl mx-auto"
+          className="relative max-w-6xl mx-auto w-full"
         >
           <div 
-            className="relative h-96 lg:h-[600px] overflow-hidden rounded-3xl shadow-2xl cursor-ew-resize"
+            className="relative h-64 sm:h-96 lg:h-[600px] overflow-hidden rounded-3xl shadow-2xl cursor-ew-resize w-full"
             onMouseMove={handleMouseMove}
             onMouseDown={handleMouseDown}
             onMouseUp={handleMouseUp}
             onMouseLeave={handleMouseUp}
           >
             {/* Reality Image (Background) */}
-            <div className="absolute inset-0">
+            <div className="absolute inset-0 w-full h-full">
               <img
                 src="https://images.pexels.com/photos/1024993/pexels-photo-1024993.jpeg?auto=compress&cs=tinysrgb&w=1200&h=800&fit=crop"
                 alt="Reality"
                 className="w-full h-full object-cover"
               />
-              <div className="absolute bottom-8 right-8 text-white">
-                <h3 className="text-2xl font-heading font-medium mb-2">REALITY</h3>
+              <div className="absolute bottom-4 sm:bottom-8 right-4 sm:right-8 text-white">
+                <h3 className="text-lg sm:text-2xl font-heading font-medium mb-2">REALITY</h3>
               </div>
             </div>
 
             {/* Render Image (Overlay) */}
             <div 
-              className="absolute inset-0 overflow-hidden"
+              className="absolute inset-0 overflow-hidden w-full h-full"
               style={{ clipPath: `inset(0 ${100 - dragPosition}% 0 0)` }}
             >
               <img
@@ -79,8 +79,8 @@ const VisionToReality = () => {
                 alt="Render"
                 className="w-full h-full object-cover"
               />
-              <div className="absolute bottom-8 left-8 text-white">
-                <h3 className="text-2xl font-heading font-medium mb-2">RENDER</h3>
+              <div className="absolute bottom-4 sm:bottom-8 left-4 sm:left-8 text-white">
+                <h3 className="text-lg sm:text-2xl font-heading font-medium mb-2">RENDER</h3>
               </div>
             </div>
 
@@ -89,8 +89,8 @@ const VisionToReality = () => {
               className="absolute top-0 bottom-0 w-1 bg-white shadow-lg cursor-ew-resize"
               style={{ left: `${dragPosition}%` }}
             >
-              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-8 h-8 bg-white rounded-full shadow-lg flex items-center justify-center">
-                <div className="w-4 h-4 border-2 border-neutral-400 rounded-full"></div>
+              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-6 h-6 sm:w-8 sm:h-8 bg-white rounded-full shadow-lg flex items-center justify-center">
+                <div className="w-3 h-3 sm:w-4 sm:h-4 border-2 border-neutral-400 rounded-full"></div>
               </div>
             </div>
           </div>

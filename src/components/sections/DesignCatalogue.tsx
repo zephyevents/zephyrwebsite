@@ -55,7 +55,7 @@ const DesignCatalogue = () => {
   ];
 
   return (
-    <section ref={ref} className="py-20 lg:py-32 bg-gradient-to-br from-rose-50 to-mauve-50">
+    <section ref={ref} className="py-20 lg:py-32 bg-gradient-to-br from-rose-50 to-mauve-50 overflow-x-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div
@@ -64,7 +64,7 @@ const DesignCatalogue = () => {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl lg:text-5xl font-heading font-normal text-neutral-800 mb-6">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-heading font-normal text-neutral-800 mb-6">
             Designs as unique as your love
           </h2>
           <p className="text-lg text-rose-500 font-medium tracking-wider uppercase">
@@ -77,10 +77,10 @@ const DesignCatalogue = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="bg-white rounded-3xl shadow-xl overflow-hidden"
+          className="bg-white rounded-3xl shadow-xl overflow-hidden w-full"
         >
           {/* Browser Header */}
-          <div className="bg-neutral-100 px-6 py-4 border-b border-neutral-200">
+          <div className="bg-neutral-100 px-4 sm:px-6 py-4 border-b border-neutral-200">
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-4">
                 <div className="flex space-x-2">
@@ -88,15 +88,15 @@ const DesignCatalogue = () => {
                   <div className="w-3 h-3 bg-yellow-400 rounded-full"></div>
                   <div className="w-3 h-3 bg-green-400 rounded-full"></div>
                 </div>
-                <div className="text-sm text-neutral-600">meragi.com/designs</div>
+                <div className="text-sm text-neutral-600 hidden sm:block">meragi.com/designs</div>
               </div>
-              <div className="text-xs text-neutral-500">PID: 18154 Test lead</div>
+              <div className="text-xs text-neutral-500 hidden md:block">PID: 18154 Test lead</div>
             </div>
           </div>
 
           {/* Navigation */}
-          <div className="px-6 py-4 border-b border-neutral-200">
-            <div className="flex items-center space-x-8 text-sm">
+          <div className="px-4 sm:px-6 py-4 border-b border-neutral-200 overflow-x-auto">
+            <div className="flex items-center space-x-4 sm:space-x-8 text-sm whitespace-nowrap min-w-max">
               <span className="font-medium">Venue</span>
               <span className="font-medium">Decor</span>
               <span className="font-medium">Catering</span>
@@ -111,9 +111,9 @@ const DesignCatalogue = () => {
             </div>
           </div>
 
-          <div className="flex">
+          <div className="flex flex-col lg:flex-row">
             {/* Sidebar */}
-            <div className="w-80 bg-neutral-50 p-6 border-r border-neutral-200">
+            <div className="w-full lg:w-80 bg-neutral-50 p-4 sm:p-6 border-b lg:border-b-0 lg:border-r border-neutral-200">
               {/* Search */}
               <div className="relative mb-6">
                 <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-neutral-400" />
@@ -144,8 +144,8 @@ const DesignCatalogue = () => {
             </div>
 
             {/* Main Content */}
-            <div className="flex-1 p-6">
-              <div className="grid grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="flex-1 p-4 sm:p-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
                 {designs.map((design, index) => (
                   <motion.div
                     key={design.name}

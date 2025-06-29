@@ -22,7 +22,7 @@ const CustomPackages = () => {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
           {/* Left Content */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
@@ -30,7 +30,7 @@ const CustomPackages = () => {
             transition={{ duration: 0.8 }}
             className="text-white"
           >
-            <h2 className="text-4xl lg:text-5xl font-heading font-normal mb-8 leading-tight">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-heading font-normal mb-8 leading-tight">
               Custom packages,<br />
               fully editable by you
             </h2>
@@ -40,7 +40,7 @@ const CustomPackages = () => {
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
               transition={{ duration: 0.8, delay: 0.3 }}
             >
-              <button className="bg-white text-neutral-800 px-8 py-4 rounded-full font-medium hover:bg-neutral-100 transition-colors shadow-lg">
+              <button className="bg-white text-neutral-800 px-6 sm:px-8 py-3 sm:py-4 rounded-full font-medium hover:bg-neutral-100 transition-colors shadow-lg text-sm sm:text-base">
                 Get a Free Design Consultation
               </button>
             </motion.div>
@@ -51,9 +51,9 @@ const CustomPackages = () => {
             initial={{ opacity: 0, x: 50 }}
             animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="relative"
+            className="relative w-full"
           >
-            <div className="bg-white rounded-2xl shadow-2xl overflow-hidden">
+            <div className="bg-white rounded-2xl shadow-2xl overflow-hidden w-full">
               {/* Mock Browser Interface */}
               <div className="bg-neutral-100 px-4 py-3 border-b border-neutral-200">
                 <div className="flex items-center space-x-2">
@@ -64,27 +64,27 @@ const CustomPackages = () => {
               </div>
 
               {/* Mock Content */}
-              <div className="p-6">
-                <div className="grid grid-cols-2 gap-4">
-                  <div className="space-y-4">
-                    <div className="h-32 bg-gradient-to-br from-blue-100 to-blue-200 rounded-lg"></div>
-                    <div className="h-4 bg-neutral-200 rounded"></div>
-                    <div className="h-3 bg-neutral-100 rounded w-3/4"></div>
+              <div className="p-4 sm:p-6">
+                <div className="grid grid-cols-2 gap-3 sm:gap-4">
+                  <div className="space-y-3 sm:space-y-4">
+                    <div className="h-24 sm:h-32 bg-gradient-to-br from-blue-100 to-blue-200 rounded-lg"></div>
+                    <div className="h-3 sm:h-4 bg-neutral-200 rounded"></div>
+                    <div className="h-2 sm:h-3 bg-neutral-100 rounded w-3/4"></div>
                   </div>
-                  <div className="space-y-4">
-                    <div className="h-32 bg-gradient-to-br from-green-100 to-green-200 rounded-lg"></div>
-                    <div className="h-4 bg-neutral-200 rounded"></div>
-                    <div className="h-3 bg-neutral-100 rounded w-2/3"></div>
+                  <div className="space-y-3 sm:space-y-4">
+                    <div className="h-24 sm:h-32 bg-gradient-to-br from-green-100 to-green-200 rounded-lg"></div>
+                    <div className="h-3 sm:h-4 bg-neutral-200 rounded"></div>
+                    <div className="h-2 sm:h-3 bg-neutral-100 rounded w-2/3"></div>
                   </div>
-                  <div className="space-y-4">
-                    <div className="h-32 bg-gradient-to-br from-purple-100 to-purple-200 rounded-lg"></div>
-                    <div className="h-4 bg-neutral-200 rounded"></div>
-                    <div className="h-3 bg-neutral-100 rounded w-4/5"></div>
+                  <div className="space-y-3 sm:space-y-4">
+                    <div className="h-24 sm:h-32 bg-gradient-to-br from-purple-100 to-purple-200 rounded-lg"></div>
+                    <div className="h-3 sm:h-4 bg-neutral-200 rounded"></div>
+                    <div className="h-2 sm:h-3 bg-neutral-100 rounded w-4/5"></div>
                   </div>
-                  <div className="space-y-4">
-                    <div className="h-32 bg-gradient-to-br from-pink-100 to-pink-200 rounded-lg"></div>
-                    <div className="h-4 bg-neutral-200 rounded"></div>
-                    <div className="h-3 bg-neutral-100 rounded w-1/2"></div>
+                  <div className="space-y-3 sm:space-y-4">
+                    <div className="h-24 sm:h-32 bg-gradient-to-br from-pink-100 to-pink-200 rounded-lg"></div>
+                    <div className="h-3 sm:h-4 bg-neutral-200 rounded"></div>
+                    <div className="h-2 sm:h-3 bg-neutral-100 rounded w-1/2"></div>
                   </div>
                 </div>
               </div>
