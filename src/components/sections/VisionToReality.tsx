@@ -4,26 +4,88 @@ import { useInView } from 'framer-motion';
 
 const VisionToReality = () => {
   const ref = useRef(null);
+  const containerRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const [dragPosition, setDragPosition] = useState(50);
   const [isDragging, setIsDragging] = useState(false);
 
+  const updatePosition = (clientX: number) => {
+    if (!containerRef.current) return;
+    
+    const rect = containerRef.current.getBoundingClientRect();
+    const x = clientX - rect.left;
+    const percentage = Math.max(0, Math.min(100, (x / rect.width) * 100));
+    setDragPosition(percentage);
+  };
+
+  // Mouse events
   const handleMouseDown = () => {
     setIsDragging(true);
   };
 
   const handleMouseMove = (e: React.MouseEvent) => {
     if (!isDragging) return;
-    
-    const rect = e.currentTarget.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const percentage = Math.max(0, Math.min(100, (x / rect.width) * 100));
-    setDragPosition(percentage);
+    e.preventDefault();
+    updatePosition(e.clientX);
   };
 
   const handleMouseUp = () => {
     setIsDragging(false);
   };
+
+  // Touch events for mobile
+  const handleTouchStart = () => {
+    setIsDragging(true);
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    if (!isDragging) return;
+    e.preventDefault();
+    const touch = e.touches[0];
+    updatePosition(touch.clientX);
+  };
+
+  const handleTouchEnd = () => {
+    setIsDragging(false);
+  };
+
+  // Global mouse events to handle dragging outside the container
+  React.useEffect(() => {
+    const handleGlobalMouseMove = (e: MouseEvent) => {
+      if (!isDragging) return;
+      e.preventDefault();
+      updatePosition(e.clientX);
+    };
+
+    const handleGlobalMouseUp = () => {
+      setIsDragging(false);
+    };
+
+    const handleGlobalTouchMove = (e: TouchEvent) => {
+      if (!isDragging) return;
+      e.preventDefault();
+      const touch = e.touches[0];
+      updatePosition(touch.clientX);
+    };
+
+    const handleGlobalTouchEnd = () => {
+      setIsDragging(false);
+    };
+
+    if (isDragging) {
+      document.addEventListener('mousemove', handleGlobalMouseMove);
+      document.addEventListener('mouseup', handleGlobalMouseUp);
+      document.addEventListener('touchmove', handleGlobalTouchMove, { passive: false });
+      document.addEventListener('touchend', handleGlobalTouchEnd);
+    }
+
+    return () => {
+      document.removeEventListener('mousemove', handleGlobalMouseMove);
+      document.removeEventListener('mouseup', handleGlobalMouseUp);
+      document.removeEventListener('touchmove', handleGlobalTouchMove);
+      document.removeEventListener('touchend', handleGlobalTouchEnd);
+    };
+  }, [isDragging]);
 
   return (
     <section ref={ref} className="py-20 lg:py-32 bg-white overflow-x-hidden">
@@ -51,45 +113,52 @@ const VisionToReality = () => {
           className="relative max-w-6xl mx-auto w-full"
         >
           <div 
-            className="relative h-64 sm:h-96 lg:h-[600px] overflow-hidden rounded-3xl shadow-2xl cursor-ew-resize w-full"
-            onMouseMove={handleMouseMove}
+            ref={containerRef}
+            className="relative h-64 sm:h-96 lg:h-[600px] overflow-hidden rounded-3xl shadow-2xl cursor-ew-resize w-full select-none"
             onMouseDown={handleMouseDown}
+            onMouseMove={handleMouseMove}
             onMouseUp={handleMouseUp}
             onMouseLeave={handleMouseUp}
+            onTouchStart={handleTouchStart}
+            onTouchMove={handleTouchMove}
+            onTouchEnd={handleTouchEnd}
+            style={{ touchAction: 'none' }}
           >
             {/* Reality Image (Background) */}
             <div className="absolute inset-0 w-full h-full">
               <img
                 src="https://images.pexels.com/photos/1024993/pexels-photo-1024993.jpeg?auto=compress&cs=tinysrgb&w=1200&h=800&fit=crop"
                 alt="Reality"
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover pointer-events-none"
+                draggable={false}
               />
-              <div className="absolute bottom-4 sm:bottom-8 right-4 sm:right-8 text-white">
+              <div className="absolute bottom-4 sm:bottom-8 right-4 sm:right-8 text-white pointer-events-none">
                 <h3 className="text-lg sm:text-2xl font-heading font-medium mb-2">REALITY</h3>
               </div>
             </div>
 
             {/* Render Image (Overlay) */}
             <div 
-              className="absolute inset-0 overflow-hidden w-full h-full"
+              className="absolute inset-0 overflow-hidden w-full h-full pointer-events-none"
               style={{ clipPath: `inset(0 ${100 - dragPosition}% 0 0)` }}
             >
               <img
                 src="https://images.pexels.com/photos/169198/pexels-photo-169198.jpeg?auto=compress&cs=tinysrgb&w=1200&h=800&fit=crop"
                 alt="Render"
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover pointer-events-none"
+                draggable={false}
               />
-              <div className="absolute bottom-4 sm:bottom-8 left-4 sm:left-8 text-white">
+              <div className="absolute bottom-4 sm:bottom-8 left-4 sm:left-8 text-white pointer-events-none">
                 <h3 className="text-lg sm:text-2xl font-heading font-medium mb-2">RENDER</h3>
               </div>
             </div>
 
             {/* Drag Handle */}
             <div 
-              className="absolute top-0 bottom-0 w-1 bg-white shadow-lg cursor-ew-resize"
+              className="absolute top-0 bottom-0 w-1 bg-white shadow-lg cursor-ew-resize pointer-events-none"
               style={{ left: `${dragPosition}%` }}
             >
-              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-6 h-6 sm:w-8 sm:h-8 bg-white rounded-full shadow-lg flex items-center justify-center">
+              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-6 h-6 sm:w-8 sm:h-8 bg-white rounded-full shadow-lg flex items-center justify-center pointer-events-auto cursor-ew-resize">
                 <div className="w-3 h-3 sm:w-4 sm:h-4 border-2 border-neutral-400 rounded-full"></div>
               </div>
             </div>
