@@ -98,20 +98,28 @@ const BlogPage = () => {
   const regularPosts = filteredPosts.filter(post => !post.featured);
 
   return (
-    <div className="pt-24 lg:pt-28">
-      {/* Hero Section */}
-      <section className="relative py-20 lg:py-32 bg-gradient-to-br from-primary-50 to-secondary-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="bg-background-500">
+      {/* Hero Section with Slideshow */}
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+        <div className="absolute inset-0 w-full h-full">
+          <img
+            src="https://images.pexels.com/photos/1444442/pexels-photo-1444442.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&fit=crop"
+            alt="Blog Hero"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/40" />
+        </div>
+
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-center max-w-4xl mx-auto"
           >
-            <h1 className="text-4xl lg:text-6xl font-heading font-bold text-neutral-800 mb-6">
+            <h1 className="text-4xl lg:text-6xl font-heading font-bold mb-6">
               Wedding & Event Blog
             </h1>
-            <p className="text-xl text-neutral-600 leading-relaxed">
+            <p className="text-xl leading-relaxed max-w-3xl mx-auto">
               Expert tips, inspiration, and insights to help you plan the perfect celebration. 
               From planning advice to the latest trends, we've got you covered.
             </p>
@@ -136,7 +144,7 @@ const BlogPage = () => {
                 placeholder="Search articles..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-12 pr-4 py-3 rounded-xl border border-neutral-200 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 transition-colors"
+                className="w-full pl-12 pr-4 py-3 rounded-xl border border-neutral-200 focus:border-primary-900 focus:ring-2 focus:ring-primary-200 transition-colors"
               />
             </motion.div>
 
@@ -153,8 +161,8 @@ const BlogPage = () => {
                   onClick={() => setSelectedCategory(category.id)}
                   className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
                     selectedCategory === category.id
-                      ? 'bg-primary-600 text-white'
-                      : 'bg-neutral-100 text-neutral-600 hover:bg-primary-50 hover:text-primary-600'
+                      ? 'bg-primary-900 text-white'
+                      : 'bg-neutral-100 text-neutral-600 hover:bg-primary-50 hover:text-primary-900'
                   }`}
                 >
                   {category.name} ({category.count})
@@ -176,14 +184,14 @@ const BlogPage = () => {
               className="mb-8"
             >
               <h2 className="text-2xl font-heading font-bold text-neutral-800 mb-2">Featured Article</h2>
-              <div className="w-20 h-1 bg-primary-500 rounded-full"></div>
+              <div className="w-20 h-1 bg-primary-900 rounded-full"></div>
             </motion.div>
 
             <motion.article
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="bg-gradient-to-br from-primary-50 to-secondary-50 rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-shadow duration-300"
+              className="bg-background-500 rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-shadow duration-300"
             >
               <div className="grid lg:grid-cols-2 gap-0">
                 <div className="relative h-64 lg:h-auto">
@@ -192,7 +200,7 @@ const BlogPage = () => {
                     alt={featuredPost.title}
                     className="w-full h-full object-cover"
                   />
-                  <div className="absolute top-4 left-4 px-3 py-1 bg-primary-600 text-white rounded-full text-sm font-medium">
+                  <div className="absolute top-4 left-4 px-3 py-1 bg-primary-900 text-white rounded-full text-sm font-medium">
                     Featured
                   </div>
                 </div>
@@ -214,7 +222,7 @@ const BlogPage = () => {
                   <p className="text-neutral-600 leading-relaxed mb-6">
                     {featuredPost.excerpt}
                   </p>
-                  <button className="inline-flex items-center space-x-2 text-primary-600 font-semibold hover:text-primary-700 transition-colors">
+                  <button className="inline-flex items-center space-x-2 text-primary-900 font-semibold hover:text-primary-800 transition-colors">
                     <span>Read Full Article</span>
                     <ArrowRight className="h-4 w-4" />
                   </button>
@@ -226,7 +234,7 @@ const BlogPage = () => {
       )}
 
       {/* Blog Posts Grid */}
-      <section className="py-16 bg-white">
+      <section className="py-16 bg-background-500">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {regularPosts.length > 0 ? (
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -263,7 +271,7 @@ const BlogPage = () => {
                       <span>{post.readTime}</span>
                     </div>
 
-                    <h3 className="text-xl font-semibold text-neutral-800 mb-3 group-hover:text-primary-600 transition-colors line-clamp-2">
+                    <h3 className="text-xl font-semibold text-neutral-800 mb-3 group-hover:text-primary-900 transition-colors line-clamp-2">
                       {post.title}
                     </h3>
 
@@ -271,7 +279,7 @@ const BlogPage = () => {
                       {post.excerpt}
                     </p>
 
-                    <button className="inline-flex items-center space-x-2 text-primary-600 font-medium hover:text-primary-700 transition-colors">
+                    <button className="inline-flex items-center space-x-2 text-primary-900 font-medium hover:text-primary-800 transition-colors">
                       <span>Read More</span>
                       <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
                     </button>
@@ -300,7 +308,7 @@ const BlogPage = () => {
               transition={{ duration: 0.8, delay: 0.5 }}
               className="text-center mt-16"
             >
-              <button className="bg-primary-600 text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-primary-700 transition-colors shadow-lg hover:shadow-xl">
+              <button className="bg-primary-900 text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-primary-800 transition-colors shadow-lg hover:shadow-xl">
                 Load More Articles
               </button>
             </motion.div>
@@ -309,7 +317,7 @@ const BlogPage = () => {
       </section>
 
       {/* Newsletter Signup */}
-      <section className="py-20 lg:py-32 bg-gradient-to-br from-primary-50 to-secondary-50">
+      <section className="py-20 lg:py-32 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -327,9 +335,9 @@ const BlogPage = () => {
               <input
                 type="email"
                 placeholder="Enter your email"
-                className="flex-1 px-6 py-4 rounded-full border border-neutral-200 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 transition-colors"
+                className="flex-1 px-6 py-4 rounded-full border border-neutral-200 focus:border-primary-900 focus:ring-2 focus:ring-primary-200 transition-colors"
               />
-              <button className="bg-primary-600 text-white px-8 py-4 rounded-full font-semibold hover:bg-primary-700 transition-colors shadow-lg hover:shadow-xl">
+              <button className="bg-primary-900 text-white px-8 py-4 rounded-full font-semibold hover:bg-primary-800 transition-colors shadow-lg hover:shadow-xl">
                 Subscribe
               </button>
             </div>

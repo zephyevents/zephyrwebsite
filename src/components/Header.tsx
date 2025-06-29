@@ -17,7 +17,7 @@ const Header = () => {
   ];
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-transparent">
+    <header className="relative z-50 bg-transparent">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-24">
           {/* Logo */}
@@ -57,7 +57,7 @@ const Header = () => {
                   className={`relative text-sm font-medium tracking-wide transition-all duration-300 ${
                     location.pathname === item.href
                       ? 'text-primary-900'
-                      : 'text-neutral-700 hover:text-primary-900'
+                      : 'text-white hover:text-primary-900'
                   }`}
                 >
                   {item.name}
@@ -78,7 +78,7 @@ const Header = () => {
               href="https://instagram.com/zephyrevents"
               target="_blank"
               rel="noopener noreferrer"
-              className="p-2 text-neutral-700 hover:text-primary-900 transition-colors"
+              className="p-2 text-white hover:text-primary-900 transition-colors"
             >
               <Instagram className="h-6 w-6" />
             </a>
@@ -87,7 +87,7 @@ const Header = () => {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="lg:hidden p-2 rounded-md text-neutral-700 hover:text-primary-900 transition-colors"
+            className="lg:hidden p-2 rounded-md text-white hover:text-primary-900 transition-colors"
           >
             {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </button>

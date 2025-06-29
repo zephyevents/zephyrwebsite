@@ -42,16 +42,26 @@ const AdminPage = () => {
 
   if (!isAuthenticated) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-primary-50 to-secondary-50 flex items-center justify-center px-4 pt-24 lg:pt-28">
+      <div className="min-h-screen bg-background-500 flex items-center justify-center px-4">
+        {/* Hero Section with Slideshow */}
+        <div className="absolute inset-0 w-full h-full">
+          <img
+            src="https://images.pexels.com/photos/1024993/pexels-photo-1024993.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&fit=crop"
+            alt="Admin Hero"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/60" />
+        </div>
+
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="bg-white rounded-3xl p-8 shadow-xl max-w-md w-full"
+          className="relative z-10 bg-white rounded-3xl p-8 shadow-xl max-w-md w-full"
         >
           <div className="text-center mb-8">
             <div className="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-4">
-              <Lock className="h-8 w-8 text-primary-600" />
+              <Lock className="h-8 w-8 text-primary-900" />
             </div>
             <h1 className="text-2xl font-heading font-bold text-neutral-800 mb-2">
               Admin Access
@@ -72,7 +82,7 @@ const AdminPage = () => {
                   id="password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="w-full px-4 py-3 rounded-xl border border-neutral-200 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 transition-colors pr-12"
+                  className="w-full px-4 py-3 rounded-xl border border-neutral-200 focus:border-primary-900 focus:ring-2 focus:ring-primary-200 transition-colors pr-12"
                   placeholder="Enter admin password"
                   required
                 />
@@ -91,7 +101,7 @@ const AdminPage = () => {
 
             <button
               type="submit"
-              className="w-full bg-primary-600 text-white px-6 py-3 rounded-xl font-semibold hover:bg-primary-700 transition-colors"
+              className="w-full bg-primary-900 text-white px-6 py-3 rounded-xl font-semibold hover:bg-primary-800 transition-colors"
             >
               Access Admin Panel
             </button>
@@ -106,7 +116,7 @@ const AdminPage = () => {
   }
 
   return (
-    <div className="min-h-screen bg-neutral-50 pt-24 lg:pt-28">
+    <div className="min-h-screen bg-background-500">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Header */}
         <motion.div
@@ -148,7 +158,7 @@ const AdminPage = () => {
                   onClick={() => setActiveTab(tab.id)}
                   className={`flex items-center space-x-2 py-4 px-1 border-b-2 font-medium text-sm transition-colors ${
                     activeTab === tab.id
-                      ? 'border-primary-500 text-primary-600'
+                      ? 'border-primary-900 text-primary-900'
                       : 'border-transparent text-neutral-500 hover:text-neutral-700 hover:border-neutral-300'
                   }`}
                 >
@@ -196,7 +206,7 @@ const ContentManagement = () => {
               type="text"
               value={heroContent.title}
               onChange={(e) => setHeroContent({...heroContent, title: e.target.value})}
-              className="w-full px-4 py-3 rounded-lg border border-neutral-200 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 transition-colors"
+              className="w-full px-4 py-3 rounded-lg border border-neutral-200 focus:border-primary-900 focus:ring-2 focus:ring-primary-200 transition-colors"
             />
           </div>
           <div>
@@ -207,7 +217,7 @@ const ContentManagement = () => {
               value={heroContent.subtitle}
               onChange={(e) => setHeroContent({...heroContent, subtitle: e.target.value})}
               rows={3}
-              className="w-full px-4 py-3 rounded-lg border border-neutral-200 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 transition-colors resize-none"
+              className="w-full px-4 py-3 rounded-lg border border-neutral-200 focus:border-primary-900 focus:ring-2 focus:ring-primary-200 transition-colors resize-none"
             />
           </div>
           <div>
@@ -218,10 +228,10 @@ const ContentManagement = () => {
               type="text"
               value={heroContent.buttonText}
               onChange={(e) => setHeroContent({...heroContent, buttonText: e.target.value})}
-              className="w-full px-4 py-3 rounded-lg border border-neutral-200 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 transition-colors"
+              className="w-full px-4 py-3 rounded-lg border border-neutral-200 focus:border-primary-900 focus:ring-2 focus:ring-primary-200 transition-colors"
             />
           </div>
-          <button className="bg-primary-600 text-white px-6 py-3 rounded-lg hover:bg-primary-700 transition-colors flex items-center space-x-2">
+          <button className="bg-primary-900 text-white px-6 py-3 rounded-lg hover:bg-primary-800 transition-colors flex items-center space-x-2">
             <Save className="h-4 w-4" />
             <span>Save Changes</span>
           </button>
@@ -238,7 +248,7 @@ const ContentManagement = () => {
             <input
               type="text"
               defaultValue="About Zephyr Events"
-              className="w-full px-4 py-3 rounded-lg border border-neutral-200 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 transition-colors"
+              className="w-full px-4 py-3 rounded-lg border border-neutral-200 focus:border-primary-900 focus:ring-2 focus:ring-primary-200 transition-colors"
             />
           </div>
           <div>
@@ -248,10 +258,10 @@ const ContentManagement = () => {
             <textarea
               defaultValue="We believe every love story deserves a celebration as unique and beautiful as the couple themselves. Let us help you create memories that will last a lifetime."
               rows={4}
-              className="w-full px-4 py-3 rounded-lg border border-neutral-200 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 transition-colors resize-none"
+              className="w-full px-4 py-3 rounded-lg border border-neutral-200 focus:border-primary-900 focus:ring-2 focus:ring-primary-200 transition-colors resize-none"
             />
           </div>
-          <button className="bg-primary-600 text-white px-6 py-3 rounded-lg hover:bg-primary-700 transition-colors flex items-center space-x-2">
+          <button className="bg-primary-900 text-white px-6 py-3 rounded-lg hover:bg-primary-800 transition-colors flex items-center space-x-2">
             <Save className="h-4 w-4" />
             <span>Save Changes</span>
           </button>
@@ -273,7 +283,7 @@ const GalleryManagement = () => {
       <div className="bg-white rounded-2xl p-6 shadow-lg">
         <div className="flex items-center justify-between mb-6">
           <h2 className="text-xl font-semibold text-neutral-800">Gallery Images</h2>
-          <button className="bg-primary-600 text-white px-4 py-2 rounded-lg hover:bg-primary-700 transition-colors flex items-center space-x-2">
+          <button className="bg-primary-900 text-white px-4 py-2 rounded-lg hover:bg-primary-800 transition-colors flex items-center space-x-2">
             <Upload className="h-4 w-4" />
             <span>Upload Images</span>
           </button>
@@ -319,7 +329,7 @@ const BlogManagement = () => {
       <div className="bg-white rounded-2xl p-6 shadow-lg">
         <div className="flex items-center justify-between mb-6">
           <h2 className="text-xl font-semibold text-neutral-800">Blog Posts</h2>
-          <button className="bg-primary-600 text-white px-4 py-2 rounded-lg hover:bg-primary-700 transition-colors">
+          <button className="bg-primary-900 text-white px-4 py-2 rounded-lg hover:bg-primary-800 transition-colors">
             New Post
           </button>
         </div>
@@ -341,7 +351,7 @@ const BlogManagement = () => {
                 </div>
               </div>
               <div className="flex items-center space-x-2">
-                <button className="p-2 text-neutral-600 hover:text-primary-600 transition-colors">
+                <button className="p-2 text-neutral-600 hover:text-primary-900 transition-colors">
                   <Edit3 className="h-4 w-4" />
                 </button>
                 <button className="p-2 text-neutral-600 hover:text-red-600 transition-colors">
@@ -369,7 +379,7 @@ const SettingsManagement = () => {
             <input
               type="text"
               defaultValue="Zephyr Events - Premium Wedding & Event Planning"
-              className="w-full px-4 py-3 rounded-lg border border-neutral-200 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 transition-colors"
+              className="w-full px-4 py-3 rounded-lg border border-neutral-200 focus:border-primary-900 focus:ring-2 focus:ring-primary-200 transition-colors"
             />
           </div>
           <div>
@@ -379,7 +389,7 @@ const SettingsManagement = () => {
             <input
               type="email"
               defaultValue="info@zephyrevents.com"
-              className="w-full px-4 py-3 rounded-lg border border-neutral-200 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 transition-colors"
+              className="w-full px-4 py-3 rounded-lg border border-neutral-200 focus:border-primary-900 focus:ring-2 focus:ring-primary-200 transition-colors"
             />
           </div>
           <div>
@@ -389,7 +399,7 @@ const SettingsManagement = () => {
             <input
               type="tel"
               defaultValue="+1 (555) 123-4567"
-              className="w-full px-4 py-3 rounded-lg border border-neutral-200 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 transition-colors"
+              className="w-full px-4 py-3 rounded-lg border border-neutral-200 focus:border-primary-900 focus:ring-2 focus:ring-primary-200 transition-colors"
             />
           </div>
           <div>
@@ -399,10 +409,10 @@ const SettingsManagement = () => {
             <textarea
               defaultValue="123 Event Plaza, New York, NY 10001"
               rows={2}
-              className="w-full px-4 py-3 rounded-lg border border-neutral-200 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 transition-colors resize-none"
+              className="w-full px-4 py-3 rounded-lg border border-neutral-200 focus:border-primary-900 focus:ring-2 focus:ring-primary-200 transition-colors resize-none"
             />
           </div>
-          <button className="bg-primary-600 text-white px-6 py-3 rounded-lg hover:bg-primary-700 transition-colors flex items-center space-x-2">
+          <button className="bg-primary-900 text-white px-6 py-3 rounded-lg hover:bg-primary-800 transition-colors flex items-center space-x-2">
             <Save className="h-4 w-4" />
             <span>Save Settings</span>
           </button>

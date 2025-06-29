@@ -122,20 +122,28 @@ const GalleryPage = () => {
   };
 
   return (
-    <div className="pt-24 lg:pt-28">
-      {/* Hero Section */}
-      <section className="relative py-20 lg:py-32 bg-gradient-to-br from-primary-50 to-secondary-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="bg-background-500">
+      {/* Hero Section with Slideshow */}
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+        <div className="absolute inset-0 w-full h-full">
+          <img
+            src="https://images.pexels.com/photos/1616113/pexels-photo-1616113.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&fit=crop"
+            alt="Gallery Hero"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/40" />
+        </div>
+
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-center max-w-4xl mx-auto"
           >
-            <h1 className="text-4xl lg:text-6xl font-heading font-bold text-neutral-800 mb-6">
+            <h1 className="text-4xl lg:text-6xl font-heading font-bold mb-6">
               Event Gallery
             </h1>
-            <p className="text-xl text-neutral-600 leading-relaxed">
+            <p className="text-xl leading-relaxed max-w-3xl mx-auto">
               Explore our portfolio of beautiful weddings and events. Each celebration tells a unique 
               story of love, joy, and unforgettable moments.
             </p>
@@ -158,8 +166,8 @@ const GalleryPage = () => {
                 onClick={() => setActiveFilter(category.id)}
                 className={`px-6 py-3 rounded-full font-medium transition-all duration-300 flex items-center space-x-2 ${
                   activeFilter === category.id
-                    ? 'bg-primary-600 text-white shadow-lg'
-                    : 'bg-neutral-100 text-neutral-600 hover:bg-primary-50 hover:text-primary-600'
+                    ? 'bg-primary-900 text-white shadow-lg'
+                    : 'bg-neutral-100 text-neutral-600 hover:bg-primary-50 hover:text-primary-900'
                 }`}
               >
                 <Filter className="h-4 w-4" />
@@ -172,7 +180,7 @@ const GalleryPage = () => {
       </section>
 
       {/* Gallery Grid */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-background-500">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             {filteredImages.map((image, index) => (
@@ -216,7 +224,7 @@ const GalleryPage = () => {
             transition={{ duration: 0.8, delay: 0.5 }}
             className="text-center mt-16"
           >
-            <button className="bg-primary-600 text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-primary-700 transition-colors shadow-lg hover:shadow-xl">
+            <button className="bg-primary-900 text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-primary-800 transition-colors shadow-lg hover:shadow-xl">
               Load More Images
             </button>
           </motion.div>
@@ -275,7 +283,7 @@ const GalleryPage = () => {
       )}
 
       {/* CTA Section */}
-      <section className="py-20 lg:py-32 bg-gradient-to-br from-primary-50 to-secondary-50">
+      <section className="py-20 lg:py-32 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -289,7 +297,7 @@ const GalleryPage = () => {
               Let us help you create beautiful memories that will be treasured for a lifetime. 
               Every event is unique, and we're here to bring your vision to life.
             </p>
-            <button className="bg-primary-600 text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-primary-700 transition-colors shadow-lg hover:shadow-xl">
+            <button className="bg-primary-900 text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-primary-800 transition-colors shadow-lg hover:shadow-xl">
               Start Planning Your Event
             </button>
           </motion.div>

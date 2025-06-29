@@ -43,20 +43,28 @@ const AboutPage = () => {
   ];
 
   return (
-    <div className="pt-24 lg:pt-28">
-      {/* Hero Section */}
-      <section className="relative py-20 lg:py-32 bg-gradient-to-br from-primary-50 to-secondary-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="bg-background-500">
+      {/* Hero Section with Slideshow */}
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+        <div className="absolute inset-0 w-full h-full">
+          <img
+            src="https://images.pexels.com/photos/1024993/pexels-photo-1024993.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&fit=crop"
+            alt="About Us Hero"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/40" />
+        </div>
+
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-center max-w-4xl mx-auto"
           >
-            <h1 className="text-4xl lg:text-6xl font-heading font-bold text-neutral-800 mb-6">
+            <h1 className="text-4xl lg:text-6xl font-heading font-bold mb-6">
               About Zephyr Events
             </h1>
-            <p className="text-xl text-neutral-600 leading-relaxed">
+            <p className="text-xl leading-relaxed max-w-3xl mx-auto">
               We believe every love story deserves a celebration as unique and beautiful as the couple themselves. 
               Since 2010, we've been crafting unforgettable moments with elegant design and flawless execution.
             </p>
@@ -65,7 +73,7 @@ const AboutPage = () => {
       </section>
 
       {/* Our Story */}
-      <section ref={ref} className="py-20 lg:py-32 bg-white">
+      <section ref={ref} className="py-20 lg:py-32 bg-background-500">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             <motion.div
@@ -109,7 +117,7 @@ const AboutPage = () => {
               />
               <div className="absolute -bottom-6 -left-6 bg-white p-6 rounded-xl shadow-xl">
                 <div className="flex items-center space-x-4">
-                  <Heart className="h-8 w-8 text-primary-500" />
+                  <Heart className="h-8 w-8 text-primary-900" />
                   <div>
                     <div className="text-2xl font-bold text-neutral-800">500+</div>
                     <div className="text-sm text-neutral-600">Happy Couples</div>
@@ -122,7 +130,7 @@ const AboutPage = () => {
       </section>
 
       {/* Stats Section */}
-      <section className="py-16 bg-gradient-to-r from-primary-500 to-secondary-500">
+      <section className="py-16 bg-gradient-to-r from-primary-900 to-primary-700">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
             {stats.map((stat, index) => (
@@ -142,7 +150,7 @@ const AboutPage = () => {
       </section>
 
       {/* Values and Approach */}
-      <section className="py-20 lg:py-32 bg-white">
+      <section className="py-20 lg:py-32 bg-background-500">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -170,9 +178,9 @@ const AboutPage = () => {
                 initial={{ opacity: 0, y: 30 }}
                 animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
                 transition={{ duration: 0.8, delay: 0.2 + index * 0.1 }}
-                className="text-center p-6 rounded-2xl bg-primary-50 hover:bg-primary-100 transition-colors group"
+                className="text-center p-6 rounded-2xl bg-white hover:bg-primary-50 transition-colors group"
               >
-                <div className="w-16 h-16 bg-primary-500 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
+                <div className="w-16 h-16 bg-primary-900 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
                   <value.icon className="h-8 w-8 text-white" />
                 </div>
                 <h3 className="text-xl font-semibold text-neutral-800 mb-4">{value.title}</h3>
@@ -184,7 +192,7 @@ const AboutPage = () => {
       </section>
 
       {/* Team Section */}
-      <section className="py-20 lg:py-32 bg-neutral-50">
+      <section className="py-20 lg:py-32 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -216,12 +224,12 @@ const AboutPage = () => {
                     alt={member.name}
                     className="w-24 h-24 rounded-full object-cover mx-auto"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-primary-500/20 to-transparent rounded-full opacity-0 group-hover:opacity-100 transition-opacity" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-primary-900/20 to-transparent rounded-full opacity-0 group-hover:opacity-100 transition-opacity" />
                 </div>
                 <h3 className="text-xl font-semibold text-neutral-800 mb-2 text-center">
                   {member.name}
                 </h3>
-                <p className="text-primary-600 font-medium text-center mb-4">
+                <p className="text-primary-900 font-medium text-center mb-4">
                   {member.role}
                 </p>
                 <p className="text-neutral-600 text-sm leading-relaxed text-center">
@@ -234,7 +242,7 @@ const AboutPage = () => {
       </section>
 
       {/* Awards and Recognition */}
-      <section className="py-20 lg:py-32 bg-white">
+      <section className="py-20 lg:py-32 bg-background-500">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -262,9 +270,9 @@ const AboutPage = () => {
                 initial={{ opacity: 0, y: 30 }}
                 animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
                 transition={{ duration: 0.8, delay: index * 0.1 }}
-                className="text-center p-8 bg-gradient-to-br from-primary-50 to-secondary-50 rounded-2xl"
+                className="text-center p-8 bg-white rounded-2xl"
               >
-                <div className="w-16 h-16 bg-accent-500 rounded-full flex items-center justify-center mx-auto mb-6">
+                <div className="w-16 h-16 bg-primary-900 rounded-full flex items-center justify-center mx-auto mb-6">
                   <recognition.icon className="h-8 w-8 text-white" />
                 </div>
                 <div className="text-2xl font-bold text-neutral-800 mb-2">{recognition.year}</div>

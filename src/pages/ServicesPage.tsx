@@ -131,20 +131,28 @@ const ServicesPage = () => {
   ];
 
   return (
-    <div className="pt-24 lg:pt-28">
-      {/* Hero Section */}
-      <section className="relative py-20 lg:py-32 bg-gradient-to-br from-primary-50 to-secondary-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="bg-background-500">
+      {/* Hero Section with Slideshow */}
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+        <div className="absolute inset-0 w-full h-full">
+          <img
+            src="https://images.pexels.com/photos/1444442/pexels-photo-1444442.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&fit=crop"
+            alt="Services Hero"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/40" />
+        </div>
+
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-center max-w-4xl mx-auto"
           >
-            <h1 className="text-4xl lg:text-6xl font-heading font-bold text-neutral-800 mb-6">
+            <h1 className="text-4xl lg:text-6xl font-heading font-bold mb-6">
               Our Services
             </h1>
-            <p className="text-xl text-neutral-600 leading-relaxed">
+            <p className="text-xl leading-relaxed max-w-3xl mx-auto">
               From intimate ceremonies to grand celebrations, we offer comprehensive event planning 
               services tailored to your unique vision and style.
             </p>
@@ -153,7 +161,7 @@ const ServicesPage = () => {
       </section>
 
       {/* Services Grid */}
-      <section ref={ref} className="py-20 lg:py-32 bg-white">
+      <section ref={ref} className="py-20 lg:py-32 bg-background-500">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -190,7 +198,7 @@ const ServicesPage = () => {
                   
                   {/* Icon */}
                   <div className="absolute top-4 left-4 p-3 bg-white/90 backdrop-blur-sm rounded-full">
-                    <service.icon className="h-6 w-6 text-primary-600" />
+                    <service.icon className="h-6 w-6 text-primary-900" />
                   </div>
 
                   {/* Price */}
@@ -201,7 +209,7 @@ const ServicesPage = () => {
 
                 {/* Content */}
                 <div className="p-6">
-                  <h3 className="text-xl font-semibold text-neutral-800 mb-3 group-hover:text-primary-600 transition-colors">
+                  <h3 className="text-xl font-semibold text-neutral-800 mb-3 group-hover:text-primary-900 transition-colors">
                     {service.title}
                   </h3>
                   <p className="text-neutral-600 mb-4 leading-relaxed">
@@ -212,14 +220,14 @@ const ServicesPage = () => {
                   <ul className="space-y-2 mb-6">
                     {service.features.map((feature) => (
                       <li key={feature} className="flex items-center text-sm text-neutral-600">
-                        <Check className="h-4 w-4 text-primary-500 mr-2 flex-shrink-0" />
+                        <Check className="h-4 w-4 text-primary-900 mr-2 flex-shrink-0" />
                         {feature}
                       </li>
                     ))}
                   </ul>
 
                   {/* CTA Button */}
-                  <button className="w-full bg-primary-50 text-primary-600 px-4 py-3 rounded-lg font-medium hover:bg-primary-100 transition-colors flex items-center justify-center space-x-2 group-hover:bg-primary-600 group-hover:text-white">
+                  <button className="w-full bg-primary-50 text-primary-900 px-4 py-3 rounded-lg font-medium hover:bg-primary-100 transition-colors flex items-center justify-center space-x-2 group-hover:bg-primary-900 group-hover:text-white">
                     <span>Learn More</span>
                     <ArrowRight className="h-4 w-4" />
                   </button>
@@ -231,7 +239,7 @@ const ServicesPage = () => {
       </section>
 
       {/* Packages Section */}
-      <section className="py-20 lg:py-32 bg-gradient-to-br from-primary-50 to-secondary-50">
+      <section className="py-20 lg:py-32 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -260,7 +268,7 @@ const ServicesPage = () => {
                 }`}
               >
                 {pkg.popular && (
-                  <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 px-6 py-2 bg-primary-500 text-white rounded-full text-sm font-medium">
+                  <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 px-6 py-2 bg-primary-900 text-white rounded-full text-sm font-medium">
                     Most Popular
                   </div>
                 )}
@@ -270,14 +278,14 @@ const ServicesPage = () => {
                     {pkg.name}
                   </h3>
                   <p className="text-neutral-600 mb-4">{pkg.description}</p>
-                  <div className="text-4xl font-bold text-primary-600 mb-2">{pkg.price}</div>
+                  <div className="text-4xl font-bold text-primary-900 mb-2">{pkg.price}</div>
                   <p className="text-sm text-neutral-500">Starting price</p>
                 </div>
 
                 <ul className="space-y-4 mb-8">
                   {pkg.features.map((feature) => (
                     <li key={feature} className="flex items-center">
-                      <Check className="h-5 w-5 text-primary-500 mr-3 flex-shrink-0" />
+                      <Check className="h-5 w-5 text-primary-900 mr-3 flex-shrink-0" />
                       <span className="text-neutral-600">{feature}</span>
                     </li>
                   ))}
@@ -285,8 +293,8 @@ const ServicesPage = () => {
 
                 <button className={`w-full py-4 rounded-xl font-semibold transition-colors ${
                   pkg.popular
-                    ? 'bg-primary-600 text-white hover:bg-primary-700'
-                    : 'bg-primary-50 text-primary-600 hover:bg-primary-100'
+                    ? 'bg-primary-900 text-white hover:bg-primary-800'
+                    : 'bg-primary-50 text-primary-900 hover:bg-primary-100'
                 }`}>
                   Choose {pkg.name}
                 </button>
@@ -301,7 +309,7 @@ const ServicesPage = () => {
             transition={{ duration: 0.8, delay: 0.6 }}
             className="text-center mt-16"
           >
-            <div className="bg-white rounded-3xl p-8 lg:p-12 shadow-xl max-w-3xl mx-auto">
+            <div className="bg-background-500 rounded-3xl p-8 lg:p-12 shadow-xl max-w-3xl mx-auto">
               <h3 className="text-2xl lg:text-3xl font-heading font-semibold text-neutral-800 mb-4">
                 Need Something Custom?
               </h3>
@@ -309,7 +317,7 @@ const ServicesPage = () => {
                 Every event is unique, and we're happy to create a custom package that perfectly 
                 fits your vision, style, and budget. Let's discuss your specific needs.
               </p>
-              <button className="bg-gradient-to-r from-primary-500 to-primary-600 text-white px-8 py-4 rounded-full text-lg font-semibold hover:from-primary-600 hover:to-primary-700 transition-all duration-300 shadow-lg hover:shadow-xl">
+              <button className="bg-gradient-to-r from-primary-900 to-primary-800 text-white px-8 py-4 rounded-full text-lg font-semibold hover:from-primary-800 hover:to-primary-700 transition-all duration-300 shadow-lg hover:shadow-xl">
                 Request Custom Quote
               </button>
             </div>
@@ -318,7 +326,7 @@ const ServicesPage = () => {
       </section>
 
       {/* Why Choose Us */}
-      <section className="py-20 lg:py-32 bg-white">
+      <section className="py-20 lg:py-32 bg-background-500">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -351,7 +359,7 @@ const ServicesPage = () => {
                 initial={{ opacity: 0, y: 30 }}
                 animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
                 transition={{ duration: 0.8, delay: index * 0.2 }}
-                className="text-center p-8 bg-gradient-to-br from-primary-50 to-secondary-50 rounded-2xl"
+                className="text-center p-8 bg-white rounded-2xl"
               >
                 <h3 className="text-xl font-semibold text-neutral-800 mb-4">{item.title}</h3>
                 <p className="text-neutral-600 leading-relaxed">{item.description}</p>

@@ -78,20 +78,28 @@ const ContactPage = () => {
   ];
 
   return (
-    <div className="pt-24 lg:pt-28">
-      {/* Hero Section */}
-      <section className="relative py-20 lg:py-32 bg-gradient-to-br from-primary-50 to-secondary-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="bg-background-500">
+      {/* Hero Section with Slideshow */}
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+        <div className="absolute inset-0 w-full h-full">
+          <img
+            src="https://images.pexels.com/photos/1128782/pexels-photo-1128782.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&fit=crop"
+            alt="Contact Hero"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/40" />
+        </div>
+
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-center max-w-4xl mx-auto"
           >
-            <h1 className="text-4xl lg:text-6xl font-heading font-bold text-neutral-800 mb-6">
+            <h1 className="text-4xl lg:text-6xl font-heading font-bold mb-6">
               Let's Plan Your Perfect Event
             </h1>
-            <p className="text-xl text-neutral-600 leading-relaxed">
+            <p className="text-xl leading-relaxed max-w-3xl mx-auto">
               Ready to start planning? Get in touch with us today for a complimentary consultation. 
               We'd love to hear about your vision and help make it a reality.
             </p>
@@ -100,7 +108,7 @@ const ContactPage = () => {
       </section>
 
       {/* Contact Form & Info */}
-      <section ref={ref} className="py-20 lg:py-32 bg-white">
+      <section ref={ref} className="py-20 lg:py-32 bg-background-500">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-3 gap-12 lg:gap-16">
             {/* Contact Form */}
@@ -110,7 +118,7 @@ const ContactPage = () => {
               transition={{ duration: 0.8 }}
               className="lg:col-span-2"
             >
-              <div className="bg-gradient-to-br from-primary-50 to-secondary-50 rounded-3xl p-8 lg:p-12">
+              <div className="bg-white rounded-3xl p-8 lg:p-12">
                 <h2 className="text-3xl font-heading font-bold text-neutral-800 mb-2">
                   Tell Us About Your Event
                 </h2>
@@ -131,7 +139,7 @@ const ContactPage = () => {
                         value={formData.name}
                         onChange={handleChange}
                         required
-                        className="w-full px-4 py-4 rounded-xl border border-neutral-200 bg-white focus:border-primary-500 focus:ring-2 focus:ring-primary-200 transition-colors"
+                        className="w-full px-4 py-4 rounded-xl border border-neutral-200 bg-white focus:border-primary-900 focus:ring-2 focus:ring-primary-200 transition-colors"
                         placeholder="Your full name"
                       />
                     </div>
@@ -147,7 +155,7 @@ const ContactPage = () => {
                         value={formData.email}
                         onChange={handleChange}
                         required
-                        className="w-full px-4 py-4 rounded-xl border border-neutral-200 bg-white focus:border-primary-500 focus:ring-2 focus:ring-primary-200 transition-colors"
+                        className="w-full px-4 py-4 rounded-xl border border-neutral-200 bg-white focus:border-primary-900 focus:ring-2 focus:ring-primary-200 transition-colors"
                         placeholder="your@email.com"
                       />
                     </div>
@@ -164,7 +172,7 @@ const ContactPage = () => {
                         name="phone"
                         value={formData.phone}
                         onChange={handleChange}
-                        className="w-full px-4 py-4 rounded-xl border border-neutral-200 bg-white focus:border-primary-500 focus:ring-2 focus:ring-primary-200 transition-colors"
+                        className="w-full px-4 py-4 rounded-xl border border-neutral-200 bg-white focus:border-primary-900 focus:ring-2 focus:ring-primary-200 transition-colors"
                         placeholder="+1 (555) 123-4567"
                       />
                     </div>
@@ -179,7 +187,7 @@ const ContactPage = () => {
                         value={formData.eventType}
                         onChange={handleChange}
                         required
-                        className="w-full px-4 py-4 rounded-xl border border-neutral-200 bg-white focus:border-primary-500 focus:ring-2 focus:ring-primary-200 transition-colors"
+                        className="w-full px-4 py-4 rounded-xl border border-neutral-200 bg-white focus:border-primary-900 focus:ring-2 focus:ring-primary-200 transition-colors"
                       >
                         <option value="">Select event type</option>
                         <option value="wedding">Wedding</option>
@@ -203,7 +211,7 @@ const ContactPage = () => {
                         name="eventDate"
                         value={formData.eventDate}
                         onChange={handleChange}
-                        className="w-full px-4 py-4 rounded-xl border border-neutral-200 bg-white focus:border-primary-500 focus:ring-2 focus:ring-primary-200 transition-colors"
+                        className="w-full px-4 py-4 rounded-xl border border-neutral-200 bg-white focus:border-primary-900 focus:ring-2 focus:ring-primary-200 transition-colors"
                       />
                     </div>
                     
@@ -216,7 +224,7 @@ const ContactPage = () => {
                         name="guestCount"
                         value={formData.guestCount}
                         onChange={handleChange}
-                        className="w-full px-4 py-4 rounded-xl border border-neutral-200 bg-white focus:border-primary-500 focus:ring-2 focus:ring-primary-200 transition-colors"
+                        className="w-full px-4 py-4 rounded-xl border border-neutral-200 bg-white focus:border-primary-900 focus:ring-2 focus:ring-primary-200 transition-colors"
                       >
                         <option value="">Select range</option>
                         <option value="1-25">1-25 guests</option>
@@ -236,7 +244,7 @@ const ContactPage = () => {
                         name="budget"
                         value={formData.budget}
                         onChange={handleChange}
-                        className="w-full px-4 py-4 rounded-xl border border-neutral-200 bg-white focus:border-primary-500 focus:ring-2 focus:ring-primary-200 transition-colors"
+                        className="w-full px-4 py-4 rounded-xl border border-neutral-200 bg-white focus:border-primary-900 focus:ring-2 focus:ring-primary-200 transition-colors"
                       >
                         <option value="">Select budget</option>
                         <option value="5k-10k">$5,000 - $10,000</option>
@@ -259,7 +267,7 @@ const ContactPage = () => {
                       onChange={handleChange}
                       required
                       rows={6}
-                      className="w-full px-4 py-4 rounded-xl border border-neutral-200 bg-white focus:border-primary-500 focus:ring-2 focus:ring-primary-200 transition-colors resize-none"
+                      className="w-full px-4 py-4 rounded-xl border border-neutral-200 bg-white focus:border-primary-900 focus:ring-2 focus:ring-primary-200 transition-colors resize-none"
                       placeholder="Share your ideas, preferences, style inspiration, and any specific requirements. The more details you provide, the better we can understand your vision..."
                     />
                   </div>
@@ -268,7 +276,7 @@ const ContactPage = () => {
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                     type="submit"
-                    className="w-full bg-primary-600 text-white px-8 py-4 rounded-xl text-lg font-semibold hover:bg-primary-700 transition-colors shadow-lg hover:shadow-xl flex items-center justify-center space-x-2"
+                    className="w-full bg-primary-900 text-white px-8 py-4 rounded-xl text-lg font-semibold hover:bg-primary-800 transition-colors shadow-lg hover:shadow-xl flex items-center justify-center space-x-2"
                   >
                     <Send className="h-5 w-5" />
                     <span>Send Message</span>
@@ -299,7 +307,7 @@ const ContactPage = () => {
                     >
                       <div className="flex items-start space-x-4">
                         <div className="p-3 bg-primary-100 rounded-xl">
-                          <info.icon className="h-6 w-6 text-primary-600" />
+                          <info.icon className="h-6 w-6 text-primary-900" />
                         </div>
                         <div className="flex-1">
                           <h4 className="text-lg font-semibold text-neutral-800 mb-1">
@@ -326,7 +334,7 @@ const ContactPage = () => {
                 initial={{ opacity: 0, y: 30 }}
                 animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
                 transition={{ duration: 0.8, delay: 0.8 }}
-                className="bg-gradient-to-br from-primary-500 to-secondary-500 rounded-2xl p-6 text-white"
+                className="bg-gradient-to-br from-primary-900 to-primary-800 rounded-2xl p-6 text-white"
               >
                 <h4 className="text-lg font-semibold mb-4">Quick Actions</h4>
                 <div className="space-y-3">
@@ -350,7 +358,7 @@ const ContactPage = () => {
       </section>
 
       {/* Map Section */}
-      <section className="py-16 bg-neutral-50">
+      <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -388,7 +396,7 @@ const ContactPage = () => {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-background-500">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -411,7 +419,7 @@ const ContactPage = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                 transition={{ duration: 0.8, delay: index * 0.1 }}
-                className="bg-neutral-50 rounded-2xl p-6"
+                className="bg-white rounded-2xl p-6"
               >
                 <h4 className="text-lg font-semibold text-neutral-800 mb-3">
                   {faq.question}
