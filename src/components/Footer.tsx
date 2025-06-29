@@ -49,7 +49,12 @@ const Footer = () => {
               Your special day deserves nothing less than perfection.
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="text-neutral-400 hover:text-rose-400 transition-colors">
+              <a 
+                href="https://www.instagram.com/wezephyr/" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="text-neutral-400 hover:text-rose-400 transition-colors"
+              >
                 <Instagram className="h-5 w-5" />
               </a>
               <a href="#" className="text-neutral-400 hover:text-rose-400 transition-colors">
