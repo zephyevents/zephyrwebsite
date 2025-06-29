@@ -114,8 +114,8 @@ const Services = () => {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
               </div>
 
-              {/* Content - Center aligned */}
-              <div className="absolute inset-0 p-4 md:p-6 lg:p-8 flex flex-col justify-center items-center text-center text-white">
+              {/* Content - Center aligned at bottom */}
+              <div className="absolute inset-0 p-4 md:p-6 lg:p-8 flex flex-col justify-end items-center text-center text-white">
                 {/* Title - Using Oswald Regular font, bigger size, center aligned */}
                 <h3 className="font-oswald text-lg md:text-xl lg:text-2xl xl:text-3xl font-normal mb-3 md:mb-4 leading-tight uppercase tracking-wide">
                   {service.title}
