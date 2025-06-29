@@ -11,7 +11,7 @@ const Services = () => {
     {
       title: "Planning & Execution",
       description: "Complete end-to-end wedding planning with meticulous attention to every detail",
-      image: "/image.png"
+      image: "/image copy.png"
     },
     {
       title: "Destination & Venue Selection",
