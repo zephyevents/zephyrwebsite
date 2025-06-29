@@ -14,6 +14,10 @@ const Header = () => {
     { name: 'Blogs', href: '/blog' },
   ];
 
+  const handleLogoClick = () => {
+    setIsMobileMenuOpen(false);
+  };
+
   return (
     <header className="absolute top-0 left-0 right-0 z-50 bg-transparent">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -28,7 +32,7 @@ const Header = () => {
 
           {/* Logo - Centered on mobile/tablet, left on desktop */}
           <div className="flex items-center order-2 lg:order-1">
-            <Link to="/" className="flex items-center group">
+            <Link to="/" className="flex items-center group" onClick={handleLogoClick}>
               <motion.div
                 whileHover={{ scale: 1.05 }}
                 className="transition-all duration-300"
@@ -36,7 +40,7 @@ const Header = () => {
                 <img
                   src="/logozephyrwh.png"
                   alt="Zephyr Events"
-                  className="h-20 md:h-24 lg:h-28 w-auto transition-all duration-500"
+                  className="h-28 md:h-32 lg:h-36 w-auto transition-all duration-500"
                   onError={(e) => {
                     console.log('Logo failed to load, showing fallback text');
                     const target = e.currentTarget as HTMLImageElement;
@@ -97,8 +101,17 @@ const Header = () => {
             </Link>
           </div>
 
-          {/* Spacer for mobile to balance layout */}
-          <div className="lg:hidden w-12 order-3"></div>
+          {/* Mobile Instagram Icon - Outside hamburger menu */}
+          <div className="lg:hidden order-3">
+            <a
+              href="https://instagram.com/zephyrevents"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-2 text-white hover:text-white transition-colors"
+            >
+              <Instagram className="h-6 w-6" />
+            </a>
+          </div>
         </div>
       </div>
 
@@ -133,16 +146,6 @@ const Header = () => {
               >
                 Contact
               </Link>
-              <div className="pt-4 border-t border-neutral-200 flex justify-center">
-                <a
-                  href="https://instagram.com/wezephyr"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-3 text-neutral-700 hover:text-primary-900 transition-colors"
-                >
-                  <Instagram className="h-6 w-6" />
-                </a>
-              </div>
             </div>
           </motion.div>
         )}

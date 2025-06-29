@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 
 const Hero = () => {
   return (
-    <section className="relative h-[95vh] flex items-center justify-center overflow-hidden w-full">
+    <section className="relative h-screen flex items-center justify-center overflow-hidden w-full">
       {/* Vimeo Video Background */}
       <div className="absolute inset-0 w-full h-full overflow-hidden">
         <div className="relative w-full h-full">
@@ -26,12 +26,12 @@ const Hero = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-transparent to-black/20" />
       </div>
 
-      {/* Scroll Indicator */}
+      {/* Scroll Indicator - Moved up */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8, delay: 1 }}
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-10"
+        className="absolute bottom-20 left-1/2 transform -translate-x-1/2 z-10"
       >
         <div className="w-6 h-10 border-2 border-white/70 rounded-full flex justify-center">
           <motion.div
