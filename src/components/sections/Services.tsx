@@ -26,73 +26,73 @@ const Services = () => {
       icon: Calendar,
       title: "Planning & Execution",
       description: "Complete end-to-end wedding planning with meticulous attention to every detail",
-      image: "https://images.pexels.com/photos/1444442/pexels-photo-1444442.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop"
+      image: "https://images.pexels.com/photos/1444442/pexels-photo-1444442.jpeg?auto=compress&cs=tinysrgb&w=600&h=600&fit=crop"
     },
     {
       icon: MapPin,
       title: "Destination & Venue Selection",
       description: "Curated selection of stunning venues and destinations that perfectly match your vision",
-      image: "https://images.pexels.com/photos/1616113/pexels-photo-1616113.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop"
+      image: "https://images.pexels.com/photos/1616113/pexels-photo-1616113.jpeg?auto=compress&cs=tinysrgb&w=600&h=600&fit=crop"
     },
     {
       icon: Palette,
       title: "Design & Decor Management",
       description: "Breathtaking decorations and design management that transform spaces into magical celebrations",
-      image: "https://images.pexels.com/photos/1128782/pexels-photo-1128782.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop"
+      image: "https://images.pexels.com/photos/1128782/pexels-photo-1128782.jpeg?auto=compress&cs=tinysrgb&w=600&h=600&fit=crop"
     },
     {
       icon: Users,
       title: "RSVP & Hospitality",
       description: "Comprehensive guest management and exceptional hospitality services for memorable experiences",
-      image: "https://images.pexels.com/photos/958545/pexels-photo-958545.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop"
+      image: "https://images.pexels.com/photos/958545/pexels-photo-958545.jpeg?auto=compress&cs=tinysrgb&w=600&h=600&fit=crop"
     },
     {
       icon: Music,
       title: "Entertainment & Special Effects",
       description: "Live performances, entertainment coordination and special effects that create unforgettable atmospheres",
-      image: "https://images.pexels.com/photos/1763075/pexels-photo-1763075.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop"
+      image: "https://images.pexels.com/photos/1763075/pexels-photo-1763075.jpeg?auto=compress&cs=tinysrgb&w=600&h=600&fit=crop"
     },
     {
       icon: Star,
       title: "Special Entries",
       description: "Grand entrances and special moments that leave lasting impressions on your guests",
-      image: "https://images.pexels.com/photos/1024993/pexels-photo-1024993.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop"
+      image: "https://images.pexels.com/photos/1024993/pexels-photo-1024993.jpeg?auto=compress&cs=tinysrgb&w=600&h=600&fit=crop"
     },
     {
       icon: ChefHat,
       title: "FnB & Catering",
       description: "Exquisite culinary experiences with diverse menus and impeccable food & beverage service",
-      image: "https://images.pexels.com/photos/8108042/pexels-photo-8108042.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop"
+      image: "https://images.pexels.com/photos/8108042/pexels-photo-8108042.jpeg?auto=compress&cs=tinysrgb&w=600&h=600&fit=crop"
     },
     {
       icon: Camera,
       title: "Photography",
       description: "Professional photography capturing every precious moment of your celebration",
-      image: "https://images.pexels.com/photos/169198/pexels-photo-169198.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop"
+      image: "https://images.pexels.com/photos/169198/pexels-photo-169198.jpeg?auto=compress&cs=tinysrgb&w=600&h=600&fit=crop"
     },
     {
       icon: Zap,
       title: "Choreography",
       description: "Professional dance choreography for memorable performances and celebrations",
-      image: "https://images.pexels.com/photos/2959192/pexels-photo-2959192.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop"
+      image: "https://images.pexels.com/photos/2959192/pexels-photo-2959192.jpeg?auto=compress&cs=tinysrgb&w=600&h=600&fit=crop"
     },
     {
       icon: Truck,
       title: "Logistics Management",
       description: "Comprehensive logistics coordination ensuring seamless execution of all event elements",
-      image: "https://images.pexels.com/photos/264917/pexels-photo-264917.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop"
+      image: "https://images.pexels.com/photos/264917/pexels-photo-264917.jpeg?auto=compress&cs=tinysrgb&w=600&h=600&fit=crop"
     },
     {
       icon: Mail,
       title: "Stationery & Invites",
       description: "Beautiful stationery and invitations that set the perfect tone for your event",
-      image: "https://images.pexels.com/photos/1779487/pexels-photo-1779487.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop"
+      image: "https://images.pexels.com/photos/1779487/pexels-photo-1779487.jpeg?auto=compress&cs=tinysrgb&w=600&h=600&fit=crop"
     },
     {
       icon: Package,
       title: "Renting Essentials",
       description: "Complete rental solutions for furniture, equipment, and all event essentials",
-      image: "https://images.pexels.com/photos/1036623/pexels-photo-1036623.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop"
+      image: "https://images.pexels.com/photos/1036623/pexels-photo-1036623.jpeg?auto=compress&cs=tinysrgb&w=600&h=600&fit=crop"
     }
   ];
 
@@ -118,18 +118,18 @@ const Services = () => {
           </p>
         </motion.div>
 
-        {/* Services Grid - Mobile: 2 columns, Tablet: 2 columns, Desktop: 3 columns */}
-        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8">
+        {/* Services Grid - Square Cards with No Gaps */}
+        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-0">
           {services.map((service, index) => (
             <motion.div
               key={service.title}
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
               transition={{ duration: 0.8, delay: index * 0.1 }}
-              className="group relative overflow-hidden rounded-2xl lg:rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 bg-white"
+              className="group relative overflow-hidden aspect-square bg-white cursor-pointer"
             >
               {/* Background Image */}
-              <div className="relative h-48 md:h-64 lg:h-80 overflow-hidden">
+              <div className="absolute inset-0">
                 <img
                   src={service.image}
                   alt={service.title}
@@ -138,17 +138,30 @@ const Services = () => {
                 
                 {/* Gradient Overlay */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-
-                {/* Content */}
-                <div className="absolute bottom-0 left-0 right-0 p-3 md:p-4 lg:p-6 text-white">
-                  <h3 className="text-sm md:text-lg lg:text-2xl font-heading font-semibold mb-1 md:mb-2 lg:mb-3 text-center leading-tight">
-                    {service.title}
-                  </h3>
-                  <p className="text-white/90 leading-relaxed text-xs md:text-sm opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all duration-300 text-center font-opensauce hidden md:block">
-                    {service.description}
-                  </p>
-                </div>
               </div>
+
+              {/* Content */}
+              <div className="absolute inset-0 p-4 md:p-6 lg:p-8 flex flex-col justify-end text-white">
+                {/* Icon */}
+                <div className="mb-3 md:mb-4">
+                  <div className="w-8 h-8 md:w-12 md:h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center">
+                    <service.icon className="h-4 w-4 md:h-6 md:w-6 text-white" />
+                  </div>
+                </div>
+
+                {/* Title */}
+                <h3 className="text-sm md:text-lg lg:text-xl font-heading font-semibold mb-2 md:mb-3 leading-tight">
+                  {service.title}
+                </h3>
+
+                {/* Description - Hidden on mobile, visible on hover for larger screens */}
+                <p className="text-white/90 leading-relaxed text-xs md:text-sm opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all duration-300 font-opensauce hidden md:block">
+                  {service.description}
+                </p>
+              </div>
+
+              {/* Hover Border Effect */}
+              <div className="absolute inset-0 border-2 border-white/0 group-hover:border-white/30 transition-all duration-300"></div>
             </motion.div>
           ))}
         </div>

@@ -35,7 +35,8 @@ const AdminPage = () => {
 
   const tabs = [
     { id: 'content', name: 'Content Management', icon: FileText },
-    { id: 'gallery', name: 'Gallery', icon: Image },
+    { id: 'services', name: 'Services Gallery', icon: Image },
+    { id: 'gallery', name: 'Main Gallery', icon: Image },
     { id: 'blog', name: 'Blog Posts', icon: Edit3 },
     { id: 'settings', name: 'Settings', icon: Settings },
   ];
@@ -177,6 +178,7 @@ const AdminPage = () => {
           transition={{ duration: 0.8, delay: 0.4 }}
         >
           {activeTab === 'content' && <ContentManagement />}
+          {activeTab === 'services' && <ServicesGalleryManagement />}
           {activeTab === 'gallery' && <GalleryManagement />}
           {activeTab === 'blog' && <BlogManagement />}
           {activeTab === 'settings' && <SettingsManagement />}
@@ -271,18 +273,76 @@ const ContentManagement = () => {
   );
 };
 
-const GalleryManagement = () => {
-  const [images, setImages] = useState([
-    { id: 1, src: 'https://images.pexels.com/photos/1024993/pexels-photo-1024993.jpeg', alt: 'Wedding ceremony', category: 'weddings' },
-    { id: 2, src: 'https://images.pexels.com/photos/169198/pexels-photo-169198.jpeg', alt: 'Reception decor', category: 'decor' },
-    { id: 3, src: 'https://images.pexels.com/photos/1444442/pexels-photo-1444442.jpeg', alt: 'Floral arrangements', category: 'flowers' },
+const ServicesGalleryManagement = () => {
+  const [services, setServices] = useState([
+    { id: 1, title: 'Planning & Execution', image: 'https://images.pexels.com/photos/1444442/pexels-photo-1444442.jpeg?auto=compress&cs=tinysrgb&w=600&h=600&fit=crop', description: 'Complete end-to-end wedding planning' },
+    { id: 2, title: 'Destination & Venue Selection', image: 'https://images.pexels.com/photos/1616113/pexels-photo-1616113.jpeg?auto=compress&cs=tinysrgb&w=600&h=600&fit=crop', description: 'Curated venue selection' },
+    { id: 3, title: 'Design & Decor Management', image: 'https://images.pexels.com/photos/1128782/pexels-photo-1128782.jpeg?auto=compress&cs=tinysrgb&w=600&h=600&fit=crop', description: 'Breathtaking decorations' },
   ]);
 
   return (
     <div className="space-y-8">
       <div className="bg-white rounded-2xl p-6 shadow-lg">
         <div className="flex items-center justify-between mb-6">
-          <h2 className="text-xl font-semibold text-neutral-800">Gallery Images</h2>
+          <h2 className="text-xl font-semibold text-neutral-800">Services Gallery Cards</h2>
+          <button className="bg-primary-900 text-white px-4 py-2 rounded-lg hover:bg-primary-800 transition-colors flex items-center space-x-2">
+            <Upload className="h-4 w-4" />
+            <span>Upload New Service</span>
+          </button>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {services.map((service) => (
+            <div key={service.id} className="relative group">
+              <div className="aspect-square overflow-hidden rounded-lg">
+                <img
+                  src={service.image}
+                  alt={service.title}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity rounded-lg flex items-center justify-center space-x-2">
+                <button className="p-2 bg-white/20 backdrop-blur-sm rounded-lg text-white hover:bg-white/30 transition-colors">
+                  <Edit3 className="h-4 w-4" />
+                </button>
+                <button className="p-2 bg-white/20 backdrop-blur-sm rounded-lg text-white hover:bg-white/30 transition-colors">
+                  <Trash2 className="h-4 w-4" />
+                </button>
+              </div>
+              <div className="mt-2">
+                <p className="text-sm font-medium text-neutral-800">{service.title}</p>
+                <p className="text-xs text-neutral-500">{service.description}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div className="mt-6 p-4 bg-neutral-50 rounded-lg">
+          <h3 className="text-sm font-medium text-neutral-800 mb-2">Square Grid Requirements:</h3>
+          <ul className="text-xs text-neutral-600 space-y-1">
+            <li>• Images must be perfect squares (1:1 aspect ratio)</li>
+            <li>• Recommended size: 600x600px minimum</li>
+            <li>• No gaps between cards in grid layout</li>
+            <li>• Hover effects: zoom and overlay</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const GalleryManagement = () => {
+  const [images, setImages] = useState([
+    { id: 1, src: 'https://images.pexels.com/photos/1024993/pexels-photo-1024993.jpeg?auto=compress&cs=tinysrgb&w=600&h=600&fit=crop', alt: 'Wedding ceremony', category: 'weddings' },
+    { id: 2, src: 'https://images.pexels.com/photos/169198/pexels-photo-169198.jpeg?auto=compress&cs=tinysrgb&w=600&h=600&fit=crop', alt: 'Reception decor', category: 'decor' },
+    { id: 3, src: 'https://images.pexels.com/photos/1444442/pexels-photo-1444442.jpeg?auto=compress&cs=tinysrgb&w=600&h=600&fit=crop', alt: 'Floral arrangements', category: 'flowers' },
+  ]);
+
+  return (
+    <div className="space-y-8">
+      <div className="bg-white rounded-2xl p-6 shadow-lg">
+        <div className="flex items-center justify-between mb-6">
+          <h2 className="text-xl font-semibold text-neutral-800">Main Gallery Images</h2>
           <button className="bg-primary-900 text-white px-4 py-2 rounded-lg hover:bg-primary-800 transition-colors flex items-center space-x-2">
             <Upload className="h-4 w-4" />
             <span>Upload Images</span>
@@ -292,11 +352,13 @@ const GalleryManagement = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {images.map((image) => (
             <div key={image.id} className="relative group">
-              <img
-                src={image.src}
-                alt={image.alt}
-                className="w-full h-48 object-cover rounded-lg"
-              />
+              <div className="aspect-square overflow-hidden rounded-lg">
+                <img
+                  src={image.src}
+                  alt={image.alt}
+                  className="w-full h-full object-cover"
+                />
+              </div>
               <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity rounded-lg flex items-center justify-center space-x-2">
                 <button className="p-2 bg-white/20 backdrop-blur-sm rounded-lg text-white hover:bg-white/30 transition-colors">
                   <Edit3 className="h-4 w-4" />

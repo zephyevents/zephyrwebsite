@@ -11,44 +11,64 @@ const Gallery = () => {
 
   const galleryImages = [
     {
-      src: "https://images.pexels.com/photos/1024993/pexels-photo-1024993.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop",
+      src: "https://images.pexels.com/photos/1024993/pexels-photo-1024993.jpeg?auto=compress&cs=tinysrgb&w=600&h=600&fit=crop",
       alt: "Elegant wedding ceremony",
       category: "Weddings"
     },
     {
-      src: "https://images.pexels.com/photos/169198/pexels-photo-169198.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop",
+      src: "https://images.pexels.com/photos/169198/pexels-photo-169198.jpeg?auto=compress&cs=tinysrgb&w=600&h=600&fit=crop",
       alt: "Wedding reception decor",
       category: "Decor"
     },
     {
-      src: "https://images.pexels.com/photos/1444442/pexels-photo-1444442.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop",
+      src: "https://images.pexels.com/photos/1444442/pexels-photo-1444442.jpeg?auto=compress&cs=tinysrgb&w=600&h=600&fit=crop",
       alt: "Floral arrangements",
       category: "Flowers"
     },
     {
-      src: "https://images.pexels.com/photos/1128782/pexels-photo-1128782.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop",
+      src: "https://images.pexels.com/photos/1128782/pexels-photo-1128782.jpeg?auto=compress&cs=tinysrgb&w=600&h=600&fit=crop",
       alt: "Table setting",
       category: "Decor"
     },
     {
-      src: "https://images.pexels.com/photos/1616113/pexels-photo-1616113.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop",
+      src: "https://images.pexels.com/photos/1616113/pexels-photo-1616113.jpeg?auto=compress&cs=tinysrgb&w=600&h=600&fit=crop",
       alt: "Outdoor wedding venue",
       category: "Venues"
     },
     {
-      src: "https://images.pexels.com/photos/958545/pexels-photo-958545.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop",
+      src: "https://images.pexels.com/photos/958545/pexels-photo-958545.jpeg?auto=compress&cs=tinysrgb&w=600&h=600&fit=crop",
       alt: "Wedding cake",
       category: "Catering"
     },
     {
-      src: "https://images.pexels.com/photos/8108042/pexels-photo-8108042.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop",
+      src: "https://images.pexels.com/photos/8108042/pexels-photo-8108042.jpeg?auto=compress&cs=tinysrgb&w=600&h=600&fit=crop",
       alt: "Mehendi ceremony",
       category: "Mehendi"
     },
     {
-      src: "https://images.pexels.com/photos/1763075/pexels-photo-1763075.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop",
+      src: "https://images.pexels.com/photos/1763075/pexels-photo-1763075.jpeg?auto=compress&cs=tinysrgb&w=600&h=600&fit=crop",
       alt: "Live entertainment",
       category: "Entertainment"
+    },
+    {
+      src: "https://images.pexels.com/photos/2959192/pexels-photo-2959192.jpeg?auto=compress&cs=tinysrgb&w=600&h=600&fit=crop",
+      alt: "Cocktail setup",
+      category: "Catering"
+    },
+    {
+      src: "https://images.pexels.com/photos/1779487/pexels-photo-1779487.jpeg?auto=compress&cs=tinysrgb&w=600&h=600&fit=crop",
+      alt: "Ceremony aisle",
+      category: "Decor"
+    },
+    {
+      src: "https://images.pexels.com/photos/1036623/pexels-photo-1036623.jpeg?auto=compress&cs=tinysrgb&w=600&h=600&fit=crop",
+      alt: "Ballroom venue",
+      category: "Venues"
+    },
+    {
+      src: "https://images.pexels.com/photos/264917/pexels-photo-264917.jpeg?auto=compress&cs=tinysrgb&w=600&h=600&fit=crop",
+      alt: "Outdoor lounge",
+      category: "Venues"
     }
   ];
 
@@ -83,37 +103,28 @@ const Gallery = () => {
           </p>
         </motion.div>
 
-        {/* Gallery Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {/* Square Grid Gallery - No gaps, perfect squares */}
+        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-0">
           {galleryImages.map((image, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 30 }}
-              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-              transition={{ duration: 0.8, delay: index * 0.1 }}
-              className={`relative group cursor-pointer overflow-hidden rounded-2xl ${
-                index === 0 || index === 3 ? 'md:col-span-2 md:row-span-2' : ''
-              }`}
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
+              transition={{ duration: 0.8, delay: index * 0.05 }}
+              className="relative group cursor-pointer overflow-hidden aspect-square"
               onClick={() => setSelectedImage(index)}
             >
-              <div className="relative h-64 md:h-80 lg:h-96">
-                <img
-                  src={image.src}
-                  alt={image.alt}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-neutral-900/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                
-                {/* Category Badge */}
-                <div className="absolute top-4 left-4 px-3 py-1 bg-white/90 backdrop-blur-sm rounded-full text-sm font-medium text-neutral-800">
-                  {image.category}
-                </div>
-
-                {/* View Button */}
-                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <button className="px-6 py-3 bg-white text-neutral-800 rounded-full font-medium hover:bg-primary-50 transition-colors">
-                    View Image
-                  </button>
+              <img
+                src={image.src}
+                alt={image.alt}
+                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+              />
+              
+              {/* Hover Overlay */}
+              <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                <div className="text-white text-center">
+                  <div className="text-lg font-semibold mb-1">{image.category}</div>
+                  <div className="text-sm opacity-90">View Image</div>
                 </div>
               </div>
             </motion.div>
@@ -127,7 +138,12 @@ const Gallery = () => {
           transition={{ duration: 0.8, delay: 0.5 }}
           className="text-center mt-16"
         >
-          <button className="bg-primary-600 text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-primary-700 transition-colors shadow-lg hover:shadow-xl">
+          <button 
+            className="text-white px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
+            style={{ backgroundColor: '#B03F3F' }}
+            onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#9A3535'}
+            onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#B03F3F'}
+          >
             View Full Gallery
           </button>
         </motion.div>
@@ -146,7 +162,7 @@ const Gallery = () => {
             <img
               src={galleryImages[selectedImage].src}
               alt={galleryImages[selectedImage].alt}
-              className="max-w-full max-h-full object-contain rounded-lg"
+              className="max-w-full max-h-full object-contain"
             />
             
             {/* Close Button */}
