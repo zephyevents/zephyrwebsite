@@ -18,7 +18,7 @@ const Header = () => {
     <header className="absolute top-0 left-0 right-0 z-50 bg-transparent">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20 pt-2">
-          {/* Logo - h-30 and moved up more, now clickable home link */}
+          {/* Logo - h-30 and clickable home link */}
           <div className="flex items-center">
             <Link to="/" className="flex items-center group">
               <motion.div
@@ -29,7 +29,9 @@ const Header = () => {
                   src="/logozephyrwh.png"
                   alt="Zephyr Events"
                   className="h-30 w-auto transition-all duration-500"
+                  style={{ height: '7.5rem' }}
                   onError={(e) => {
+                    console.log('Logo failed to load, showing fallback text');
                     const target = e.currentTarget as HTMLImageElement;
                     target.style.display = 'none';
                     const fallback = target.nextElementSibling as HTMLElement;
@@ -45,7 +47,7 @@ const Header = () => {
             </Link>
           </div>
 
-          {/* Centered Desktop Navigation - moved up more and properly centered */}
+          {/* Centered Desktop Navigation */}
           <nav className="hidden lg:flex items-center justify-center absolute left-1/2 transform -translate-x-1/2">
             <div className="flex items-center space-x-12">
               {navigation.map((item) => (
@@ -70,7 +72,7 @@ const Header = () => {
             </div>
           </nav>
 
-          {/* Right Side - Instagram and Contact Button - moved up more */}
+          {/* Right Side - Instagram and Contact Button */}
           <div className="hidden lg:flex items-center space-x-4">
             <a
               href="https://instagram.com/zephyrevents"
@@ -88,7 +90,7 @@ const Header = () => {
             </Link>
           </div>
 
-          {/* Mobile Menu Button - moved up more */}
+          {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             className="lg:hidden p-2 rounded-md text-white hover:text-white transition-colors"
