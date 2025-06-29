@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
-import { Mail, Phone, MapPin, Clock, Send } from 'lucide-react';
+import { Send } from 'lucide-react';
 
 const Contact = () => {
   const ref = useRef(null);
@@ -29,33 +29,6 @@ const Contact = () => {
     console.log('Form submitted:', formData);
   };
 
-  const contactInfo = [
-    {
-      icon: Mail,
-      title: "Email Us",
-      details: "info@zephyrevents.com",
-      subtitle: "hello@zephyrevents.com"
-    },
-    {
-      icon: Phone,
-      title: "Call Us",
-      details: "+1 (555) 123-4567",
-      subtitle: "+1 (555) 123-4568"
-    },
-    {
-      icon: MapPin,
-      title: "Visit Us",
-      details: "123 Event Plaza",
-      subtitle: "New York, NY 10001"
-    },
-    {
-      icon: Clock,
-      title: "Office Hours",
-      details: "Mon - Fri: 9AM - 6PM",
-      subtitle: "Sat: 10AM - 4PM"
-    }
-  ];
-
   return (
     <section ref={ref} className="py-20 lg:py-32 bg-gradient-to-br from-primary-50 to-secondary-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -75,15 +48,15 @@ const Contact = () => {
           </p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16">
-          {/* Contact Form */}
+        {/* Centered Contact Form */}
+        <div className="flex justify-center">
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
+            initial={{ opacity: 0, y: 30 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="bg-white rounded-3xl p-8 shadow-xl"
+            className="bg-white rounded-3xl p-8 shadow-xl max-w-2xl w-full"
           >
-            <h3 className="text-2xl font-heading font-semibold text-neutral-800 mb-6">
+            <h3 className="text-2xl font-heading font-semibold text-neutral-800 mb-6 text-center">
               Send Us a Message
             </h3>
             
@@ -100,7 +73,7 @@ const Contact = () => {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 rounded-xl border border-neutral-200 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 transition-colors"
+                    className="w-full px-4 py-3 rounded-xl border border-neutral-200 focus:border-primary-900 focus:ring-2 focus:ring-primary-200 transition-colors"
                     placeholder="Your full name"
                   />
                 </div>
@@ -116,7 +89,7 @@ const Contact = () => {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 rounded-xl border border-neutral-200 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 transition-colors"
+                    className="w-full px-4 py-3 rounded-xl border border-neutral-200 focus:border-primary-900 focus:ring-2 focus:ring-primary-200 transition-colors"
                     placeholder="your@email.com"
                   />
                 </div>
@@ -133,8 +106,8 @@ const Contact = () => {
                     name="phone"
                     value={formData.phone}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-xl border border-neutral-200 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 transition-colors"
-                    placeholder="+1 (555) 123-4567"
+                    className="w-full px-4 py-3 rounded-xl border border-neutral-200 focus:border-primary-900 focus:ring-2 focus:ring-primary-200 transition-colors"
+                    placeholder="+91 7678590878"
                   />
                 </div>
                 
@@ -147,7 +120,7 @@ const Contact = () => {
                     name="eventType"
                     value={formData.eventType}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-xl border border-neutral-200 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 transition-colors"
+                    className="w-full px-4 py-3 rounded-xl border border-neutral-200 focus:border-primary-900 focus:ring-2 focus:ring-primary-200 transition-colors"
                   >
                     <option value="">Select event type</option>
                     <option value="wedding">Wedding</option>
@@ -169,7 +142,7 @@ const Contact = () => {
                   name="eventDate"
                   value={formData.eventDate}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 rounded-xl border border-neutral-200 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 transition-colors"
+                  className="w-full px-4 py-3 rounded-xl border border-neutral-200 focus:border-primary-900 focus:ring-2 focus:ring-primary-200 transition-colors"
                 />
               </div>
 
@@ -184,7 +157,7 @@ const Contact = () => {
                   onChange={handleChange}
                   required
                   rows={5}
-                  className="w-full px-4 py-3 rounded-xl border border-neutral-200 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 transition-colors resize-none"
+                  className="w-full px-4 py-3 rounded-xl border border-neutral-200 focus:border-primary-900 focus:ring-2 focus:ring-primary-200 transition-colors resize-none"
                   placeholder="Share your ideas, preferences, and any specific requirements..."
                 />
               </div>
@@ -193,69 +166,12 @@ const Contact = () => {
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 type="submit"
-                className="w-full bg-primary-600 text-white px-8 py-4 rounded-xl text-lg font-semibold hover:bg-primary-700 transition-colors shadow-lg hover:shadow-xl flex items-center justify-center space-x-2"
+                className="w-full bg-primary-900 text-white px-8 py-4 rounded-xl text-lg font-semibold hover:bg-primary-800 transition-colors shadow-lg hover:shadow-xl flex items-center justify-center space-x-2"
               >
                 <Send className="h-5 w-5" />
                 <span>Send Message</span>
               </motion.button>
             </form>
-          </motion.div>
-
-          {/* Contact Information */}
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="space-y-8"
-          >
-            {/* Contact Cards */}
-            <div className="grid gap-6">
-              {contactInfo.map((info, index) => (
-                <motion.div
-                  key={info.title}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                  transition={{ duration: 0.8, delay: 0.6 + index * 0.1 }}
-                  className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300"
-                >
-                  <div className="flex items-start space-x-4">
-                    <div className="p-3 bg-primary-100 rounded-xl">
-                      <info.icon className="h-6 w-6 text-primary-600" />
-                    </div>
-                    <div>
-                      <h4 className="text-lg font-semibold text-neutral-800 mb-1">
-                        {info.title}
-                      </h4>
-                      <p className="text-neutral-600 font-medium">
-                        {info.details}
-                      </p>
-                      <p className="text-neutral-500 text-sm">
-                        {info.subtitle}
-                      </p>
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-
-            {/* Map Placeholder */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-              transition={{ duration: 0.8, delay: 1 }}
-              className="bg-white rounded-2xl p-6 shadow-lg"
-            >
-              <h4 className="text-lg font-semibold text-neutral-800 mb-4">
-                Find Us
-              </h4>
-              <div className="h-64 bg-neutral-100 rounded-xl flex items-center justify-center">
-                <div className="text-center text-neutral-500">
-                  <MapPin className="h-12 w-12 mx-auto mb-2" />
-                  <p>Interactive Map</p>
-                  <p className="text-sm">123 Event Plaza, New York, NY 10001</p>
-                </div>
-              </div>
-            </motion.div>
           </motion.div>
         </div>
       </div>
