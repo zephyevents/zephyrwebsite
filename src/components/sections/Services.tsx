@@ -114,15 +114,15 @@ const Services = () => {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
               </div>
 
-              {/* Content - Center aligned at bottom */}
-              <div className="absolute inset-0 p-4 md:p-6 lg:p-8 flex flex-col justify-end items-center text-center text-white">
-                {/* Title - Using Oswald Regular font, bigger size, center aligned */}
-                <h3 className="font-oswald text-lg md:text-xl lg:text-2xl xl:text-3xl font-normal mb-3 md:mb-4 leading-tight uppercase tracking-wide">
+              {/* Content - Center aligned at bottom with more bottom spacing */}
+              <div className="absolute inset-0 p-4 md:p-6 lg:p-8 flex flex-col justify-end items-center text-center text-white pb-6 md:pb-8 lg:pb-12">
+                {/* Title - Using Oswald Regular font, bigger size, center aligned, positioned lower */}
+                <h3 className="font-oswald text-lg md:text-xl lg:text-2xl xl:text-3xl font-normal mb-2 md:mb-3 leading-tight uppercase tracking-wide">
                   {service.title}
                 </h3>
 
-                {/* Description - Now visible, center aligned, bigger font */}
-                <p className="text-white/90 leading-relaxed text-sm md:text-base lg:text-lg font-opensauce opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all duration-300 max-w-xs">
+                {/* Description - Smaller size, center aligned */}
+                <p className="text-white/90 leading-relaxed text-xs md:text-sm lg:text-sm font-opensauce opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all duration-300 max-w-xs">
                   {service.description}
                 </p>
               </div>
