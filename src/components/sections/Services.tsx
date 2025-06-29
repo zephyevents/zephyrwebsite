@@ -10,63 +10,51 @@ const Services = () => {
   const services = [
     {
       title: "Planning & Execution",
-      description: "Complete end-to-end wedding planning with meticulous attention to every detail",
       image: "/image copy.png"
     },
     {
       title: "Destination & Venue Selection",
-      description: "Curated selection of stunning venues and destinations that perfectly match your vision",
-      image: "/destination.JPG"
+      image: "/udai.webp"
     },
     {
       title: "Design & Decor Management",
-      description: "Breathtaking decorations and design management that transform spaces into magical celebrations",
       image: "/decor.jpg"
     },
     {
       title: "RSVP & Hospitality",
-      description: "Comprehensive guest management and exceptional hospitality services for memorable experiences",
       image: "/hospitality.jpg"
     },
     {
       title: "Entertainment",
-      description: "Live performances and entertainment coordination that create unforgettable atmospheres",
-      image: "/enter.JPG"
+      image: "/enter1.JPG"
     },
     {
       title: "Special Entries",
-      description: "Grand entrances and special moments that leave lasting impressions on your guests",
-      image: "https://images.pexels.com/photos/1024993/pexels-photo-1024993.jpeg?auto=compress&cs=tinysrgb&w=600&h=600&fit=crop"
+      image: "/entry.jpg"
     },
     {
       title: "FnB & Catering",
-      description: "Exquisite culinary experiences with diverse menus and impeccable food & beverage service",
-      image: "https://images.pexels.com/photos/8108042/pexels-photo-8108042.jpeg?auto=compress&cs=tinysrgb&w=600&h=600&fit=crop"
+      image: "/catering.JPG"
     },
     {
       title: "Photography",
-      description: "Professional photography capturing every precious moment of your celebration",
       image: "https://images.pexels.com/photos/169198/pexels-photo-169198.jpeg?auto=compress&cs=tinysrgb&w=600&h=600&fit=crop"
     },
     {
       title: "Choreography",
-      description: "Professional dance choreography for memorable performances and celebrations",
-      image: "https://images.pexels.com/photos/2959192/pexels-photo-2959192.jpeg?auto=compress&cs=tinysrgb&w=600&h=600&fit=crop"
+      image: "/choreo.JPG"
     },
     {
       title: "Special Effects",
-      description: "Spectacular visual effects and technical elements that add magic to your celebration",
-      image: "https://images.pexels.com/photos/264917/pexels-photo-264917.jpeg?auto=compress&cs=tinysrgb&w=600&h=600&fit=crop"
+      image: "/enter.JPG"
     },
     {
       title: "Stationery & Invites",
-      description: "Beautiful stationery and invitations that set the perfect tone for your event",
-      image: "https://images.pexels.com/photos/1779487/pexels-photo-1779487.jpeg?auto=compress&cs=tinysrgb&w=600&h=600&fit=crop"
+      image: "/station..jpg"
     },
     {
       title: "Miscellaneous",
-      description: "Additional services and custom solutions tailored to your unique event requirements",
-      image: "https://images.pexels.com/photos/1036623/pexels-photo-1036623.jpeg?auto=compress&cs=tinysrgb&w=600&h=600&fit=crop"
+      image: "/miscgif.gif"
     }
   ];
 
@@ -114,17 +102,12 @@ const Services = () => {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
               </div>
 
-              {/* Content - Mobile/Tablet: Bottom center, Desktop: Centered with hover description */}
-              <div className="absolute inset-0 p-3 md:p-4 lg:p-6 flex flex-col justify-end lg:justify-center items-center text-center text-white">
-                {/* Title - Bottom center on mobile/tablet, centered on desktop */}
-                <h3 className="font-oswald text-xl md:text-2xl lg:text-3xl xl:text-4xl font-normal leading-tight uppercase tracking-wide text-center mb-3 lg:mb-4">
+              {/* Content - Bottom center for all screen sizes */}
+              <div className="absolute inset-0 p-3 md:p-4 lg:p-6 flex flex-col justify-end items-center text-center text-white">
+                {/* Title - Bottom center on all screen sizes */}
+                <h3 className="font-oswald text-lg md:text-xl lg:text-2xl xl:text-3xl font-normal leading-tight uppercase tracking-wide text-center">
                   {service.title}
                 </h3>
-
-                {/* Description - Only visible on desktop hover */}
-                <p className="text-white/90 leading-relaxed text-sm lg:text-base font-opensauce opacity-0 lg:group-hover:opacity-100 transform translate-y-2 lg:group-hover:translate-y-0 transition-all duration-300 max-w-xs text-center hidden lg:block">
-                  {service.description}
-                </p>
               </div>
 
               {/* Hover Border Effect */}
