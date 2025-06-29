@@ -114,17 +114,20 @@ const Services = () => {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
               </div>
 
-              {/* Content - Center aligned at bottom with more bottom spacing */}
-              <div className="absolute inset-0 p-4 md:p-6 lg:p-8 flex flex-col justify-end items-center text-center text-white pb-6 md:pb-8 lg:pb-12">
-                {/* Title - Using Oswald Regular font, bigger size, center aligned, positioned lower */}
-                <h3 className="font-oswald text-lg md:text-xl lg:text-2xl xl:text-3xl font-normal mb-2 md:mb-3 leading-tight uppercase tracking-wide">
-                  {service.title}
-                </h3>
+              {/* Content - Consistent positioning for all cards */}
+              <div className="absolute inset-0 p-3 md:p-4 lg:p-6 flex flex-col justify-end items-center text-center text-white">
+                {/* Fixed height container to ensure consistent positioning */}
+                <div className="h-20 md:h-24 lg:h-28 flex flex-col justify-center items-center mb-3 md:mb-4 lg:mb-6">
+                  {/* Title - Consistent height and positioning */}
+                  <h3 className="font-oswald text-base md:text-lg lg:text-xl xl:text-2xl font-normal mb-1 md:mb-2 leading-tight uppercase tracking-wide text-center">
+                    {service.title}
+                  </h3>
 
-                {/* Description - Smaller size, center aligned */}
-                <p className="text-white/90 leading-relaxed text-xs md:text-sm lg:text-sm font-opensauce opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all duration-300 max-w-xs">
-                  {service.description}
-                </p>
+                  {/* Description - Consistent small size and positioning */}
+                  <p className="text-white/90 leading-relaxed text-xs md:text-xs lg:text-sm font-opensauce opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all duration-300 max-w-xs text-center">
+                    {service.description}
+                  </p>
+                </div>
               </div>
 
               {/* Hover Border Effect */}
