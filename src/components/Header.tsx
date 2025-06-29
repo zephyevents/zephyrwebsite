@@ -54,7 +54,7 @@ const Header = () => {
                 <Link
                   key={item.name}
                   to={item.href}
-                  className={`relative text-sm font-medium tracking-wide transition-all duration-300 ${
+                  className={`relative text-sm font-opensauce font-medium tracking-wide transition-all duration-300 ${
                     location.pathname === item.href
                       ? 'text-white'
                       : 'text-white hover:text-white'
@@ -84,7 +84,7 @@ const Header = () => {
             </a>
             <Link
               to="/contact"
-              className="px-6 py-2 bg-white/20 backdrop-blur-sm text-white border border-white/30 rounded-full text-sm font-medium hover:bg-white/30 transition-all duration-300"
+              className="px-6 py-2 bg-white/20 backdrop-blur-sm text-white border border-white/30 rounded-full text-sm font-opensauce font-medium hover:bg-white/30 transition-all duration-300"
             >
               Contact
             </Link>
@@ -115,7 +115,7 @@ const Header = () => {
                   key={item.name}
                   to={item.href}
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className={`block px-3 py-3 text-base font-medium tracking-wide transition-colors ${
+                  className={`block px-3 py-3 text-base font-opensauce font-medium tracking-wide transition-colors ${
                     location.pathname === item.href
                       ? 'text-primary-900 bg-primary-50'
                       : 'text-neutral-700 hover:text-primary-900 hover:bg-neutral-50'
@@ -127,7 +127,7 @@ const Header = () => {
               <Link
                 to="/contact"
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="block px-3 py-3 text-base font-medium tracking-wide text-neutral-700 hover:text-primary-900 hover:bg-neutral-50 transition-colors"
+                className="block px-3 py-3 text-base font-opensauce font-medium tracking-wide text-neutral-700 hover:text-primary-900 hover:bg-neutral-50 transition-colors"
               >
                 Contact
               </Link>

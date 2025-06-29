@@ -93,6 +93,7 @@ export default {
         'heading': ['Playfair Display', 'serif'],
         'body': ['Poppins', 'sans-serif'],
         'ppacma': ['PPAcma', 'sans-serif'],
+        'opensauce': ['OpenSauceOne', 'sans-serif'],
       },
       animation: {
         'fade-in': 'fadeIn 0.6s ease-in-out',
