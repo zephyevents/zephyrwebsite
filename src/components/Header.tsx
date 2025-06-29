@@ -133,7 +133,7 @@ const Header = () => {
               </Link>
               <div className="pt-4 border-t border-neutral-200 flex justify-center">
                 <a
-                  href="https://instagram.com/zephyrevents"
+                  href="https://instagram.com/wezephyr"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="p-3 text-neutral-700 hover:text-primary-900 transition-colors"
