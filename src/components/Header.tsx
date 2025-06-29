@@ -17,7 +17,7 @@ const Header = () => {
   ];
 
   return (
-    <header className="relative z-50 bg-transparent">
+    <header className="absolute top-0 left-0 right-0 z-50 bg-transparent">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-24">
           {/* Logo */}
@@ -28,7 +28,7 @@ const Header = () => {
                 className="transition-all duration-300"
               >
                 <img
-                  src="/src/assets/Untitled design (1).svg"
+                  src="/logozephyrwh.png"
                   alt="Zephyr Events"
                   className="h-20 w-auto transition-all duration-500"
                   onError={(e) => {
@@ -40,7 +40,7 @@ const Header = () => {
                     }
                   }}
                 />
-                <div className="hidden text-2xl font-heading font-bold text-neutral-800 tracking-wider">
+                <div className="hidden text-2xl font-heading font-bold text-white tracking-wider">
                   ZEPHYR EVENTS
                 </div>
               </motion.div>
