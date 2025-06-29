@@ -101,23 +101,20 @@ const Services = () => {
                   sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
                 />
                 
-                {/* Base Gradient Overlay */}
+                {/* Base Gradient Overlay - Only the standard dark gradient */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-                
-                {/* Hover Gradient Overlay with custom color */}
-                <div className="absolute inset-0 bg-gradient-to-t from-[#B64D4D]/90 via-[#B64D4D]/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               </div>
 
               {/* Content - Bottom center for all screen sizes */}
               <div className="absolute inset-0 p-3 md:p-4 lg:p-6 flex flex-col justify-end items-center text-center text-white">
-                {/* Title - Bottom center on all screen sizes with gradient text effect on hover */}
-                <h3 className="font-oswald text-lg md:text-xl lg:text-2xl xl:text-3xl font-normal leading-tight uppercase tracking-wide text-center transition-all duration-500 group-hover:bg-gradient-to-r group-hover:from-white group-hover:via-pink-100 group-hover:to-white group-hover:bg-clip-text group-hover:text-transparent group-hover:drop-shadow-lg">
+                {/* Title - Bottom center with gradient text effect on hover only */}
+                <h3 className="font-oswald text-lg md:text-xl lg:text-2xl xl:text-3xl font-normal leading-tight uppercase tracking-wide text-center text-white transition-all duration-500 group-hover:bg-gradient-to-r group-hover:from-white group-hover:via-[#B64D4D] group-hover:to-white group-hover:bg-clip-text group-hover:text-transparent group-hover:drop-shadow-lg">
                   {service.title}
                 </h3>
               </div>
 
-              {/* Hover Border Effect with gradient */}
-              <div className="absolute inset-0 border-2 border-white/0 group-hover:border-white/40 transition-all duration-300 rounded-lg group-hover:shadow-lg group-hover:shadow-[#B64D4D]/20"></div>
+              {/* Hover Border Effect */}
+              <div className="absolute inset-0 border-2 border-white/0 group-hover:border-white/30 transition-all duration-300 rounded-lg"></div>
             </motion.div>
           ))}
         </div>
