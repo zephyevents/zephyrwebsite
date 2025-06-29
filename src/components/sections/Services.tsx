@@ -38,7 +38,7 @@ const Services = () => {
     },
     {
       title: "Photography",
-      image: "https://images.pexels.com/photos/169198/pexels-photo-169198.jpeg?auto=compress&cs=tinysrgb&w=600&h=600&fit=crop"
+      image: "https://images.pexels.com/photos/169198/pexels-photo-169198.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop"
     },
     {
       title: "Choreography",
@@ -90,28 +90,34 @@ const Services = () => {
               transition={{ duration: 0.8, delay: index * 0.1 }}
               className="group relative overflow-hidden aspect-square bg-white cursor-pointer rounded-lg"
             >
-              {/* Background Image */}
+              {/* Background Image with optimized loading */}
               <div className="absolute inset-0">
                 <img
                   src={service.image}
                   alt={service.title}
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                  loading="lazy"
+                  decoding="async"
+                  sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
                 />
                 
-                {/* Gradient Overlay */}
+                {/* Base Gradient Overlay */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                
+                {/* Hover Gradient Overlay with custom color */}
+                <div className="absolute inset-0 bg-gradient-to-t from-[#B64D4D]/90 via-[#B64D4D]/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               </div>
 
               {/* Content - Bottom center for all screen sizes */}
               <div className="absolute inset-0 p-3 md:p-4 lg:p-6 flex flex-col justify-end items-center text-center text-white">
-                {/* Title - Bottom center on all screen sizes */}
-                <h3 className="font-oswald text-lg md:text-xl lg:text-2xl xl:text-3xl font-normal leading-tight uppercase tracking-wide text-center">
+                {/* Title - Bottom center on all screen sizes with gradient text effect on hover */}
+                <h3 className="font-oswald text-lg md:text-xl lg:text-2xl xl:text-3xl font-normal leading-tight uppercase tracking-wide text-center transition-all duration-500 group-hover:bg-gradient-to-r group-hover:from-white group-hover:via-pink-100 group-hover:to-white group-hover:bg-clip-text group-hover:text-transparent group-hover:drop-shadow-lg">
                   {service.title}
                 </h3>
               </div>
 
-              {/* Hover Border Effect */}
-              <div className="absolute inset-0 border-2 border-white/0 group-hover:border-white/30 transition-all duration-300 rounded-lg"></div>
+              {/* Hover Border Effect with gradient */}
+              <div className="absolute inset-0 border-2 border-white/0 group-hover:border-white/40 transition-all duration-300 rounded-lg group-hover:shadow-lg group-hover:shadow-[#B64D4D]/20"></div>
             </motion.div>
           ))}
         </div>

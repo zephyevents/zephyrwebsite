@@ -78,7 +78,7 @@ const ServicesPage = () => {
     {
       icon: Camera,
       title: "Photography",
-      image: "https://images.pexels.com/photos/169198/pexels-photo-169198.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop",
+      image: "https://images.pexels.com/photos/169198/pexels-photo-169198.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop",
       features: ["Engagement Sessions", "Wedding Day Coverage", "Photo Albums", "Video Editing"],
       price: "Starting at $2,200"
     },
@@ -220,8 +220,14 @@ const ServicesPage = () => {
                     src={service.image}
                     alt={service.title}
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                    loading="lazy"
+                    decoding="async"
+                    sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-neutral-900/60 to-transparent" />
+                  
+                  {/* Hover Gradient Overlay with custom color */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#B64D4D]/80 via-[#B64D4D]/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                   
                   {/* Icon */}
                   <div className="absolute top-2 md:top-4 left-2 md:left-4 p-1.5 md:p-3 bg-white/90 backdrop-blur-sm rounded-full">
@@ -235,7 +241,7 @@ const ServicesPage = () => {
 
                   {/* Title - Bottom center overlay on image */}
                   <div className="absolute bottom-0 left-0 right-0 p-2 md:p-4 text-center">
-                    <h3 className="text-sm md:text-lg lg:text-xl font-oswald font-normal leading-tight uppercase tracking-wide text-white">
+                    <h3 className="text-sm md:text-lg lg:text-xl font-oswald font-normal leading-tight uppercase tracking-wide text-white transition-all duration-500 group-hover:bg-gradient-to-r group-hover:from-white group-hover:via-pink-100 group-hover:to-white group-hover:bg-clip-text group-hover:text-transparent group-hover:drop-shadow-lg">
                       {service.title}
                     </h3>
                   </div>
