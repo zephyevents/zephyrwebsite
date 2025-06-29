@@ -116,13 +116,13 @@ const Services = () => {
 
               {/* Content - Mobile/Tablet: Bottom center, Desktop: Centered */}
               <div className="absolute inset-0 p-3 md:p-4 lg:p-6 flex flex-col justify-end lg:justify-center items-center text-center text-white">
-                {/* Title - Increased size across all modes */}
-                <h3 className="font-oswald text-lg md:text-xl lg:text-2xl xl:text-3xl font-normal leading-tight uppercase tracking-wide text-center mb-2 lg:mb-4">
+                {/* Title - Increased size across all modes, bottom center on mobile/tablet */}
+                <h3 className="font-oswald text-xl md:text-2xl lg:text-3xl xl:text-4xl font-normal leading-tight uppercase tracking-wide text-center mb-3 lg:mb-4">
                   {service.title}
                 </h3>
 
-                {/* Description - Hidden on mobile/tablet, visible on desktop */}
-                <p className="text-white/90 leading-relaxed text-sm font-opensauce opacity-0 lg:opacity-0 lg:group-hover:opacity-100 transform translate-y-2 lg:group-hover:translate-y-0 transition-all duration-300 max-w-xs text-center hidden lg:block">
+                {/* Description - Hidden on mobile/tablet, visible on desktop hover */}
+                <p className="text-white/90 leading-relaxed text-sm lg:text-base font-opensauce opacity-0 lg:group-hover:opacity-100 transform translate-y-2 lg:group-hover:translate-y-0 transition-all duration-300 max-w-xs text-center hidden lg:block">
                   {service.description}
                 </p>
               </div>
