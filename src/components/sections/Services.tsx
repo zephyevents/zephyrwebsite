@@ -14,7 +14,7 @@ import {
   Zap,
   Mail,
   Package,
-  MoreHorizontal
+  Truck
 } from 'lucide-react';
 
 const Services = () => {
@@ -30,33 +30,39 @@ const Services = () => {
     },
     {
       icon: MapPin,
-      title: "Venue Selection",
-      description: "Curated selection of stunning venues that perfectly match your vision and style",
+      title: "Destination & Venue Selection",
+      description: "Curated selection of stunning venues and destinations that perfectly match your vision",
       image: "https://images.pexels.com/photos/1616113/pexels-photo-1616113.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop"
     },
     {
       icon: Palette,
-      title: "Decor",
-      description: "Breathtaking decorations that transform spaces into magical celebrations",
+      title: "Design & Decor Management",
+      description: "Breathtaking decorations and design management that transform spaces into magical celebrations",
       image: "https://images.pexels.com/photos/1128782/pexels-photo-1128782.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop"
     },
     {
       icon: Users,
-      title: "Hospitality Services",
-      description: "Exceptional guest services ensuring comfort and memorable experiences",
+      title: "RSVP & Hospitality",
+      description: "Comprehensive guest management and exceptional hospitality services for memorable experiences",
       image: "https://images.pexels.com/photos/958545/pexels-photo-958545.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop"
     },
     {
       icon: Music,
-      title: "Entertainment and Vibes",
-      description: "Live performances and entertainment that create unforgettable atmospheres",
+      title: "Entertainment & Special Effects",
+      description: "Live performances, entertainment coordination and special effects that create unforgettable atmospheres",
       image: "https://images.pexels.com/photos/1763075/pexels-photo-1763075.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop"
     },
     {
       icon: Star,
       title: "Special Entries",
-      description: "Grand entrances and special moments that leave lasting impressions",
+      description: "Grand entrances and special moments that leave lasting impressions on your guests",
       image: "https://images.pexels.com/photos/1024993/pexels-photo-1024993.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop"
+    },
+    {
+      icon: ChefHat,
+      title: "FnB & Catering",
+      description: "Exquisite culinary experiences with diverse menus and impeccable food & beverage service",
+      image: "https://images.pexels.com/photos/8108042/pexels-photo-8108042.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop"
     },
     {
       icon: Camera,
@@ -65,33 +71,27 @@ const Services = () => {
       image: "https://images.pexels.com/photos/169198/pexels-photo-169198.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop"
     },
     {
-      icon: ChefHat,
-      title: "Catering",
-      description: "Exquisite culinary experiences with diverse menus and impeccable service",
-      image: "https://images.pexels.com/photos/8108042/pexels-photo-8108042.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop"
-    },
-    {
       icon: Zap,
       title: "Choreography",
       description: "Professional dance choreography for memorable performances and celebrations",
       image: "https://images.pexels.com/photos/2959192/pexels-photo-2959192.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop"
     },
     {
+      icon: Truck,
+      title: "Logistics Management",
+      description: "Comprehensive logistics coordination ensuring seamless execution of all event elements",
+      image: "https://images.pexels.com/photos/264917/pexels-photo-264917.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop"
+    },
+    {
       icon: Mail,
-      title: "Digital Invites",
-      description: "Beautiful digital invitations that set the perfect tone for your event",
+      title: "Stationery & Invites",
+      description: "Beautiful stationery and invitations that set the perfect tone for your event",
       image: "https://images.pexels.com/photos/1779487/pexels-photo-1779487.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop"
     },
     {
       icon: Package,
       title: "Renting Essentials",
-      description: "Complete rental solutions for furniture, equipment, and event essentials",
-      image: "https://images.pexels.com/photos/264917/pexels-photo-264917.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop"
-    },
-    {
-      icon: MoreHorizontal,
-      title: "Miscellaneous",
-      description: "Additional specialized services tailored to your unique requirements",
+      description: "Complete rental solutions for furniture, equipment, and all event essentials",
       image: "https://images.pexels.com/photos/1036623/pexels-photo-1036623.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop"
     }
   ];
