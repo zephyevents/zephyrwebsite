@@ -2,24 +2,8 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
-import { 
-  Calendar, 
-  Palette, 
-  MapPin, 
-  ChefHat, 
-  Camera, 
-  Music, 
-  Flower,
-  Gift,
-  Check,
-  ArrowRight,
-  Users,
-  Star,
-  Zap,
-  Mail,
-  Package,
-  Truck
-} from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { Check } from 'lucide-react';
 
 const ServicesPage = () => {
   const ref = useRef(null);
@@ -27,145 +11,77 @@ const ServicesPage = () => {
 
   const services = [
     {
-      icon: Calendar,
       title: "Planning & Execution",
-      description: "Complete end-to-end wedding planning with meticulous attention to every detail",
-      image: "/image copy.png",
-      features: ["Timeline Creation", "Vendor Coordination", "Budget Management", "Day-of Coordination"],
-      price: "Starting at $2,500"
+      image: "/plan.webp",
+      features: ["Timeline Creation", "Vendor Coordination", "Budget Management", "Day-of Coordination"]
     },
     {
-      icon: MapPin,
       title: "Destination & Venue Selection",
-      description: "Curated selection of stunning venues and destinations that perfectly match your vision",
       image: "/udai.webp",
-      features: ["Location Scouting", "Venue Negotiations", "Site Visits", "Contract Review"],
-      price: "Starting at $800"
+      features: ["Location Scouting", "Venue Negotiations", "Site Visits", "Contract Review"]
     },
     {
-      icon: Palette,
       title: "Design & Decor Management",
-      description: "Breathtaking decorations and design management that transform spaces into magical celebrations",
-      image: "/decor.jpg",
-      features: ["Custom Design", "Floral Arrangements", "Lighting Design", "Centerpiece Creation"],
-      price: "Starting at $1,800"
+      image: "/decor.webp",
+      features: ["Custom Design", "Floral Arrangements", "Lighting Design", "Centerpiece Creation"]
     },
     {
-      icon: Users,
       title: "RSVP & Hospitality",
-      description: "Comprehensive guest management and exceptional hospitality services for memorable experiences",
-      image: "/hospitality.jpg",
-      features: ["Guest Management", "RSVP Tracking", "Welcome Services", "Concierge Support"],
-      price: "Starting at $50 per guest"
+      image: "/hospitality.webp",
+      features: ["Guest Management", "RSVP Tracking", "Welcome Services", "Concierge Support"]
     },
     {
-      icon: Music,
       title: "Entertainment",
-      description: "Live performances and entertainment coordination that create unforgettable atmospheres",
-      image: "/enter1.JPG",
-      features: ["DJ Services", "Live Bands", "Sound Systems", "Special Effects"],
-      price: "Starting at $1,200"
+      image: "/enter1.webp",
+      features: ["DJ Services", "Live Bands", "Sound Systems", "Special Effects"]
     },
     {
-      icon: Star,
       title: "Special Entries",
-      description: "Grand entrances and special moments that leave lasting impressions on your guests",
-      image: "/entry.jpg",
-      features: ["Entrance Design", "Special Effects", "Choreography", "Timing Coordination"],
-      price: "Starting at $800"
+      image: "/entry.webp",
+      features: ["Entrance Design", "Special Effects", "Choreography", "Timing Coordination"]
     },
     {
-      icon: ChefHat,
       title: "FnB & Catering",
-      description: "Exquisite culinary experiences with diverse menus and impeccable food & beverage service",
-      image: "/catering.JPG",
-      features: ["Menu Planning", "Dietary Accommodations", "Service Staff", "Bar Services"],
-      price: "Starting at $65 per person"
+      image: "/catering.webp",
+      features: ["Menu Planning", "Dietary Accommodations", "Service Staff", "Bar Services"]
     },
     {
-      icon: Camera,
       title: "Photography",
-      description: "Professional photography capturing every precious moment of your celebration",
-      image: "/phot.jpg",
-      features: ["Engagement Sessions", "Wedding Day Coverage", "Photo Albums", "Video Editing"],
-      price: "Starting at $2,200"
+      image: "/phot.webp",
+      features: ["Engagement Sessions", "Wedding Day Coverage", "Photo Albums", "Video Editing"]
     },
     {
-      icon: Zap,
       title: "Choreography",
-      description: "Professional dance choreography for memorable performances and celebrations",
-      image: "/choreo.JPG",
-      features: ["Dance Lessons", "Performance Choreography", "Music Selection", "Rehearsal Coordination"],
-      price: "Starting at $500"
+      image: "/choreo.webp",
+      features: ["Dance Lessons", "Performance Choreography", "Music Selection", "Rehearsal Coordination"]
     },
     {
-      icon: Truck,
       title: "Special Effects",
-      description: "Spectacular visual effects and technical elements that add magic to your celebration",
-      image: "/enter.JPG",
-      features: ["Transportation", "Setup Coordination", "Timeline Management", "Vendor Logistics"],
-      price: "Starting at $1,000"
+      image: "/enter.webp",
+      features: ["Lighting Effects", "Pyrotechnics", "Fog Machines", "LED Displays"]
     },
     {
-      icon: Mail,
       title: "Stationery & Invites",
-      description: "Beautiful stationery and invitations that set the perfect tone for your event",
-      image: "/station..jpg",
-      features: ["Custom Design", "Digital Invites", "RSVP Management", "Thank You Cards"],
-      price: "Starting at $300"
+      image: "/station.webp",
+      features: ["Custom Design", "Digital Invites", "RSVP Management", "Thank You Cards"]
     },
     {
-      icon: Package,
       title: "Miscellaneous",
-      description: "Additional services and custom solutions tailored to your unique event requirements",
       image: "/miscgif.gif",
-      features: ["Furniture Rental", "Equipment Rental", "Decor Items", "Setup & Breakdown"],
-      price: "Starting at $200"
+      features: ["Furniture Rental", "Equipment Rental", "Decor Items", "Setup & Breakdown"]
     }
   ];
 
-  const packages = [
-    {
-      name: "Essential",
-      price: "$3,500",
-      description: "Perfect for intimate celebrations",
-      features: [
-        "Event planning consultation",
-        "Timeline creation",
-        "Vendor recommendations",
-        "Day-of coordination",
-        "Email support"
-      ],
-      popular: false
-    },
-    {
-      name: "Premium",
-      price: "$6,500",
-      description: "Our most popular comprehensive package",
-      features: [
-        "Everything in Essential",
-        "Venue selection assistance",
-        "Design consultation",
-        "Unlimited planning meetings",
-        "Rehearsal coordination",
-        "Weekend support"
-      ],
-      popular: true
-    },
-    {
-      name: "Luxury",
-      price: "$12,000",
-      description: "Full-service planning with premium touches",
-      features: [
-        "Everything in Premium",
-        "Guest services coordination",
-        "Welcome event planning",
-        "VIP vendor access",
-        "24/7 planning support",
-        "Post-event cleanup"
-      ],
-      popular: false
-    }
+  const planningFeatures = [
+    "Event planning consultation",
+    "Timeline creation", 
+    "Vendor recommendations",
+    "Day-of coordination",
+    "Venue selection assistance",
+    "Design & Décor Consultation",
+    "Unlimited planning meetings",
+    "Weekend support",
+    "Guest service coordination"
   ];
 
   return (
@@ -174,11 +90,11 @@ const ServicesPage = () => {
       <section className="relative h-[92vh] md:h-[90vh] lg:h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 w-full h-full">
           <img
-            src="https://images.pexels.com/photos/1444442/pexels-photo-1444442.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&fit=crop"
+            src="/serviceshero.webp"
             alt="Services Hero"
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/40" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-black/50" />
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
@@ -187,19 +103,18 @@ const ServicesPage = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h1 className="text-3xl sm:text-4xl lg:text-6xl font-heading font-bold mb-6">
-              Our Services
+            <h1 className="text-3xl sm:text-4xl lg:text-6xl font-oswald font-normal mb-6 leading-tight" style={{ textShadow: '2px 2px 4px rgba(0,0,0,0.7)' }}>
+              Your celebration deserves nothing short of extraordinary.
             </h1>
-            <p className="text-lg sm:text-xl leading-relaxed max-w-3xl mx-auto">
-              From intimate ceremonies to grand celebrations, we offer comprehensive event planning 
-              services tailored to your unique vision and style.
+            <p className="text-lg sm:text-xl font-oswald font-normal leading-relaxed" style={{ textShadow: '1px 1px 2px rgba(0,0,0,0.7)' }}>
+              We're here to make that happen.
             </p>
           </motion.div>
         </div>
       </section>
 
-      {/* Services Grid */}
-      <section ref={ref} className="py-20 lg:py-32 bg-background-500">
+      {/* What We Offer Section */}
+      <section ref={ref} className="py-12 lg:py-20 bg-background-500">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -216,7 +131,7 @@ const ServicesPage = () => {
             </p>
           </motion.div>
 
-          {/* Mobile: 2 columns, Tablet: 2 columns, Desktop: 3 columns, Large: 4 columns */}
+          {/* Services Grid */}
           <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6 lg:gap-8">
             {services.map((service, index) => (
               <motion.div
@@ -231,24 +146,14 @@ const ServicesPage = () => {
                   <img
                     src={service.image}
                     alt={service.title}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                    className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                     loading="lazy"
                     decoding="async"
                     sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-neutral-900/60 to-transparent" />
                   
-                  {/* Icon */}
-                  <div className="absolute top-2 md:top-4 left-2 md:left-4 p-1.5 md:p-3 bg-white/90 backdrop-blur-sm rounded-full">
-                    <service.icon className="h-3 w-3 md:h-6 md:w-6 text-primary-900" />
-                  </div>
-
-                  {/* Price */}
-                  <div className="absolute bottom-2 md:bottom-4 right-2 md:right-4 px-2 md:px-3 py-1 bg-white/90 backdrop-blur-sm rounded-full text-xs md:text-sm font-medium text-neutral-800">
-                    {service.price}
-                  </div>
-
-                  {/* Title - Bottom center overlay on image with gradient text effect on hover only */}
+                  {/* Title - Bottom center overlay on image */}
                   <div className="absolute bottom-0 left-0 right-0 p-2 md:p-4 text-center">
                     <h3 className="text-sm md:text-lg lg:text-xl font-oswald font-normal leading-tight uppercase tracking-wide text-white transition-all duration-500 group-hover:bg-gradient-to-r group-hover:from-white group-hover:via-[#B64D4D] group-hover:to-white group-hover:bg-clip-text group-hover:text-transparent group-hover:drop-shadow-lg">
                       {service.title}
@@ -256,10 +161,10 @@ const ServicesPage = () => {
                   </div>
                 </div>
 
-                {/* Content - Features only, no description */}
+                {/* Content - Features */}
                 <div className="p-3 md:p-6">
-                  {/* Features - Hidden on mobile */}
-                  <ul className="space-y-1 md:space-y-2 mb-4 md:mb-6 hidden md:block">
+                  {/* Features */}
+                  <ul className="space-y-1 md:space-y-2">
                     {service.features.map((feature) => (
                       <li key={feature} className="flex items-center text-xs md:text-sm text-neutral-600">
                         <Check className="h-3 w-3 md:h-4 md:w-4 text-primary-900 mr-2 flex-shrink-0" />
@@ -267,12 +172,6 @@ const ServicesPage = () => {
                       </li>
                     ))}
                   </ul>
-
-                  {/* CTA Button */}
-                  <button className="w-full bg-primary-50 text-primary-900 px-3 md:px-4 py-2 md:py-3 rounded-lg font-medium hover:bg-primary-100 transition-colors flex items-center justify-center space-x-2 group-hover:bg-primary-900 group-hover:text-white text-xs md:text-sm">
-                    <span>Learn More</span>
-                    <ArrowRight className="h-3 w-3 md:h-4 md:w-4" />
-                  </button>
                 </div>
               </motion.div>
             ))}
@@ -280,95 +179,8 @@ const ServicesPage = () => {
         </div>
       </section>
 
-      {/* Packages Section */}
-      <section className="py-20 lg:py-32 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-            transition={{ duration: 0.8 }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-4xl lg:text-5xl font-heading font-bold text-neutral-800 mb-6">
-              Planning Packages
-            </h2>
-            <p className="text-lg text-neutral-600 max-w-3xl mx-auto leading-relaxed">
-              Choose the package that best fits your needs, or let us create a custom solution 
-              tailored specifically for your event.
-            </p>
-          </motion.div>
-
-          <div className="grid lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            {packages.map((pkg, index) => (
-              <motion.div
-                key={pkg.name}
-                initial={{ opacity: 0, y: 30 }}
-                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-                transition={{ duration: 0.8, delay: index * 0.2 }}
-                className={`relative bg-white rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-300 ${
-                  pkg.popular ? 'scale-105 border-2 border-primary-200' : ''
-                }`}
-              >
-                {pkg.popular && (
-                  <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 px-6 py-2 bg-primary-900 text-white rounded-full text-sm font-medium">
-                    Most Popular
-                  </div>
-                )}
-
-                <div className="text-center mb-8">
-                  <h3 className="text-2xl font-heading font-bold text-neutral-800 mb-2">
-                    {pkg.name}
-                  </h3>
-                  <p className="text-neutral-600 mb-4">{pkg.description}</p>
-                  <div className="text-4xl font-bold text-primary-900 mb-2">{pkg.price}</div>
-                  <p className="text-sm text-neutral-500">Starting price</p>
-                </div>
-
-                <ul className="space-y-4 mb-8">
-                  {pkg.features.map((feature) => (
-                    <li key={feature} className="flex items-center">
-                      <Check className="h-5 w-5 text-primary-900 mr-3 flex-shrink-0" />
-                      <span className="text-neutral-600">{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-
-                <button className={`w-full py-4 rounded-xl font-semibold transition-colors ${
-                  pkg.popular
-                    ? 'bg-primary-900 text-white hover:bg-primary-800'
-                    : 'bg-primary-50 text-primary-900 hover:bg-primary-100'
-                }`}>
-                  Choose {pkg.name}
-                </button>
-              </motion.div>
-            ))}
-          </div>
-
-          {/* Custom Package CTA */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-            className="text-center mt-16"
-          >
-            <div className="bg-background-500 rounded-3xl p-8 lg:p-12 shadow-xl max-w-3xl mx-auto">
-              <h3 className="text-2xl lg:text-3xl font-heading font-semibold text-neutral-800 mb-4">
-                Need Something Custom?
-              </h3>
-              <p className="text-lg text-neutral-600 mb-8 leading-relaxed">
-                Every event is unique, and we're happy to create a custom package that perfectly 
-                fits your vision, style, and budget. Let's discuss your specific needs.
-              </p>
-              <button className="bg-gradient-to-r from-primary-900 to-primary-800 text-white px-8 py-4 rounded-full text-lg font-semibold hover:from-primary-800 hover:to-primary-700 transition-all duration-300 shadow-lg hover:shadow-xl">
-                Request Custom Quote
-              </button>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Why Choose Us */}
-      <section className="py-20 lg:py-32 bg-background-500">
+      {/* Why Choose Us Section */}
+      <section className="py-12 lg:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -388,7 +200,7 @@ const ServicesPage = () => {
                 description: "Over a decade of creating unforgettable celebrations with expertise you can trust."
               },
               {
-                title: "500+ Events Planned",
+                title: "200+ Events Planned",
                 description: "From intimate gatherings to grand celebrations, we've brought countless visions to life."
               },
               {
@@ -403,10 +215,74 @@ const ServicesPage = () => {
                 transition={{ duration: 0.8, delay: index * 0.2 }}
                 className="text-center p-8 bg-white rounded-2xl"
               >
-                <h3 className="text-xl font-semibold text-neutral-800 mb-4">{item.title}</h3>
+                <h3 className="text-xl font-semibold mb-4" style={{ color: '#B14040' }}>
+                  {item.title}
+                </h3>
                 <p className="text-neutral-600 leading-relaxed">{item.description}</p>
               </motion.div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Plan Your Happily Ever After Section */}
+      <section className="py-12 lg:py-20 bg-gradient-to-br from-rose-50 to-mauve-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+            transition={{ duration: 0.8 }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-4xl lg:text-5xl font-heading font-bold text-neutral-800 mb-6">
+              Plan Your Happily Ever After with Us
+            </h2>
+          </motion.div>
+
+          <div className="max-w-4xl mx-auto">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="bg-white rounded-3xl p-8 lg:p-12 shadow-xl"
+            >
+              <div className="grid md:grid-cols-2 gap-8">
+                {/* Left Column */}
+                <div>
+                  <ul className="space-y-4">
+                    {planningFeatures.slice(0, Math.ceil(planningFeatures.length / 2)).map((feature) => (
+                      <li key={feature} className="flex items-center">
+                        <Check className="h-5 w-5 text-primary-900 mr-3 flex-shrink-0" />
+                        <span className="text-neutral-600">{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                {/* Right Column */}
+                <div>
+                  <ul className="space-y-4">
+                    {planningFeatures.slice(Math.ceil(planningFeatures.length / 2)).map((feature) => (
+                      <li key={feature} className="flex items-center">
+                        <Check className="h-5 w-5 text-primary-900 mr-3 flex-shrink-0" />
+                        <span className="text-neutral-600">{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+
+              {/* CTA Button */}
+              <div className="text-center mt-8">
+                <Link
+                  to="/contact"
+                  className="inline-block text-white px-8 py-4 rounded-full text-lg font-semibold hover:opacity-90 transition-opacity shadow-lg hover:shadow-xl"
+                  style={{ backgroundColor: '#B14040' }}
+                >
+                  Talk to Us
+                </Link>
+              </div>
+            </motion.div>
           </div>
         </div>
       </section>
