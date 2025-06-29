@@ -124,7 +124,7 @@ const GalleryPage = () => {
   return (
     <div className="bg-background-500">
       {/* Hero Section with Slideshow */}
-      <section className="relative min-h-[65vh] md:min-h-[75vh] lg:min-h-screen flex items-center justify-center overflow-hidden">
+      <section className="relative min-h-[85vh] lg:min-h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 w-full h-full">
           <img
             src="https://images.pexels.com/photos/1616113/pexels-photo-1616113.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&fit=crop"
