@@ -8,7 +8,6 @@ const Header = () => {
   const location = useLocation();
 
   const navigation = [
-    { name: 'Home', href: '/' },
     { name: 'About Us', href: '/about' },
     { name: 'Services', href: '/services' },
     { name: 'Gallery', href: '/gallery' },
@@ -19,7 +18,7 @@ const Header = () => {
     <header className="absolute top-0 left-0 right-0 z-50 bg-transparent">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20 pt-2">
-          {/* Logo - h-28 and moved up more */}
+          {/* Logo - h-28 and moved up more, now clickable home link */}
           <div className="flex items-center">
             <Link to="/" className="flex items-center group">
               <motion.div
