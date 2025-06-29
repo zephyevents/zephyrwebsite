@@ -95,11 +95,13 @@ export default {
         'ppacma': ['PPAcma', 'sans-serif'],
         'opensauce': ['OpenSauceOne', 'sans-serif'],
         'oswald': ['Oswald', 'sans-serif'],
+        'raleway': ['Raleway', 'sans-serif'],
       },
       fontWeight: {
         'opensauce-regular': '400',
         'opensauce-semibold': '600',
         'oswald-regular': '400',
+        'raleway-semibold': '600',
       },
       spacing: {
         '34': '8.5rem', // 136px
