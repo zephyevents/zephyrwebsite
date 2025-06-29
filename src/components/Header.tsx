@@ -19,8 +19,8 @@ const Header = () => {
   return (
     <header className="absolute top-0 left-0 right-0 z-50 bg-transparent">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-24">
-          {/* Logo */}
+        <div className="flex items-center justify-between h-32">
+          {/* Logo - Made Bigger */}
           <div className="flex items-center">
             <Link to="/" className="flex items-center group">
               <motion.div
@@ -30,7 +30,7 @@ const Header = () => {
                 <img
                   src="/logozephyrwh.png"
                   alt="Zephyr Events"
-                  className="h-20 w-auto transition-all duration-500"
+                  className="h-28 w-auto transition-all duration-500"
                   onError={(e) => {
                     const target = e.currentTarget as HTMLImageElement;
                     target.style.display = 'none';
@@ -56,15 +56,15 @@ const Header = () => {
                   to={item.href}
                   className={`relative text-sm font-medium tracking-wide transition-all duration-300 ${
                     location.pathname === item.href
-                      ? 'text-primary-900'
-                      : 'text-white hover:text-primary-900'
+                      ? 'text-white'
+                      : 'text-white hover:text-white'
                   }`}
                 >
                   {item.name}
                   {location.pathname === item.href && (
                     <motion.div
                       layoutId="activeNav"
-                      className="absolute -bottom-1 left-0 right-0 h-0.5 bg-primary-900"
+                      className="absolute -bottom-1 left-0 right-0 h-0.5 bg-white"
                     />
                   )}
                 </Link>
@@ -78,7 +78,7 @@ const Header = () => {
               href="https://instagram.com/zephyrevents"
               target="_blank"
               rel="noopener noreferrer"
-              className="p-2 text-white hover:text-primary-900 transition-colors"
+              className="p-2 text-white hover:text-white transition-colors"
             >
               <Instagram className="h-6 w-6" />
             </a>
@@ -87,7 +87,7 @@ const Header = () => {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="lg:hidden p-2 rounded-md text-white hover:text-primary-900 transition-colors"
+            className="lg:hidden p-2 rounded-md text-white hover:text-white transition-colors"
           >
             {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </button>
