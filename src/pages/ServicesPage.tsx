@@ -12,7 +12,13 @@ import {
   Flower,
   Gift,
   Check,
-  ArrowRight
+  ArrowRight,
+  Users,
+  Star,
+  Zap,
+  Mail,
+  Package,
+  Truck
 } from 'lucide-react';
 
 const ServicesPage = () => {
@@ -22,67 +28,99 @@ const ServicesPage = () => {
   const services = [
     {
       icon: Calendar,
-      title: "Wedding Planning",
-      description: "Complete wedding coordination from concept to execution",
+      title: "Planning & Execution",
+      description: "Complete end-to-end wedding planning with meticulous attention to every detail",
       image: "https://images.pexels.com/photos/1444442/pexels-photo-1444442.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop",
       features: ["Timeline Creation", "Vendor Coordination", "Budget Management", "Day-of Coordination"],
       price: "Starting at $2,500"
     },
     {
-      icon: Palette,
-      title: "Event Decor",
-      description: "Stunning decorations that transform your venue",
-      image: "https://images.pexels.com/photos/1128782/pexels-photo-1128782.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop",
-      features: ["Custom Design", "Floral Arrangements", "Lighting Design", "Centerpiece Creation"],
-      price: "Starting at $1,800"
-    },
-    {
       icon: MapPin,
-      title: "Venue Selection",
-      description: "Perfect locations for your special celebration",
+      title: "Destination & Venue Selection",
+      description: "Curated selection of stunning venues and destinations that perfectly match your vision",
       image: "https://images.pexels.com/photos/1616113/pexels-photo-1616113.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop",
       features: ["Location Scouting", "Venue Negotiations", "Site Visits", "Contract Review"],
       price: "Starting at $800"
     },
     {
-      icon: ChefHat,
-      title: "Catering Services",
-      description: "Exquisite cuisine crafted by renowned chefs",
+      icon: Palette,
+      title: "Design & Decor Management",
+      description: "Breathtaking decorations and design management that transform spaces into magical celebrations",
+      image: "https://images.pexels.com/photos/1128782/pexels-photo-1128782.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop",
+      features: ["Custom Design", "Floral Arrangements", "Lighting Design", "Centerpiece Creation"],
+      price: "Starting at $1,800"
+    },
+    {
+      icon: Users,
+      title: "RSVP & Hospitality",
+      description: "Comprehensive guest management and exceptional hospitality services for memorable experiences",
       image: "https://images.pexels.com/photos/958545/pexels-photo-958545.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop",
+      features: ["Guest Management", "RSVP Tracking", "Welcome Services", "Concierge Support"],
+      price: "Starting at $50 per guest"
+    },
+    {
+      icon: Music,
+      title: "Entertainment & Special Effects",
+      description: "Live performances, entertainment coordination and special effects that create unforgettable atmospheres",
+      image: "https://images.pexels.com/photos/1763075/pexels-photo-1763075.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop",
+      features: ["DJ Services", "Live Bands", "Sound Systems", "Special Effects"],
+      price: "Starting at $1,200"
+    },
+    {
+      icon: Star,
+      title: "Special Entries",
+      description: "Grand entrances and special moments that leave lasting impressions on your guests",
+      image: "https://images.pexels.com/photos/1024993/pexels-photo-1024993.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop",
+      features: ["Entrance Design", "Special Effects", "Choreography", "Timing Coordination"],
+      price: "Starting at $800"
+    },
+    {
+      icon: ChefHat,
+      title: "FnB & Catering",
+      description: "Exquisite culinary experiences with diverse menus and impeccable food & beverage service",
+      image: "https://images.pexels.com/photos/8108042/pexels-photo-8108042.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop",
       features: ["Menu Planning", "Dietary Accommodations", "Service Staff", "Bar Services"],
       price: "Starting at $65 per person"
     },
     {
       icon: Camera,
-      title: "Photography & Videography",
-      description: "Professional photographers to capture every moment",
-      image: "https://images.pexels.com/photos/1024993/pexels-photo-1024993.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop",
+      title: "Photography",
+      description: "Professional photography capturing every precious moment of your celebration",
+      image: "https://images.pexels.com/photos/169198/pexels-photo-169198.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop",
       features: ["Engagement Sessions", "Wedding Day Coverage", "Photo Albums", "Video Editing"],
       price: "Starting at $2,200"
     },
     {
-      icon: Flower,
-      title: "Mehendi & Henna",
-      description: "Traditional and contemporary henna designs",
-      image: "https://images.pexels.com/photos/8108042/pexels-photo-8108042.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop",
-      features: ["Custom Designs", "Bridal Packages", "Guest Services", "Traditional Patterns"],
-      price: "Starting at $150"
+      icon: Zap,
+      title: "Choreography",
+      description: "Professional dance choreography for memorable performances and celebrations",
+      image: "https://images.pexels.com/photos/2959192/pexels-photo-2959192.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop",
+      features: ["Dance Lessons", "Performance Choreography", "Music Selection", "Rehearsal Coordination"],
+      price: "Starting at $500"
     },
     {
-      icon: Music,
-      title: "Entertainment",
-      description: "Live music, DJs, and entertainment coordination",
-      image: "https://images.pexels.com/photos/1763075/pexels-photo-1763075.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop",
-      features: ["DJ Services", "Live Bands", "Sound Systems", "Special Performances"],
-      price: "Starting at $1,200"
-    },
-    {
-      icon: Gift,
-      title: "Guest Services",
-      description: "Welcome gifts, accommodations, and guest care",
+      icon: Truck,
+      title: "Logistics Management",
+      description: "Comprehensive logistics coordination ensuring seamless execution of all event elements",
       image: "https://images.pexels.com/photos/264917/pexels-photo-264917.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop",
-      features: ["Welcome Bags", "Transportation", "Accommodation Booking", "Concierge Services"],
-      price: "Starting at $50 per guest"
+      features: ["Transportation", "Setup Coordination", "Timeline Management", "Vendor Logistics"],
+      price: "Starting at $1,000"
+    },
+    {
+      icon: Mail,
+      title: "Stationery & Invites",
+      description: "Beautiful stationery and invitations that set the perfect tone for your event",
+      image: "https://images.pexels.com/photos/1779487/pexels-photo-1779487.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop",
+      features: ["Custom Design", "Digital Invites", "RSVP Management", "Thank You Cards"],
+      price: "Starting at $300"
+    },
+    {
+      icon: Package,
+      title: "Renting Essentials",
+      description: "Complete rental solutions for furniture, equipment, and all event essentials",
+      image: "https://images.pexels.com/photos/1036623/pexels-photo-1036623.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop",
+      features: ["Furniture Rental", "Equipment Rental", "Decor Items", "Setup & Breakdown"],
+      price: "Starting at $200"
     }
   ];
 
@@ -178,17 +216,18 @@ const ServicesPage = () => {
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+          {/* Mobile: 2 columns, Tablet: 2 columns, Desktop: 3 columns, Large: 4 columns */}
+          <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6 lg:gap-8">
             {services.map((service, index) => (
               <motion.div
                 key={service.title}
                 initial={{ opacity: 0, y: 30 }}
                 animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
                 transition={{ duration: 0.8, delay: index * 0.1 }}
-                className="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden"
+                className="group bg-white rounded-xl lg:rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden"
               >
                 {/* Image */}
-                <div className="relative h-48 overflow-hidden">
+                <div className="relative h-32 md:h-48 lg:h-48 overflow-hidden">
                   <img
                     src={service.image}
                     alt={service.title}
@@ -197,39 +236,39 @@ const ServicesPage = () => {
                   <div className="absolute inset-0 bg-gradient-to-t from-neutral-900/60 to-transparent" />
                   
                   {/* Icon */}
-                  <div className="absolute top-4 left-4 p-3 bg-white/90 backdrop-blur-sm rounded-full">
-                    <service.icon className="h-6 w-6 text-primary-900" />
+                  <div className="absolute top-2 md:top-4 left-2 md:left-4 p-1.5 md:p-3 bg-white/90 backdrop-blur-sm rounded-full">
+                    <service.icon className="h-3 w-3 md:h-6 md:w-6 text-primary-900" />
                   </div>
 
                   {/* Price */}
-                  <div className="absolute bottom-4 right-4 px-3 py-1 bg-white/90 backdrop-blur-sm rounded-full text-sm font-medium text-neutral-800">
+                  <div className="absolute bottom-2 md:bottom-4 right-2 md:right-4 px-2 md:px-3 py-1 bg-white/90 backdrop-blur-sm rounded-full text-xs md:text-sm font-medium text-neutral-800">
                     {service.price}
                   </div>
                 </div>
 
                 {/* Content */}
-                <div className="p-6">
-                  <h3 className="text-xl font-semibold text-neutral-800 mb-3 group-hover:text-primary-900 transition-colors">
+                <div className="p-3 md:p-6">
+                  <h3 className="text-sm md:text-xl font-semibold text-neutral-800 mb-2 md:mb-3 group-hover:text-primary-900 transition-colors leading-tight">
                     {service.title}
                   </h3>
-                  <p className="text-neutral-600 mb-4 leading-relaxed">
+                  <p className="text-neutral-600 mb-3 md:mb-4 leading-relaxed text-xs md:text-sm hidden md:block">
                     {service.description}
                   </p>
 
-                  {/* Features */}
-                  <ul className="space-y-2 mb-6">
+                  {/* Features - Hidden on mobile */}
+                  <ul className="space-y-1 md:space-y-2 mb-4 md:mb-6 hidden md:block">
                     {service.features.map((feature) => (
-                      <li key={feature} className="flex items-center text-sm text-neutral-600">
-                        <Check className="h-4 w-4 text-primary-900 mr-2 flex-shrink-0" />
+                      <li key={feature} className="flex items-center text-xs md:text-sm text-neutral-600">
+                        <Check className="h-3 w-3 md:h-4 md:w-4 text-primary-900 mr-2 flex-shrink-0" />
                         {feature}
                       </li>
                     ))}
                   </ul>
 
                   {/* CTA Button */}
-                  <button className="w-full bg-primary-50 text-primary-900 px-4 py-3 rounded-lg font-medium hover:bg-primary-100 transition-colors flex items-center justify-center space-x-2 group-hover:bg-primary-900 group-hover:text-white">
+                  <button className="w-full bg-primary-50 text-primary-900 px-3 md:px-4 py-2 md:py-3 rounded-lg font-medium hover:bg-primary-100 transition-colors flex items-center justify-center space-x-2 group-hover:bg-primary-900 group-hover:text-white text-xs md:text-sm">
                     <span>Learn More</span>
-                    <ArrowRight className="h-4 w-4" />
+                    <ArrowRight className="h-3 w-3 md:h-4 md:w-4" />
                   </button>
                 </div>
               </motion.div>

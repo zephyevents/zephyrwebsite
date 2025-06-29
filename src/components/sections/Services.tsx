@@ -118,33 +118,33 @@ const Services = () => {
           </p>
         </motion.div>
 
-        {/* Services Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {/* Services Grid - Mobile: 2 columns, Tablet: 2 columns, Desktop: 3 columns */}
+        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8">
           {services.map((service, index) => (
             <motion.div
               key={service.title}
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
               transition={{ duration: 0.8, delay: index * 0.1 }}
-              className="group relative overflow-hidden rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 bg-white border border-rose-100"
+              className="group relative overflow-hidden rounded-2xl lg:rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 bg-white"
             >
               {/* Background Image */}
-              <div className="relative h-80 overflow-hidden">
+              <div className="relative h-48 md:h-64 lg:h-80 overflow-hidden">
                 <img
                   src={service.image}
                   alt={service.title}
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                 />
                 
-                {/* Simple Overlay */}
-                <div className="absolute inset-0 bg-black/40 group-hover:bg-black/50 transition-all duration-300" />
+                {/* Gradient Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
 
                 {/* Content */}
-                <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-                  <h3 className="text-2xl font-heading font-semibold mb-3 text-center group-hover:text-white transition-colors">
+                <div className="absolute bottom-0 left-0 right-0 p-3 md:p-4 lg:p-6 text-white">
+                  <h3 className="text-sm md:text-lg lg:text-2xl font-heading font-semibold mb-1 md:mb-2 lg:mb-3 text-center leading-tight">
                     {service.title}
                   </h3>
-                  <p className="text-white/90 leading-relaxed text-sm opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300 text-center font-opensauce">
+                  <p className="text-white/90 leading-relaxed text-xs md:text-sm opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all duration-300 text-center font-opensauce hidden md:block">
                     {service.description}
                   </p>
                 </div>
@@ -158,20 +158,20 @@ const Services = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ duration: 0.8, delay: 0.8 }}
-          className="text-center mt-20"
+          className="text-center mt-12 lg:mt-20"
         >
-          <div className="bg-white rounded-3xl p-12 shadow-xl border border-neutral-100">
-            <h3 className="text-3xl font-heading font-medium text-neutral-800 mb-6">
+          <div className="bg-white rounded-2xl lg:rounded-3xl p-6 lg:p-12 shadow-xl border border-neutral-100">
+            <h3 className="text-xl lg:text-3xl font-heading font-medium text-neutral-800 mb-4 lg:mb-6">
               Ready to Create Something Extraordinary?
             </h3>
-            <p className="text-lg text-neutral-600 mb-8 max-w-2xl mx-auto leading-relaxed">
+            <p className="text-base lg:text-lg text-neutral-600 mb-6 lg:mb-8 max-w-2xl mx-auto leading-relaxed">
               Let's discuss your vision and create a customized service package that perfectly 
               matches your dreams and requirements.
             </p>
             <div className="flex justify-center">
               <button 
                 onClick={handleTalkToUs}
-                className="text-white px-8 py-4 rounded-full text-lg font-medium transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
+                className="text-white px-6 lg:px-8 py-3 lg:py-4 rounded-full text-base lg:text-lg font-medium transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
                 style={{ backgroundColor: '#B03F3F' }}
                 onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#9A3535'}
                 onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#B03F3F'}
