@@ -77,18 +77,23 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Bottom Bar */}
-        <div className="border-t border-neutral-300 mt-6 pt-4 text-center">
-          <p className="text-neutral-600 text-sm font-opensauce mb-3 md:mb-0">
-            © 2025 Zephyr. All Rights Reserved
-          </p>
-          <div className="flex justify-center space-x-6">
-            <a href="#" className="text-neutral-600 hover:text-primary-900 transition-colors text-sm font-opensauce">
-              Privacy Policy
-            </a>
-            <a href="#" className="text-neutral-600 hover:text-primary-900 transition-colors text-sm font-opensauce">
-              Terms & Conditions
-            </a>
+        {/* Bottom Bar - Updated for mobile layout */}
+        <div className="border-t border-neutral-300 mt-6 pt-4">
+          <div className="flex flex-col sm:flex-row justify-between items-center space-y-2 sm:space-y-0">
+            {/* Left side - Copyright */}
+            <p className="text-neutral-600 text-sm font-opensauce">
+              © 2025 Zephyr. All Rights Reserved
+            </p>
+            
+            {/* Right side - Privacy Policy and Terms */}
+            <div className="flex space-x-4 sm:space-x-6">
+              <a href="#" className="text-neutral-600 hover:text-primary-900 transition-colors text-sm font-opensauce">
+                Privacy Policy
+              </a>
+              <a href="#" className="text-neutral-600 hover:text-primary-900 transition-colors text-sm font-opensauce">
+                Terms & Conditions
+              </a>
+            </div>
           </div>
         </div>
       </div>
