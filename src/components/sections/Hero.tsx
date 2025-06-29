@@ -16,16 +16,6 @@ const Hero = () => {
       {/* Video Background - Optimized */}
       <div className="absolute inset-0 w-full h-full overflow-hidden">
         <div className="relative w-full h-full">
-          {/* Loading placeholder */}
-          {!isVideoLoaded && (
-            <div className="absolute inset-0 bg-gradient-to-br from-primary-900 to-primary-700 flex items-center justify-center">
-              <div className="text-white text-center">
-                <div className="w-16 h-16 border-4 border-white border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
-                <p className="text-xl font-heading">Loading Experience...</p>
-              </div>
-            </div>
-          )}
-          
           <iframe 
             src="https://player.vimeo.com/video/1097212920?badge=0&autopause=0&player_id=0&app_id=58479&autoplay=1&loop=1&muted=1&background=1&quality=720p"
             className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"

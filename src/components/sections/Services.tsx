@@ -17,7 +17,7 @@ const Services = () => {
       image: "/udai.webp",
     },
     {
-      title: "Design & Decor Management",
+      title: "Design & Décor Management",
       image: "/decor.webp",
     },
     {
@@ -46,7 +46,7 @@ const Services = () => {
     },
     {
       title: "Special Effects",
-      image: "/sfx.webp",
+      image: "/enter.webp",
     },
     {
       title: "Stationery & Invites",

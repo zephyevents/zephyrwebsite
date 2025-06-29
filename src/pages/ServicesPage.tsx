@@ -21,19 +21,19 @@ const ServicesPage = () => {
       features: ["Location Scouting", "Venue Negotiations", "Site Visits", "Contract Review"]
     },
     {
-      title: "Design & Decor Management",
+      title: "Design & Décor Management",
       image: "/decor.webp",
-      features: ["Custom Design", "Floral Arrangements", "Lighting Design", "Centerpiece Creation"]
+      features: ["Custom Design", "Floral Arrangements", "Lighting Design", "Décor-Based Special Entries (Matrix, Vogue, Retro Glam)"]
     },
     {
       title: "RSVP & Hospitality",
       image: "/hospitality.webp",
-      features: ["Guest Management", "RSVP Tracking", "Welcome Services", "Concierge Support"]
+      features: ["Guest Management", "RSVP Tracking", "Check-in Welcome Desk", "Pickup Support"]
     },
     {
       title: "Entertainment",
       image: "/enter1.webp",
-      features: ["DJ Services", "Live Bands", "Sound Systems", "Special Effects"]
+      features: ["DJ Services", "Live Bands", "Sound Systems", "Choreography"]
     },
     {
       title: "Special Entries",
@@ -58,17 +58,17 @@ const ServicesPage = () => {
     {
       title: "Special Effects",
       image: "/enter.webp",
-      features: ["Lighting Effects", "Pyrotechnics", "Fog Machines", "LED Displays"]
+      features: ["LED Displays", "Skyshots", "Fireworks", "Fog Machines"]
     },
     {
       title: "Stationery & Invites",
       image: "/station.webp",
-      features: ["Custom Design", "Digital Invites", "RSVP Management", "Thank You Cards"]
+      features: ["Custom Design", "Digital Invites", "Itinerary Design", "Thank You Cards"]
     },
     {
       title: "Miscellaneous",
       image: "/miscgif.gif",
-      features: ["Furniture Rental", "Equipment Rental", "Decor Items", "Setup & Breakdown"]
+      features: ["Hampers & Return Favors Curation", "Cake & Champagne Tower", "Equipment Rentals (Mist Fans, Steam Iron, Hangers)", "Snacking & Relax Corners (Popcorn, DIY Snacks, Foot Spa)"]
     }
   ];
 
@@ -166,9 +166,9 @@ const ServicesPage = () => {
                   {/* Features */}
                   <ul className="space-y-1 md:space-y-2">
                     {service.features.map((feature) => (
-                      <li key={feature} className="flex items-center text-xs md:text-sm text-neutral-600">
-                        <Check className="h-3 w-3 md:h-4 md:w-4 text-primary-900 mr-2 flex-shrink-0" />
-                        {feature}
+                      <li key={feature} className="flex items-start text-xs md:text-sm text-neutral-600">
+                        <Check className="h-3 w-3 md:h-4 md:w-4 text-primary-900 mr-2 flex-shrink-0 mt-0.5" />
+                        <span>{feature}</span>
                       </li>
                     ))}
                   </ul>
@@ -248,7 +248,7 @@ const ServicesPage = () => {
             >
               <div className="grid md:grid-cols-2 gap-8">
                 {/* Left Column */}
-                <div>
+                <div className="flex flex-col justify-center">
                   <ul className="space-y-4">
                     {planningFeatures.slice(0, Math.ceil(planningFeatures.length / 2)).map((feature) => (
                       <li key={feature} className="flex items-center">
@@ -260,7 +260,7 @@ const ServicesPage = () => {
                 </div>
 
                 {/* Right Column */}
-                <div>
+                <div className="flex flex-col justify-center">
                   <ul className="space-y-4">
                     {planningFeatures.slice(Math.ceil(planningFeatures.length / 2)).map((feature) => (
                       <li key={feature} className="flex items-center">
