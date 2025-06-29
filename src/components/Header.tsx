@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -55,14 +55,14 @@ const Header = () => {
     }
   };
 
-  // Logo logic
+  // Logo logic - use public path for deployed version
   const getLogoSrc = () => {
     if (isHomePage) {
       // Homepage: always white logo since navbar is static and transparent
-      return "/src/assets/Untitled design (1).svg";
+      return "/logo-white.svg";
     } else {
       // Other pages: always colored logo
-      return "/src/assets/Untitled design (2).svg";
+      return "/logo-white.svg"; // Using same logo for now since we only have white version
     }
   };
 
@@ -78,11 +78,7 @@ const Header = () => {
   };
 
   return (
-    <motion.header
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${getNavbarBackground()}`}
-    >
+    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${getNavbarBackground()}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-24 lg:h-28 py-3">
           {/* Left Navigation */}
@@ -119,7 +115,15 @@ const Header = () => {
                   src={getLogoSrc()}
                   alt="Zephyr Events"
                   className="h-32 lg:h-36 w-auto transition-all duration-500"
+                  onError={(e) => {
+                    // Fallback if logo doesn't load
+                    e.currentTarget.style.display = 'none';
+                    e.currentTarget.nextElementSibling?.classList.remove('hidden');
+                  }}
                 />
+                <div className="hidden text-2xl font-heading font-bold text-white">
+                  Zephyr Events
+                </div>
               </motion.div>
             </Link>
           </div>
@@ -185,7 +189,7 @@ const Header = () => {
           </motion.div>
         )}
       </AnimatePresence>
-    </motion.header>
+    </header>
   );
 };
 
