@@ -17,9 +17,9 @@ const Header = () => {
   ];
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-background-500/95 backdrop-blur-md border-b border-neutral-200/20">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-transparent">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
+        <div className="flex items-center justify-between h-24">
           {/* Logo */}
           <div className="flex items-center">
             <Link to="/" className="flex items-center group">
@@ -28,9 +28,9 @@ const Header = () => {
                 className="transition-all duration-300"
               >
                 <img
-                  src="/logo-colored.svg"
+                  src="/src/assets/Untitled design (1).svg"
                   alt="Zephyr Events"
-                  className="h-12 w-auto transition-all duration-500"
+                  className="h-20 w-auto transition-all duration-500"
                   onError={(e) => {
                     const target = e.currentTarget as HTMLImageElement;
                     target.style.display = 'none';
@@ -40,58 +40,54 @@ const Header = () => {
                     }
                   }}
                 />
-                <div className="hidden text-xl font-heading font-bold text-neutral-800 tracking-wider">
+                <div className="hidden text-2xl font-heading font-bold text-neutral-800 tracking-wider">
                   ZEPHYR EVENTS
                 </div>
               </motion.div>
             </Link>
           </div>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center space-x-12">
-            {navigation.map((item) => (
-              <Link
-                key={item.name}
-                to={item.href}
-                className={`relative text-sm font-medium tracking-wide transition-all duration-300 ${
-                  location.pathname === item.href
-                    ? 'text-primary-900'
-                    : 'text-neutral-600 hover:text-primary-900'
-                }`}
-              >
-                {item.name}
-                {location.pathname === item.href && (
-                  <motion.div
-                    layoutId="activeNav"
-                    className="absolute -bottom-1 left-0 right-0 h-0.5 bg-primary-900"
-                  />
-                )}
-              </Link>
-            ))}
+          {/* Centered Desktop Navigation */}
+          <nav className="hidden lg:flex items-center justify-center flex-1">
+            <div className="flex items-center space-x-12">
+              {navigation.map((item) => (
+                <Link
+                  key={item.name}
+                  to={item.href}
+                  className={`relative text-sm font-medium tracking-wide transition-all duration-300 ${
+                    location.pathname === item.href
+                      ? 'text-primary-900'
+                      : 'text-neutral-700 hover:text-primary-900'
+                  }`}
+                >
+                  {item.name}
+                  {location.pathname === item.href && (
+                    <motion.div
+                      layoutId="activeNav"
+                      className="absolute -bottom-1 left-0 right-0 h-0.5 bg-primary-900"
+                    />
+                  )}
+                </Link>
+              ))}
+            </div>
           </nav>
 
-          {/* Right Side - Social & CTA */}
-          <div className="hidden lg:flex items-center space-x-6">
+          {/* Right Side - Instagram Only */}
+          <div className="hidden lg:flex items-center">
             <a
               href="https://instagram.com/zephyrevents"
               target="_blank"
               rel="noopener noreferrer"
-              className="p-2 text-neutral-600 hover:text-primary-900 transition-colors"
+              className="p-2 text-neutral-700 hover:text-primary-900 transition-colors"
             >
-              <Instagram className="h-5 w-5" />
+              <Instagram className="h-6 w-6" />
             </a>
-            <Link
-              to="/contact"
-              className="bg-primary-900 text-white px-6 py-2.5 rounded-sm text-sm font-medium tracking-wide hover:bg-primary-800 transition-all duration-300 shadow-sm hover:shadow-md"
-            >
-              Contact Us
-            </Link>
           </div>
 
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="lg:hidden p-2 rounded-md text-neutral-600 hover:text-primary-900 transition-colors"
+            className="lg:hidden p-2 rounded-md text-neutral-700 hover:text-primary-900 transition-colors"
           >
             {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </button>
@@ -105,7 +101,7 @@ const Header = () => {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="lg:hidden bg-background-500/98 backdrop-blur-md border-t border-neutral-200/20"
+            className="lg:hidden bg-white/95 backdrop-blur-md border-t border-neutral-200/20"
           >
             <div className="px-4 py-6 space-y-4">
               {navigation.map((item) => (
@@ -116,30 +112,21 @@ const Header = () => {
                   className={`block px-3 py-3 text-base font-medium tracking-wide transition-colors ${
                     location.pathname === item.href
                       ? 'text-primary-900 bg-primary-50'
-                      : 'text-neutral-600 hover:text-primary-900 hover:bg-neutral-50'
+                      : 'text-neutral-700 hover:text-primary-900 hover:bg-neutral-50'
                   }`}
                 >
                   {item.name}
                 </Link>
               ))}
-              <div className="pt-4 border-t border-neutral-200">
-                <div className="flex items-center justify-between">
-                  <a
-                    href="https://instagram.com/zephyrevents"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="p-3 text-neutral-600 hover:text-primary-900 transition-colors"
-                  >
-                    <Instagram className="h-5 w-5" />
-                  </a>
-                  <Link
-                    to="/contact"
-                    onClick={() => setIsMobileMenuOpen(false)}
-                    className="bg-primary-900 text-white px-6 py-2.5 rounded-sm text-sm font-medium tracking-wide hover:bg-primary-800 transition-colors"
-                  >
-                    Contact Us
-                  </Link>
-                </div>
+              <div className="pt-4 border-t border-neutral-200 flex justify-center">
+                <a
+                  href="https://instagram.com/zephyrevents"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-3 text-neutral-700 hover:text-primary-900 transition-colors"
+                >
+                  <Instagram className="h-6 w-6" />
+                </a>
               </div>
             </div>
           </motion.div>
