@@ -94,10 +94,12 @@ export default {
         'body': ['Poppins', 'sans-serif'],
         'ppacma': ['PPAcma', 'sans-serif'],
         'opensauce': ['OpenSauceOne', 'sans-serif'],
+        'oswald': ['Oswald', 'sans-serif'],
       },
       fontWeight: {
         'opensauce-regular': '400',
         'opensauce-semibold': '600',
+        'oswald-regular': '400',
       },
       spacing: {
         '34': '8.5rem', // 136px

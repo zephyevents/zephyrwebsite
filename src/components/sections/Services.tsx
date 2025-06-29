@@ -116,8 +116,8 @@ const Services = () => {
 
               {/* Content */}
               <div className="absolute inset-0 p-4 md:p-6 lg:p-8 flex flex-col justify-end text-white">
-                {/* Title */}
-                <h3 className="text-sm md:text-lg lg:text-xl font-heading font-semibold mb-2 md:mb-3 leading-tight">
+                {/* Title - Changed from font-heading to font-oswald */}
+                <h3 className="text-sm md:text-lg lg:text-xl font-oswald font-normal mb-2 md:mb-3 leading-tight uppercase tracking-wide">
                   {service.title}
                 </h3>
 
