@@ -27,9 +27,9 @@ const Footer = () => {
           <div className="lg:col-span-1">
             <div className="flex items-center mb-4">
               <img
-                src="/logozephyrwh.png"
+                src="/logozephyrfooter.png"
                 alt="Zephyr Events"
-                className="h-20 w-auto"
+                className="h-28 w-auto"
                 onError={(e) => {
                   // Fallback if logo doesn't load
                   const target = e.currentTarget as HTMLImageElement;
