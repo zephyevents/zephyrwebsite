@@ -17,17 +17,17 @@ const Header = () => {
   return (
     <header className="absolute top-0 left-0 right-0 z-50 bg-transparent">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20 pt-2">
+        <div className="flex items-center justify-between h-16 sm:h-20 lg:h-24">
           {/* Mobile Menu Button - Left side on mobile */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="lg:hidden p-2 rounded-md text-white hover:text-white transition-colors order-1"
+            className="lg:hidden p-2 rounded-md text-white hover:text-white transition-colors z-50"
           >
-            {isMobileMenuOpen ? <X className="h-7 w-7" /> : <Menu className="h-7 w-7" />}
+            {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </button>
 
           {/* Logo - Centered on mobile/tablet, left on desktop */}
-          <div className="flex items-center order-2 lg:order-1">
+          <div className="flex items-center justify-center lg:justify-start flex-1 lg:flex-initial">
             <Link to="/" className="flex items-center group">
               <motion.div
                 whileHover={{ scale: 1.05 }}
@@ -36,7 +36,7 @@ const Header = () => {
                 <img
                   src="/logozephyrwh.png"
                   alt="Zephyr Events"
-                  className="h-16 md:h-20 lg:h-24 w-auto transition-all duration-500"
+                  className="h-12 sm:h-16 lg:h-20 w-auto transition-all duration-500"
                   onError={(e) => {
                     console.log('Logo failed to load, showing fallback text');
                     const target = e.currentTarget as HTMLImageElement;
@@ -47,7 +47,7 @@ const Header = () => {
                     }
                   }}
                 />
-                <div className="hidden text-xl md:text-2xl font-heading font-bold text-white tracking-wider">
+                <div className="hidden text-lg sm:text-xl lg:text-2xl font-heading font-bold text-white tracking-wider">
                   ZEPHYR EVENTS
                 </div>
               </motion.div>
@@ -55,8 +55,8 @@ const Header = () => {
           </div>
 
           {/* Centered Desktop Navigation */}
-          <nav className="hidden lg:flex items-center justify-center absolute left-1/2 transform -translate-x-1/2 order-2">
-            <div className="flex items-center space-x-12">
+          <nav className="hidden lg:flex items-center justify-center absolute left-1/2 transform -translate-x-1/2">
+            <div className="flex items-center space-x-8 xl:space-x-12">
               {navigation.map((item) => (
                 <Link
                   key={item.name}
@@ -80,25 +80,34 @@ const Header = () => {
           </nav>
 
           {/* Right Side - Instagram and Contact Button */}
-          <div className="hidden lg:flex items-center space-x-4 ml-auto order-3">
+          <div className="hidden lg:flex items-center space-x-4">
             <a
               href="https://instagram.com/zephyrevents"
               target="_blank"
               rel="noopener noreferrer"
               className="p-2 text-white hover:text-white transition-colors"
             >
-              <Instagram className="h-6 w-6" />
+              <Instagram className="h-5 w-5" />
             </a>
             <Link
               to="/contact"
-              className="px-6 py-2 bg-white/20 backdrop-blur-sm text-white border border-white/30 rounded-full text-sm font-opensauce font-medium hover:bg-white/30 transition-all duration-300"
+              className="px-4 py-2 bg-white/20 backdrop-blur-sm text-white border border-white/30 rounded-full text-sm font-opensauce font-medium hover:bg-white/30 transition-all duration-300"
             >
               Contact
             </Link>
           </div>
 
-          {/* Spacer for mobile to balance layout */}
-          <div className="lg:hidden w-12 order-3"></div>
+          {/* Mobile Instagram Icon */}
+          <div className="lg:hidden">
+            <a
+              href="https://instagram.com/zephyrevents"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-2 text-white hover:text-white transition-colors"
+            >
+              <Instagram className="h-5 w-5" />
+            </a>
+          </div>
         </div>
       </div>
 
@@ -133,16 +142,6 @@ const Header = () => {
               >
                 Contact
               </Link>
-              <div className="pt-4 border-t border-neutral-200 flex justify-center">
-                <a
-                  href="https://instagram.com/wezephyr"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-3 text-neutral-700 hover:text-primary-900 transition-colors"
-                >
-                  <Instagram className="h-6 w-6" />
-                </a>
-              </div>
             </div>
           </motion.div>
         )}

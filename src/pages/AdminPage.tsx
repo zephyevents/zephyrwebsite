@@ -43,7 +43,7 @@ const AdminPage = () => {
   if (!isAuthenticated) {
     return (
       <div className="min-h-screen bg-background-500 flex items-center justify-center px-4">
-        {/* Hero Section with Slideshow */}
+        {/* Hero Section */}
         <div className="absolute inset-0 w-full h-full">
           <img
             src="https://images.pexels.com/photos/1024993/pexels-photo-1024993.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&fit=crop"

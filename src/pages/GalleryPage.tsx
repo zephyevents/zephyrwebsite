@@ -123,8 +123,8 @@ const GalleryPage = () => {
 
   return (
     <div className="bg-background-500 overflow-x-hidden">
-      {/* Hero Section with Slideshow */}
-      <section className="relative h-[95vh] md:h-[95vh] lg:min-h-screen flex items-center justify-center overflow-hidden">
+      {/* Hero Section */}
+      <section className="relative h-[95vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 w-full h-full">
           <img
             src="https://images.pexels.com/photos/1616113/pexels-photo-1616113.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&fit=crop"
@@ -140,10 +140,10 @@ const GalleryPage = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h1 className="text-4xl lg:text-6xl font-heading font-bold mb-6">
+            <h1 className="text-3xl sm:text-4xl lg:text-6xl font-heading font-bold mb-6">
               Event Gallery
             </h1>
-            <p className="text-xl leading-relaxed max-w-3xl mx-auto">
+            <p className="text-lg sm:text-xl leading-relaxed max-w-3xl mx-auto">
               Explore our portfolio of beautiful weddings and events. Each celebration tells a unique 
               story of love, joy, and unforgettable moments.
             </p>
