@@ -17,9 +17,9 @@ const Header = () => {
   return (
     <header className="absolute top-0 left-0 right-0 z-50 bg-transparent">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20 pt-2">
-          {/* Logo - h-30 and clickable home link */}
-          <div className="flex items-center">
+        <div className="flex items-center justify-between lg:justify-start h-20 pt-2">
+          {/* Logo - Centered on mobile/tablet, left on desktop */}
+          <div className="flex items-center lg:flex-none absolute left-1/2 transform -translate-x-1/2 lg:relative lg:left-auto lg:transform-none">
             <Link to="/" className="flex items-center group">
               <motion.div
                 whileHover={{ scale: 1.05 }}
@@ -73,7 +73,7 @@ const Header = () => {
           </nav>
 
           {/* Right Side - Instagram and Contact Button */}
-          <div className="hidden lg:flex items-center space-x-4">
+          <div className="hidden lg:flex items-center space-x-4 ml-auto">
             <a
               href="https://instagram.com/zephyrevents"
               target="_blank"
@@ -90,12 +90,12 @@ const Header = () => {
             </Link>
           </div>
 
-          {/* Mobile Menu Button */}
+          {/* Mobile Menu Button - Increased size */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             className="lg:hidden p-2 rounded-md text-white hover:text-white transition-colors"
           >
-            {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+            {isMobileMenuOpen ? <X className="h-7 w-7" /> : <Menu className="h-7 w-7" />}
           </button>
         </div>
       </div>
