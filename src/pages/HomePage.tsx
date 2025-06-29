@@ -9,7 +9,7 @@ import Contact from '../components/sections/Contact';
 
 const HomePage = () => {
   return (
-    <div>
+    <div className="bg-background-500">
       <Hero />
       <Services />
       <DesignCatalogue />

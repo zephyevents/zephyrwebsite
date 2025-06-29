@@ -13,7 +13,7 @@ import Footer from './components/Footer';
 function App() {
   return (
     <Router>
-      <div className="min-h-screen bg-white">
+      <div className="min-h-screen bg-background-500">
         <Header />
         <main>
           <Routes>
