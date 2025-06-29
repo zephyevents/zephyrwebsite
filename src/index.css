@@ -63,22 +63,6 @@ img {
   contain-intrinsic-size: 300px 200px;
 }
 
-/* Optimized animations with will-change and transform3d for GPU acceleration */
-.animate-fade-in {
-  animation: fadeIn 0.4s ease-out forwards;
-  will-change: opacity;
-}
-
-.animate-slide-up {
-  animation: slideUp 0.4s ease-out forwards;
-  will-change: transform, opacity;
-}
-
-.animate-scale-up {
-  animation: scaleUp 0.2s ease-out forwards;
-  will-change: transform;
-}
-
 /* GPU-accelerated hover effects */
 .hover-scale {
   transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -101,38 +85,6 @@ img {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
-}
-
-/* Optimized keyframes with transform3d */
-@keyframes fadeIn {
-  from { 
-    opacity: 0;
-    transform: translateZ(0);
-  }
-  to { 
-    opacity: 1;
-    transform: translateZ(0);
-  }
-}
-
-@keyframes slideUp {
-  from { 
-    opacity: 0;
-    transform: translate3d(0, 20px, 0);
-  }
-  to { 
-    opacity: 1;
-    transform: translate3d(0, 0, 0);
-  }
-}
-
-@keyframes scaleUp {
-  from { 
-    transform: scale3d(0.95, 0.95, 1);
-  }
-  to { 
-    transform: scale3d(1, 1, 1);
-  }
 }
 
 /* Reduce motion for accessibility */

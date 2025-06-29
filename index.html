@@ -34,17 +34,6 @@
         overflow-x: hidden;
       }
       
-      .hero-loading {
-        height: 100vh;
-        background: linear-gradient(135deg, #B03F3F 0%, #8B3333 100%);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: white;
-        font-size: 2rem;
-        font-weight: 600;
-      }
-      
       /* Prevent layout shift */
       img {
         max-width: 100%;
@@ -53,12 +42,7 @@
     </style>
   </head>
   <body>
-    <div id="root">
-      <!-- Loading placeholder to prevent layout shift -->
-      <div class="hero-loading">
-        <div>Loading Zephyr Events...</div>
-      </div>
-    </div>
+    <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
