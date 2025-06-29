@@ -114,20 +114,17 @@ const Services = () => {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
               </div>
 
-              {/* Content - Consistent positioning for all cards */}
-              <div className="absolute inset-0 p-3 md:p-4 lg:p-6 flex flex-col justify-end items-center text-center text-white">
-                {/* Fixed height container to ensure consistent positioning */}
-                <div className="h-20 md:h-24 lg:h-28 flex flex-col justify-center items-center mb-3 md:mb-4 lg:mb-6">
-                  {/* Title - Consistent height and positioning */}
-                  <h3 className="font-oswald text-base md:text-lg lg:text-xl xl:text-2xl font-normal mb-1 md:mb-2 leading-tight uppercase tracking-wide text-center">
-                    {service.title}
-                  </h3>
+              {/* Content - Mobile/Tablet: Bottom center, Desktop: Centered */}
+              <div className="absolute inset-0 p-3 md:p-4 lg:p-6 flex flex-col justify-end lg:justify-center items-center text-center text-white">
+                {/* Title - Increased size across all modes */}
+                <h3 className="font-oswald text-lg md:text-xl lg:text-2xl xl:text-3xl font-normal leading-tight uppercase tracking-wide text-center mb-2 lg:mb-4">
+                  {service.title}
+                </h3>
 
-                  {/* Description - Consistent small size and positioning */}
-                  <p className="text-white/90 leading-relaxed text-xs md:text-xs lg:text-sm font-opensauce opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all duration-300 max-w-xs text-center">
-                    {service.description}
-                  </p>
-                </div>
+                {/* Description - Hidden on mobile/tablet, visible on desktop */}
+                <p className="text-white/90 leading-relaxed text-sm font-opensauce opacity-0 lg:opacity-0 lg:group-hover:opacity-100 transform translate-y-2 lg:group-hover:translate-y-0 transition-all duration-300 max-w-xs text-center hidden lg:block">
+                  {service.description}
+                </p>
               </div>
 
               {/* Hover Border Effect */}
