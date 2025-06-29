@@ -227,7 +227,7 @@ const GalleryPage = () => {
             <button className="bg-primary-900 text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-primary-800 transition-colors shadow-lg hover:shadow-xl">
               Load More Images
             </button>
-          </div>
+          </motion.div>
         </div>
       </section>
 
