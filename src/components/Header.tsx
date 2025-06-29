@@ -55,14 +55,14 @@ const Header = () => {
     }
   };
 
-  // Logo logic - use public path for deployed version
+  // Logo logic - use the actual uploaded logo files
   const getLogoSrc = () => {
     if (isHomePage) {
-      // Homepage: always white logo since navbar is static and transparent
-      return "/logo-white.svg";
+      // Homepage: white logo for transparent background
+      return "/src/assets/Untitled design (1).svg";
     } else {
-      // Other pages: always colored logo
-      return "/logo-white.svg"; // Using same logo for now since we only have white version
+      // Other pages: colored logo for white background
+      return "/src/assets/Untitled design (2).svg";
     }
   };
 
@@ -117,11 +117,15 @@ const Header = () => {
                   className="h-32 lg:h-36 w-auto transition-all duration-500"
                   onError={(e) => {
                     // Fallback if logo doesn't load
+                    console.log('Logo failed to load, showing fallback text');
                     e.currentTarget.style.display = 'none';
-                    e.currentTarget.nextElementSibling?.classList.remove('hidden');
+                    const fallback = e.currentTarget.nextElementSibling as HTMLElement;
+                    if (fallback) {
+                      fallback.classList.remove('hidden');
+                    }
                   }}
                 />
-                <div className="hidden text-2xl font-heading font-bold text-white">
+                <div className={`hidden text-2xl font-heading font-bold ${getMenuTextColor()}`}>
                   Zephyr Events
                 </div>
               </motion.div>
