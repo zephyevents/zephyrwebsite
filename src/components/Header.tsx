@@ -4,19 +4,9 @@ import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const Header = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
   const isHomePage = location.pathname === '/';
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   const leftNavigation = [
     { name: 'Home', href: '/' },
@@ -30,11 +20,11 @@ const Header = () => {
     { name: 'Contact', href: '/contact' },
   ];
 
-  // Determine menu text colors based on page and scroll
+  // Determine menu text colors based on page
   const getMenuTextColor = () => {
     if (isHomePage) {
-      // Homepage: white when not scrolled, black when scrolled
-      return isScrolled ? 'text-neutral-700' : 'text-white';
+      // Homepage: always white text since navbar is static and transparent
+      return 'text-white';
     } else {
       // Other pages: always black text
       return 'text-neutral-700';
@@ -43,7 +33,7 @@ const Header = () => {
 
   const getMenuHoverColor = () => {
     if (isHomePage) {
-      return isScrolled ? 'hover:text-rose-600' : 'hover:text-rose-300';
+      return 'hover:text-rose-300';
     } else {
       return 'hover:text-rose-600';
     }
@@ -51,7 +41,7 @@ const Header = () => {
 
   const getActiveColor = () => {
     if (isHomePage) {
-      return isScrolled ? 'text-rose-600' : 'text-rose-300';
+      return 'text-rose-300';
     } else {
       return 'text-rose-600';
     }
@@ -59,7 +49,7 @@ const Header = () => {
 
   const getActiveIndicatorColor = () => {
     if (isHomePage) {
-      return isScrolled ? 'bg-rose-500' : 'bg-rose-300';
+      return 'bg-rose-300';
     } else {
       return 'bg-rose-500';
     }
@@ -68,13 +58,22 @@ const Header = () => {
   // Logo logic
   const getLogoSrc = () => {
     if (isHomePage) {
-      // Homepage: white logo when not scrolled, colored when scrolled
-      return isScrolled 
-        ? "/src/assets/Untitled design (2).svg" 
-        : "/src/assets/Untitled design (1).svg";
+      // Homepage: always white logo since navbar is static and transparent
+      return "/src/assets/Untitled design (1).svg";
     } else {
       // Other pages: always colored logo
       return "/src/assets/Untitled design (2).svg";
+    }
+  };
+
+  // Background logic
+  const getNavbarBackground = () => {
+    if (isHomePage) {
+      // Homepage: always transparent
+      return 'bg-transparent';
+    } else {
+      // Other pages: always white background
+      return 'bg-white/95 backdrop-blur-md shadow-lg';
     }
   };
 
@@ -82,11 +81,7 @@ const Header = () => {
     <motion.header
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      className={`absolute top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled
-          ? 'bg-white/95 backdrop-blur-md shadow-lg'
-          : 'bg-transparent'
-      }`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${getNavbarBackground()}`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-24 lg:h-28 py-3">
@@ -123,7 +118,7 @@ const Header = () => {
                 <img
                   src={getLogoSrc()}
                   alt="Zephyr Events"
-                  className="h-28 lg:h-32 w-auto transition-all duration-500"
+                  className="h-32 lg:h-36 w-auto transition-all duration-500"
                 />
               </motion.div>
             </Link>
