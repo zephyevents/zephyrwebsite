@@ -29,8 +29,8 @@ const Services = () => {
       image: "/hospitality.jpg"
     },
     {
-      title: "Entertainment & Special Effects",
-      description: "Live performances, entertainment coordination and special effects that create unforgettable atmospheres",
+      title: "Entertainment",
+      description: "Live performances and entertainment coordination that create unforgettable atmospheres",
       image: "/enter.JPG"
     },
     {
@@ -54,8 +54,8 @@ const Services = () => {
       image: "https://images.pexels.com/photos/2959192/pexels-photo-2959192.jpeg?auto=compress&cs=tinysrgb&w=600&h=600&fit=crop"
     },
     {
-      title: "Logistics Management",
-      description: "Comprehensive logistics coordination ensuring seamless execution of all event elements",
+      title: "Special Effects",
+      description: "Spectacular visual effects and technical elements that add magic to your celebration",
       image: "https://images.pexels.com/photos/264917/pexels-photo-264917.jpeg?auto=compress&cs=tinysrgb&w=600&h=600&fit=crop"
     },
     {
@@ -64,8 +64,8 @@ const Services = () => {
       image: "https://images.pexels.com/photos/1779487/pexels-photo-1779487.jpeg?auto=compress&cs=tinysrgb&w=600&h=600&fit=crop"
     },
     {
-      title: "Renting Essentials",
-      description: "Complete rental solutions for furniture, equipment, and all event essentials",
+      title: "Miscellaneous",
+      description: "Additional services and custom solutions tailored to your unique event requirements",
       image: "https://images.pexels.com/photos/1036623/pexels-photo-1036623.jpeg?auto=compress&cs=tinysrgb&w=600&h=600&fit=crop"
     }
   ];
