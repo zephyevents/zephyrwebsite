@@ -95,6 +95,10 @@ export default {
         'ppacma': ['PPAcma', 'sans-serif'],
         'opensauce': ['OpenSauceOne', 'sans-serif'],
       },
+      fontWeight: {
+        'opensauce-regular': '400',
+        'opensauce-semibold': '600',
+      },
       spacing: {
         '34': '8.5rem', // 136px
       },

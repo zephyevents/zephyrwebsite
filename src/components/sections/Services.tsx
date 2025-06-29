@@ -96,15 +96,19 @@ const Services = () => {
     }
   ];
 
+  const handleTalkToUs = () => {
+    window.open('https://wa.me/919027379045?text=Hi%21%20I%27m%20interested%20in%20your%20wedding%20planning%20services.%20Can%20you%20share%20more%20details%3F', '_blank');
+  };
+
   return (
-    <section ref={ref} className="py-20 lg:py-32 bg-neutral-50">
+    <section ref={ref} className="py-12 lg:py-20 bg-neutral-50" style={{ backgroundColor: '#EDE6DE' }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-20"
+          className="text-center mb-16"
         >
           <h2 className="text-4xl lg:text-5xl font-heading font-normal text-neutral-800 mb-6">
             Thoughtful services, priceless moments
@@ -137,10 +141,10 @@ const Services = () => {
 
                 {/* Content */}
                 <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-                  <h3 className="text-2xl font-ppacma font-light mb-3 text-center group-hover:text-white transition-colors">
+                  <h3 className="text-2xl font-opensauce font-semibold mb-3 text-center group-hover:text-white transition-colors uppercase">
                     {service.title}
                   </h3>
-                  <p className="text-white/90 leading-relaxed text-sm opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300 text-center">
+                  <p className="text-white/90 leading-relaxed text-sm opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300 text-center font-opensauce">
                     {service.description}
                   </p>
                 </div>
@@ -164,17 +168,15 @@ const Services = () => {
               Let's discuss your vision and create a customized service package that perfectly 
               matches your dreams and requirements.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex justify-center">
               <button 
+                onClick={handleTalkToUs}
                 className="text-white px-8 py-4 rounded-full text-lg font-medium transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
                 style={{ backgroundColor: '#B03F3F' }}
                 onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#9A3535'}
                 onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#B03F3F'}
               >
-                Get Free Consultation
-              </button>
-              <button className="border-2 border-neutral-300 hover:border-neutral-400 text-neutral-700 hover:text-neutral-800 px-8 py-4 rounded-full text-lg font-medium transition-all duration-300">
-                View Our Portfolio
+                Talk to Us
               </button>
             </div>
           </div>
