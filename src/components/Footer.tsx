@@ -9,7 +9,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
           {/* Left - Logo and Social Icons */}
           <div className="text-center md:text-left">
-            <div className="flex justify-center md:justify-start mb-6">
+            <div className="flex justify-center md:justify-start mb-3 md:mb-6">
               <img
                 src="/logozephyrfooter.png"
                 alt="Zephyr Events"
@@ -78,11 +78,11 @@ const Footer = () => {
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-neutral-300 mt-6 pt-4 flex flex-col md:flex-row justify-between items-center text-center md:text-left">
-          <p className="text-neutral-600 text-sm font-opensauce mb-4 md:mb-0">
+        <div className="border-t border-neutral-300 mt-6 pt-4 text-center">
+          <p className="text-neutral-600 text-sm font-opensauce mb-3 md:mb-0">
             © 2025 Zephyr. All Rights Reserved
           </p>
-          <div className="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-6">
+          <div className="flex justify-center space-x-6">
             <a href="#" className="text-neutral-600 hover:text-primary-900 transition-colors text-sm font-opensauce">
               Privacy Policy
             </a>
