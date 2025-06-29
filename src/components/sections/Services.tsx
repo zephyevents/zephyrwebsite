@@ -11,27 +11,27 @@ const Services = () => {
     {
       title: "Planning & Execution",
       description: "Complete end-to-end wedding planning with meticulous attention to every detail",
-      image: "https://images.pexels.com/photos/1444442/pexels-photo-1444442.jpeg?auto=compress&cs=tinysrgb&w=600&h=600&fit=crop"
+      image: "/image.png"
     },
     {
       title: "Destination & Venue Selection",
       description: "Curated selection of stunning venues and destinations that perfectly match your vision",
-      image: "https://images.pexels.com/photos/1616113/pexels-photo-1616113.jpeg?auto=compress&cs=tinysrgb&w=600&h=600&fit=crop"
+      image: "/destination.JPG"
     },
     {
       title: "Design & Decor Management",
       description: "Breathtaking decorations and design management that transform spaces into magical celebrations",
-      image: "https://images.pexels.com/photos/1128782/pexels-photo-1128782.jpeg?auto=compress&cs=tinysrgb&w=600&h=600&fit=crop"
+      image: "/decor.jpg"
     },
     {
       title: "RSVP & Hospitality",
       description: "Comprehensive guest management and exceptional hospitality services for memorable experiences",
-      image: "https://images.pexels.com/photos/958545/pexels-photo-958545.jpeg?auto=compress&cs=tinysrgb&w=600&h=600&fit=crop"
+      image: "/hospitality.jpg"
     },
     {
       title: "Entertainment & Special Effects",
       description: "Live performances, entertainment coordination and special effects that create unforgettable atmospheres",
-      image: "https://images.pexels.com/photos/1763075/pexels-photo-1763075.jpeg?auto=compress&cs=tinysrgb&w=600&h=600&fit=crop"
+      image: "/enter.JPG"
     },
     {
       title: "Special Entries",
