@@ -18,7 +18,7 @@ const Header = () => {
     <header className="absolute top-0 left-0 right-0 z-50 bg-transparent">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20 pt-2">
-          {/* Logo - h-28 and moved up more, now clickable home link */}
+          {/* Logo - h-30 and moved up more, now clickable home link */}
           <div className="flex items-center">
             <Link to="/" className="flex items-center group">
               <motion.div
@@ -28,7 +28,7 @@ const Header = () => {
                 <img
                   src="/logozephyrwh.png"
                   alt="Zephyr Events"
-                  className="h-28 w-auto transition-all duration-500"
+                  className="h-30 w-auto transition-all duration-500"
                   onError={(e) => {
                     const target = e.currentTarget as HTMLImageElement;
                     target.style.display = 'none';
