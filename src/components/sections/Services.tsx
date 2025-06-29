@@ -111,10 +111,10 @@ const Services = () => {
           className="text-center mb-16"
         >
           <h2 className="text-4xl lg:text-5xl font-heading font-normal text-neutral-800 mb-6">
-            Thoughtful services, priceless moments
+            Bespoke Services, Lasting Impressions
           </h2>
           <p className="text-lg font-medium tracking-wider uppercase" style={{ color: '#B03F3F' }}>
-            LOVINGLY CRAFTED JUST FOR YOU
+            LOVINGLY TAILORED TO YOUR VISION
           </p>
         </motion.div>
 
@@ -141,7 +141,7 @@ const Services = () => {
 
                 {/* Content */}
                 <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-                  <h3 className="text-2xl font-opensauce font-semibold mb-3 text-center group-hover:text-white transition-colors uppercase">
+                  <h3 className="text-2xl font-heading font-semibold mb-3 text-center group-hover:text-white transition-colors">
                     {service.title}
                   </h3>
                   <p className="text-white/90 leading-relaxed text-sm opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300 text-center font-opensauce">
