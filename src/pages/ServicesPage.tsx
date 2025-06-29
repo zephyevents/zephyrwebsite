@@ -225,7 +225,7 @@ const ServicesPage = () => {
         </div>
       </section>
 
-      {/* Plan Your Happily Ever After Section */}
+      {/* Plan Your Happily Ever After Section - FIXED CENTER ALIGNMENT */}
       <section className="py-12 lg:py-20 bg-gradient-to-br from-rose-50 to-mauve-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
@@ -246,30 +246,16 @@ const ServicesPage = () => {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="bg-white rounded-3xl p-8 lg:p-12 shadow-xl"
             >
-              <div className="grid md:grid-cols-2 gap-8">
-                {/* Left Column */}
-                <div className="flex flex-col justify-center">
-                  <ul className="space-y-4">
-                    {planningFeatures.slice(0, Math.ceil(planningFeatures.length / 2)).map((feature) => (
-                      <li key={feature} className="flex items-center">
-                        <Check className="h-5 w-5 text-primary-900 mr-3 flex-shrink-0" />
-                        <span className="text-neutral-600">{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                {/* Right Column */}
-                <div className="flex flex-col justify-center">
-                  <ul className="space-y-4">
-                    {planningFeatures.slice(Math.ceil(planningFeatures.length / 2)).map((feature) => (
-                      <li key={feature} className="flex items-center">
-                        <Check className="h-5 w-5 text-primary-900 mr-3 flex-shrink-0" />
-                        <span className="text-neutral-600">{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+              {/* Center-aligned single column layout */}
+              <div className="max-w-2xl mx-auto">
+                <ul className="space-y-4">
+                  {planningFeatures.map((feature) => (
+                    <li key={feature} className="flex items-center justify-start">
+                      <Check className="h-5 w-5 text-primary-900 mr-3 flex-shrink-0" />
+                      <span className="text-neutral-600">{feature}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
 
               {/* CTA Button */}
