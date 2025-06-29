@@ -46,8 +46,8 @@ const Header = () => {
             </Link>
           </div>
 
-          {/* Centered Desktop Navigation - moved up more */}
-          <nav className="hidden lg:flex items-center justify-center flex-1">
+          {/* Centered Desktop Navigation - moved up more and properly centered */}
+          <nav className="hidden lg:flex items-center justify-center absolute left-1/2 transform -translate-x-1/2">
             <div className="flex items-center space-x-12">
               {navigation.map((item) => (
                 <Link
