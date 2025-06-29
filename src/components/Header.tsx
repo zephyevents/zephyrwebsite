@@ -18,8 +18,8 @@ const Header = () => {
   return (
     <header className="absolute top-0 left-0 right-0 z-50 bg-transparent">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-24 pt-4">
-          {/* Logo - Made Bigger and moved up */}
+        <div className="flex items-center justify-between h-20 pt-2">
+          {/* Logo - h-28 and moved up more */}
           <div className="flex items-center">
             <Link to="/" className="flex items-center group">
               <motion.div
@@ -29,7 +29,7 @@ const Header = () => {
                 <img
                   src="/logozephyrwh.png"
                   alt="Zephyr Events"
-                  className="h-20 w-auto transition-all duration-500"
+                  className="h-28 w-auto transition-all duration-500"
                   onError={(e) => {
                     const target = e.currentTarget as HTMLImageElement;
                     target.style.display = 'none';
@@ -46,7 +46,7 @@ const Header = () => {
             </Link>
           </div>
 
-          {/* Centered Desktop Navigation - moved up */}
+          {/* Centered Desktop Navigation - moved up more */}
           <nav className="hidden lg:flex items-center justify-center flex-1">
             <div className="flex items-center space-x-12">
               {navigation.map((item) => (
@@ -71,7 +71,7 @@ const Header = () => {
             </div>
           </nav>
 
-          {/* Right Side - Instagram and Contact Button - moved up */}
+          {/* Right Side - Instagram and Contact Button - moved up more */}
           <div className="hidden lg:flex items-center space-x-4">
             <a
               href="https://instagram.com/zephyrevents"
@@ -89,7 +89,7 @@ const Header = () => {
             </Link>
           </div>
 
-          {/* Mobile Menu Button - moved up */}
+          {/* Mobile Menu Button - moved up more */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             className="lg:hidden p-2 rounded-md text-white hover:text-white transition-colors"
