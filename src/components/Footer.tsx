@@ -27,10 +27,22 @@ const Footer = () => {
           <div className="lg:col-span-1">
             <div className="flex items-center mb-4">
               <img
-                src="/src/assets/Untitled design (1).svg"
+                src="/logo-white.svg"
                 alt="Zephyr Events"
                 className="h-16 w-auto"
+                onError={(e) => {
+                  // Fallback if logo doesn't load
+                  const target = e.currentTarget as HTMLImageElement;
+                  target.style.display = 'none';
+                  const fallback = target.nextElementSibling as HTMLElement;
+                  if (fallback) {
+                    fallback.classList.remove('hidden');
+                  }
+                }}
               />
+              <div className="hidden text-xl font-heading font-bold text-white">
+                Zephyr Events
+              </div>
             </div>
             <p className="text-neutral-300 text-sm leading-relaxed mb-6">
               Creating unforgettable weddings and events with elegant design and flawless execution. 

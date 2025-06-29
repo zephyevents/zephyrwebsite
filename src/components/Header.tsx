@@ -55,14 +55,14 @@ const Header = () => {
     }
   };
 
-  // Logo logic - use the actual uploaded logo files
+  // Logo logic - use the actual uploaded logo files from public directory
   const getLogoSrc = () => {
     if (isHomePage) {
       // Homepage: white logo for transparent background
-      return "/src/assets/Untitled design (1).svg";
+      return "/logo-white.svg";
     } else {
       // Other pages: colored logo for white background
-      return "/src/assets/Untitled design (2).svg";
+      return "/logo-colored.svg";
     }
   };
 
@@ -118,8 +118,9 @@ const Header = () => {
                   onError={(e) => {
                     // Fallback if logo doesn't load
                     console.log('Logo failed to load, showing fallback text');
-                    e.currentTarget.style.display = 'none';
-                    const fallback = e.currentTarget.nextElementSibling as HTMLElement;
+                    const target = e.currentTarget as HTMLImageElement;
+                    target.style.display = 'none';
+                    const fallback = target.nextElementSibling as HTMLElement;
                     if (fallback) {
                       fallback.classList.remove('hidden');
                     }
