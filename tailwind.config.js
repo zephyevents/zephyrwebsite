@@ -95,6 +95,9 @@ export default {
         'ppacma': ['PPAcma', 'sans-serif'],
         'opensauce': ['OpenSauceOne', 'sans-serif'],
       },
+      spacing: {
+        '34': '8.5rem', // 136px
+      },
       animation: {
         'fade-in': 'fadeIn 0.6s ease-in-out',
         'slide-up': 'slideUp 0.6s ease-out',
