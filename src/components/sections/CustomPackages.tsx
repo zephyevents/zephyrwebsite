@@ -40,7 +40,12 @@ const CustomPackages = () => {
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
               transition={{ duration: 0.8, delay: 0.3 }}
             >
-              <button className="bg-white text-neutral-800 px-6 sm:px-8 py-3 sm:py-4 rounded-full font-medium hover:bg-neutral-100 transition-colors shadow-lg text-sm sm:text-base">
+              <button 
+                className="text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full font-medium transition-all duration-300 shadow-lg text-sm sm:text-base"
+                style={{ backgroundColor: '#B03F3F' }}
+                onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#9A3535'}
+                onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#B03F3F'}
+              >
                 Get a Free Design Consultation
               </button>
             </motion.div>

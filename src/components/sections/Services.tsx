@@ -109,7 +109,7 @@ const Services = () => {
           <h2 className="text-4xl lg:text-5xl font-heading font-normal text-neutral-800 mb-6">
             Thoughtful services, priceless moments
           </h2>
-          <p className="text-lg text-rose-500 font-medium tracking-wider uppercase">
+          <p className="text-lg font-medium tracking-wider uppercase" style={{ color: '#B03F3F' }}>
             LOVINGLY CRAFTED JUST FOR YOU
           </p>
         </motion.div>
@@ -165,7 +165,12 @@ const Services = () => {
               matches your dreams and requirements.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="bg-rose-500 hover:bg-rose-600 text-white px-8 py-4 rounded-full text-lg font-medium transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105">
+              <button 
+                className="text-white px-8 py-4 rounded-full text-lg font-medium transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
+                style={{ backgroundColor: '#B03F3F' }}
+                onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#9A3535'}
+                onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#B03F3F'}
+              >
                 Get Free Consultation
               </button>
               <button className="border-2 border-neutral-300 hover:border-neutral-400 text-neutral-700 hover:text-neutral-800 px-8 py-4 rounded-full text-lg font-medium transition-all duration-300">

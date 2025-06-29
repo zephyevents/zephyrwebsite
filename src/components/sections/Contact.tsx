@@ -166,7 +166,10 @@ const Contact = () => {
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 type="submit"
-                className="w-full bg-primary-900 text-white px-8 py-4 rounded-xl text-lg font-semibold hover:bg-primary-800 transition-colors shadow-lg hover:shadow-xl flex items-center justify-center space-x-2"
+                className="w-full text-white px-8 py-4 rounded-xl text-lg font-semibold transition-colors shadow-lg hover:shadow-xl flex items-center justify-center space-x-2"
+                style={{ backgroundColor: '#B03F3F' }}
+                onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#9A3535'}
+                onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#B03F3F'}
               >
                 <Send className="h-5 w-5" />
                 <span>Send Message</span>
