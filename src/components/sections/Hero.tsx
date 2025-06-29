@@ -26,12 +26,12 @@ const Hero = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-transparent to-black/20" />
       </div>
 
-      {/* Scroll Indicator - Moved up */}
+      {/* Scroll Indicator - Adjusted for tablet */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8, delay: 1 }}
-        className="absolute bottom-20 left-1/2 transform -translate-x-1/2 z-10"
+        className="absolute bottom-20 md:bottom-32 lg:bottom-20 left-1/2 transform -translate-x-1/2 z-10"
       >
         <div className="w-6 h-10 border-2 border-white/70 rounded-full flex justify-center">
           <motion.div
