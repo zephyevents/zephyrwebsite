@@ -86,7 +86,7 @@ const Header = () => {
           {/* Right Side - Instagram and Contact Button */}
           <div className="hidden lg:flex items-center space-x-4 ml-auto order-3">
             <a
-              href="https://instagram.com/zephyrevents"
+              href="https://www.instagram.com/wezephyr/"
               target="_blank"
               rel="noopener noreferrer"
               className="p-2 text-white hover:text-white transition-colors"
@@ -104,7 +104,7 @@ const Header = () => {
           {/* Mobile Instagram Icon - Outside hamburger menu */}
           <div className="lg:hidden order-3">
             <a
-              href="https://instagram.com/zephyrevents"
+              href="https://www.instagram.com/wezephyr/"
               target="_blank"
               rel="noopener noreferrer"
               className="p-2 text-white hover:text-white transition-colors"
