@@ -17,9 +17,17 @@ const Header = () => {
   return (
     <header className="absolute top-0 left-0 right-0 z-50 bg-transparent">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between lg:justify-start h-20 pt-2">
+        <div className="flex items-center justify-between h-20 pt-2">
+          {/* Mobile Menu Button - Left side on mobile */}
+          <button
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            className="lg:hidden p-2 rounded-md text-white hover:text-white transition-colors order-1"
+          >
+            {isMobileMenuOpen ? <X className="h-7 w-7" /> : <Menu className="h-7 w-7" />}
+          </button>
+
           {/* Logo - Centered on mobile/tablet, left on desktop */}
-          <div className="flex items-center lg:flex-none absolute left-1/2 transform -translate-x-1/2 lg:relative lg:left-auto lg:transform-none">
+          <div className="flex items-center order-2 lg:order-1">
             <Link to="/" className="flex items-center group">
               <motion.div
                 whileHover={{ scale: 1.05 }}
@@ -28,7 +36,7 @@ const Header = () => {
                 <img
                   src="/logozephyrwh.png"
                   alt="Zephyr Events"
-                  className="h-30 md:h-30 lg:h-30 w-auto transition-all duration-500"
+                  className="h-16 md:h-20 lg:h-24 w-auto transition-all duration-500"
                   onError={(e) => {
                     console.log('Logo failed to load, showing fallback text');
                     const target = e.currentTarget as HTMLImageElement;
@@ -39,7 +47,7 @@ const Header = () => {
                     }
                   }}
                 />
-                <div className="hidden text-2xl font-heading font-bold text-white tracking-wider">
+                <div className="hidden text-xl md:text-2xl font-heading font-bold text-white tracking-wider">
                   ZEPHYR EVENTS
                 </div>
               </motion.div>
@@ -47,7 +55,7 @@ const Header = () => {
           </div>
 
           {/* Centered Desktop Navigation */}
-          <nav className="hidden lg:flex items-center justify-center absolute left-1/2 transform -translate-x-1/2">
+          <nav className="hidden lg:flex items-center justify-center absolute left-1/2 transform -translate-x-1/2 order-2">
             <div className="flex items-center space-x-12">
               {navigation.map((item) => (
                 <Link
@@ -72,7 +80,7 @@ const Header = () => {
           </nav>
 
           {/* Right Side - Instagram and Contact Button */}
-          <div className="hidden lg:flex items-center space-x-4 ml-auto">
+          <div className="hidden lg:flex items-center space-x-4 ml-auto order-3">
             <a
               href="https://instagram.com/zephyrevents"
               target="_blank"
@@ -89,13 +97,8 @@ const Header = () => {
             </Link>
           </div>
 
-          {/* Mobile Menu Button - Increased size */}
-          <button
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="lg:hidden p-2 rounded-md text-white hover:text-white transition-colors"
-          >
-            {isMobileMenuOpen ? <X className="h-7 w-7" /> : <Menu className="h-7 w-7" />}
-          </button>
+          {/* Spacer for mobile to balance layout */}
+          <div className="lg:hidden w-12 order-3"></div>
         </div>
       </div>
 

@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 
 const Hero = () => {
   return (
-    <section className="relative h-screen md:h-screen lg:min-h-screen flex items-center justify-center overflow-hidden">
+    <section className="relative h-[95vh] md:h-[95vh] lg:min-h-screen flex items-center justify-center overflow-hidden">
       {/* Vimeo Video Background */}
       <div className="absolute inset-0 w-full h-full">
         <div className="relative w-full h-full">
