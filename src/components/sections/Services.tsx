@@ -38,7 +38,7 @@ const Services = () => {
     },
     {
       title: "Photography",
-      image: "https://images.pexels.com/photos/169198/pexels-photo-169198.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop"
+      image: "/phot.jpg"
     },
     {
       title: "Choreography",

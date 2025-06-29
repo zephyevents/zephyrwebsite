@@ -29,6 +29,7 @@ const ServicesPage = () => {
     {
       icon: Calendar,
       title: "Planning & Execution",
+      description: "Complete end-to-end wedding planning with meticulous attention to every detail",
       image: "/image copy.png",
       features: ["Timeline Creation", "Vendor Coordination", "Budget Management", "Day-of Coordination"],
       price: "Starting at $2,500"
@@ -36,6 +37,7 @@ const ServicesPage = () => {
     {
       icon: MapPin,
       title: "Destination & Venue Selection",
+      description: "Curated selection of stunning venues and destinations that perfectly match your vision",
       image: "/udai.webp",
       features: ["Location Scouting", "Venue Negotiations", "Site Visits", "Contract Review"],
       price: "Starting at $800"
@@ -43,6 +45,7 @@ const ServicesPage = () => {
     {
       icon: Palette,
       title: "Design & Decor Management",
+      description: "Breathtaking decorations and design management that transform spaces into magical celebrations",
       image: "/decor.jpg",
       features: ["Custom Design", "Floral Arrangements", "Lighting Design", "Centerpiece Creation"],
       price: "Starting at $1,800"
@@ -50,6 +53,7 @@ const ServicesPage = () => {
     {
       icon: Users,
       title: "RSVP & Hospitality",
+      description: "Comprehensive guest management and exceptional hospitality services for memorable experiences",
       image: "/hospitality.jpg",
       features: ["Guest Management", "RSVP Tracking", "Welcome Services", "Concierge Support"],
       price: "Starting at $50 per guest"
@@ -57,6 +61,7 @@ const ServicesPage = () => {
     {
       icon: Music,
       title: "Entertainment",
+      description: "Live performances and entertainment coordination that create unforgettable atmospheres",
       image: "/enter1.JPG",
       features: ["DJ Services", "Live Bands", "Sound Systems", "Special Effects"],
       price: "Starting at $1,200"
@@ -64,6 +69,7 @@ const ServicesPage = () => {
     {
       icon: Star,
       title: "Special Entries",
+      description: "Grand entrances and special moments that leave lasting impressions on your guests",
       image: "/entry.jpg",
       features: ["Entrance Design", "Special Effects", "Choreography", "Timing Coordination"],
       price: "Starting at $800"
@@ -71,6 +77,7 @@ const ServicesPage = () => {
     {
       icon: ChefHat,
       title: "FnB & Catering",
+      description: "Exquisite culinary experiences with diverse menus and impeccable food & beverage service",
       image: "/catering.JPG",
       features: ["Menu Planning", "Dietary Accommodations", "Service Staff", "Bar Services"],
       price: "Starting at $65 per person"
@@ -78,13 +85,15 @@ const ServicesPage = () => {
     {
       icon: Camera,
       title: "Photography",
-      image: "https://images.pexels.com/photos/169198/pexels-photo-169198.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop",
+      description: "Professional photography capturing every precious moment of your celebration",
+      image: "/phot.jpg",
       features: ["Engagement Sessions", "Wedding Day Coverage", "Photo Albums", "Video Editing"],
       price: "Starting at $2,200"
     },
     {
       icon: Zap,
       title: "Choreography",
+      description: "Professional dance choreography for memorable performances and celebrations",
       image: "/choreo.JPG",
       features: ["Dance Lessons", "Performance Choreography", "Music Selection", "Rehearsal Coordination"],
       price: "Starting at $500"
@@ -92,6 +101,7 @@ const ServicesPage = () => {
     {
       icon: Truck,
       title: "Special Effects",
+      description: "Spectacular visual effects and technical elements that add magic to your celebration",
       image: "/enter.JPG",
       features: ["Transportation", "Setup Coordination", "Timeline Management", "Vendor Logistics"],
       price: "Starting at $1,000"
@@ -99,6 +109,7 @@ const ServicesPage = () => {
     {
       icon: Mail,
       title: "Stationery & Invites",
+      description: "Beautiful stationery and invitations that set the perfect tone for your event",
       image: "/station..jpg",
       features: ["Custom Design", "Digital Invites", "RSVP Management", "Thank You Cards"],
       price: "Starting at $300"
@@ -106,6 +117,7 @@ const ServicesPage = () => {
     {
       icon: Package,
       title: "Miscellaneous",
+      description: "Additional services and custom solutions tailored to your unique event requirements",
       image: "/miscgif.gif",
       features: ["Furniture Rental", "Equipment Rental", "Decor Items", "Setup & Breakdown"],
       price: "Starting at $200"
