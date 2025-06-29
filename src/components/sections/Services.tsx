@@ -46,7 +46,7 @@ const Services = () => {
     },
     {
       title: "Special Effects",
-      image: "/enter.webp",
+      image: "/sfx.webp",
     },
     {
       title: "Stationery & Invites",

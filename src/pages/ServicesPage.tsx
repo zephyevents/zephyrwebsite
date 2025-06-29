@@ -57,7 +57,7 @@ const ServicesPage = () => {
     },
     {
       title: "Special Effects",
-      image: "/enter.webp",
+      image: "/sfx.webp",
       features: ["LED Displays", "Skyshots", "Fireworks", "Fog Machines"]
     },
     {
