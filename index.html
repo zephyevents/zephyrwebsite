@@ -10,12 +10,55 @@
     <meta property="og:title" content="Zephyr Events | Planning & Management" />
     <meta property="og:description" content="Creating unforgettable weddings and events with elegant design and flawless execution." />
     <meta property="og:type" content="website" />
+    
+    <!-- Preconnect to external domains -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://player.vimeo.com">
+    <link rel="preconnect" href="https://images.pexels.com">
+    
+    <!-- Preload critical fonts -->
+    <link rel="preload" href="/src/assets/fonts/OpenSauceOne-Regular.ttf" as="font" type="font/ttf" crossorigin>
+    <link rel="preload" href="/src/assets/fonts/Oswald-Regular.ttf" as="font" type="font/ttf" crossorigin>
+    
+    <!-- Load Google Fonts with display=swap for performance -->
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Critical CSS for above-the-fold content -->
+    <style>
+      /* Critical CSS for immediate rendering */
+      body {
+        margin: 0;
+        font-family: 'Poppins', sans-serif;
+        background-color: #EDE6DE;
+        overflow-x: hidden;
+      }
+      
+      .hero-loading {
+        height: 100vh;
+        background: linear-gradient(135deg, #B03F3F 0%, #8B3333 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 2rem;
+        font-weight: 600;
+      }
+      
+      /* Prevent layout shift */
+      img {
+        max-width: 100%;
+        height: auto;
+      }
+    </style>
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <!-- Loading placeholder to prevent layout shift -->
+      <div class="hero-loading">
+        <div>Loading Zephyr Events...</div>
+      </div>
+    </div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
