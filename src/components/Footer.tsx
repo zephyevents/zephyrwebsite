@@ -82,7 +82,7 @@ const Footer = () => {
           <div className="flex flex-col sm:flex-row justify-between items-center space-y-2 sm:space-y-0">
             {/* Left side - Copyright */}
             <p className="text-neutral-600 text-sm font-opensauce">
-              © 2025 Zephyr. All Rights Reserved
+              © 2025 Zephyr Events. All Rights Reserved
             </p>
             
             {/* Right side - Privacy Policy and Terms */}
