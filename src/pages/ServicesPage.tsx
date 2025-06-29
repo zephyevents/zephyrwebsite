@@ -72,12 +72,16 @@ const ServicesPage = () => {
     }
   ];
 
-  const planningFeatures = [
+  // Split planning features into two groups for side-by-side layout
+  const planningFeaturesGroup1 = [
     "Event planning consultation",
     "Timeline creation", 
     "Vendor recommendations",
     "Day-of coordination",
-    "Venue selection assistance",
+    "Venue selection assistance"
+  ];
+
+  const planningFeaturesGroup2 = [
     "Design & Décor Consultation",
     "Unlimited planning meetings",
     "Weekend support",
@@ -225,7 +229,7 @@ const ServicesPage = () => {
         </div>
       </section>
 
-      {/* Plan Your Happily Ever After Section - FIXED CENTER ALIGNMENT */}
+      {/* Plan Your Happily Ever After Section - FIXED: Two columns centered as a group */}
       <section className="py-12 lg:py-20 bg-gradient-to-br from-rose-50 to-mauve-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
@@ -246,16 +250,33 @@ const ServicesPage = () => {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="bg-white rounded-3xl p-8 lg:p-12 shadow-xl"
             >
-              {/* Center-aligned single column layout */}
-              <div className="max-w-2xl mx-auto">
-                <ul className="space-y-4">
-                  {planningFeatures.map((feature) => (
-                    <li key={feature} className="flex items-center justify-start">
-                      <Check className="h-5 w-5 text-primary-900 mr-3 flex-shrink-0" />
-                      <span className="text-neutral-600">{feature}</span>
-                    </li>
-                  ))}
-                </ul>
+              {/* Two-column layout centered as a group */}
+              <div className="flex justify-center">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-3xl">
+                  {/* Left Column */}
+                  <div>
+                    <ul className="space-y-4">
+                      {planningFeaturesGroup1.map((feature) => (
+                        <li key={feature} className="flex items-center">
+                          <Check className="h-5 w-5 text-primary-900 mr-3 flex-shrink-0" />
+                          <span className="text-neutral-600">{feature}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  {/* Right Column */}
+                  <div>
+                    <ul className="space-y-4">
+                      {planningFeaturesGroup2.map((feature) => (
+                        <li key={feature} className="flex items-center">
+                          <Check className="h-5 w-5 text-primary-900 mr-3 flex-shrink-0" />
+                          <span className="text-neutral-600">{feature}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
               </div>
 
               {/* CTA Button */}
