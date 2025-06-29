@@ -124,7 +124,7 @@ const GalleryPage = () => {
   return (
     <div className="bg-background-500 overflow-x-hidden">
       {/* Hero Section */}
-      <section className="relative h-[92vh] md:h-[95vh] lg:h-screen flex items-center justify-center overflow-hidden">
+      <section className="relative h-[92vh] md:h-[90vh] lg:h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 w-full h-full">
           <img
             src="https://images.pexels.com/photos/1616113/pexels-photo-1616113.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&fit=crop"
@@ -227,7 +227,7 @@ const GalleryPage = () => {
             <button className="bg-primary-900 text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-primary-800 transition-colors shadow-lg hover:shadow-xl">
               Load More Images
             </button>
-          </motion.div>
+          </div>
         </div>
       </section>
 

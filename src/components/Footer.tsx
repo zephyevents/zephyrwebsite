@@ -8,8 +8,8 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
           {/* Left - Logo and Social Icons */}
-          <div className="text-left">
-            <div className="flex justify-start mb-6">
+          <div className="text-center md:text-left">
+            <div className="flex justify-center md:justify-start mb-6">
               <img
                 src="/logozephyrfooter.png"
                 alt="Zephyr Events"
@@ -27,7 +27,7 @@ const Footer = () => {
                 Zephyr Events
               </div>
             </div>
-            <div className="flex justify-start space-x-4">
+            <div className="flex justify-center md:justify-start space-x-4">
               <a 
                 href="https://www.instagram.com/wezephyr/" 
                 target="_blank" 
@@ -56,7 +56,7 @@ const Footer = () => {
           </div>
 
           {/* Center - Contact */}
-          <div className="text-left">
+          <div className="text-center md:text-left">
             <h4 className="text-lg font-opensauce font-medium mb-4" style={{ color: '#B03F3F' }}>Contact</h4>
             <div className="space-y-2">
               <div className="text-neutral-700 text-sm font-opensauce">contact@wezephyr.com</div>
@@ -66,7 +66,7 @@ const Footer = () => {
           </div>
 
           {/* Right - Address */}
-          <div className="text-left">
+          <div className="text-center md:text-left">
             <h4 className="text-lg font-opensauce font-medium mb-4" style={{ color: '#B03F3F' }}>Address</h4>
             <div className="text-neutral-700 text-sm font-opensauce leading-relaxed">
               Zephyr Events E-Commerce Private Limited,<br />
@@ -78,11 +78,11 @@ const Footer = () => {
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-neutral-300 mt-6 pt-4 flex flex-col md:flex-row justify-between items-center">
+        <div className="border-t border-neutral-300 mt-6 pt-4 flex flex-col md:flex-row justify-between items-center text-center md:text-left">
           <p className="text-neutral-600 text-sm font-opensauce mb-4 md:mb-0">
             © 2025 Zephyr. All Rights Reserved
           </p>
-          <div className="flex space-x-6">
+          <div className="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-6">
             <a href="#" className="text-neutral-600 hover:text-primary-900 transition-colors text-sm font-opensauce">
               Privacy Policy
             </a>
