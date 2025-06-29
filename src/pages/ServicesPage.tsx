@@ -131,9 +131,9 @@ const ServicesPage = () => {
   ];
 
   return (
-    <div className="bg-background-500">
+    <div className="bg-background-500 overflow-x-hidden">
       {/* Hero Section with Slideshow */}
-      <section className="relative min-h-[85vh] lg:min-h-screen flex items-center justify-center overflow-hidden">
+      <section className="relative h-screen md:h-screen lg:min-h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 w-full h-full">
           <img
             src="https://images.pexels.com/photos/1444442/pexels-photo-1444442.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&fit=crop"

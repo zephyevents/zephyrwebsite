@@ -28,7 +28,7 @@ const Header = () => {
                 <img
                   src="/logozephyrwh.png"
                   alt="Zephyr Events"
-                  className="h-30 md:h-36 lg:h-30 w-auto transition-all duration-500"
+                  className="h-30 md:h-30 lg:h-30 w-auto transition-all duration-500"
                   onError={(e) => {
                     console.log('Logo failed to load, showing fallback text');
                     const target = e.currentTarget as HTMLImageElement;
