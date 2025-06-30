@@ -25,14 +25,7 @@ const Hero = () => {
         setTimeout(() => {
           const video = document.querySelector('wistia-player[media-id="2tbxg8pmpq"]') as any;
           if (video && window.Wistia) {
-            // Configure video settings
-            video.muted = true;
-            video.autoplay = true;
-            video.loop = true;
-            video.controls = false;
-            video.playsinline = true;
-            
-            // Additional Wistia API configuration
+            // Use Wistia API for configuration instead of direct property assignment
             window.Wistia.api('2tbxg8pmpq', (video: any) => {
               video.mute();
               video.play();
