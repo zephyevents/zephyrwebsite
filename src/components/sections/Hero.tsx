@@ -21,19 +21,41 @@ const Hero = () => {
         id: 'wqt4jdxids',
         onReady: (video: any) => {
           if (video) {
+            // Set quality to 720p first
+            video.qualityMax(720);
+            video.qualityMin(720);
+            video.quality(720);
+            
+            // Mute and play
             video.mute();
             video.play();
-            video.qualityMax(720); // Set max quality to 720p
-            video.qualityMin(720); // Set min quality to 720p for consistency
             
-            // Set up seamless looping
+            // Set up seamless looping with better event handling
             video.bind('end', () => {
-              video.time(0);
-              video.play();
+              setTimeout(() => {
+                video.time(0);
+                video.play();
+              }, 50); // Small delay to ensure smooth transition
             });
             
-            // Ensure video is muted and autoplays
+            // Additional loop safety - check every few seconds if video ended
+            setInterval(() => {
+              if (video.state() === 'ended') {
+                video.time(0);
+                video.play();
+              }
+            }, 1000);
+            
+            // Ensure video stays muted and plays
+            video.bind('play', () => {
+              video.mute();
+            });
+            
+            // Force quality setting after video loads
             video.bind('ready', () => {
+              video.qualityMax(720);
+              video.qualityMin(720);
+              video.quality(720);
               video.mute();
               video.play();
             });
@@ -90,7 +112,12 @@ const Hero = () => {
             }
             /* Hide Wistia controls */
             wistia-player[media-id='wqt4jdxids'] .w-control-bar,
-            wistia-player[media-id='wqt4jdxids'] .w-big-play-button {
+            wistia-player[media-id='wqt4jdxids'] .w-big-play-button,
+            wistia-player[media-id='wqt4jdxids'] .w-vulcan-v2-button {
+              display: none !important;
+            }
+            /* Force video quality */
+            wistia-player[media-id='wqt4jdxids'] .w-vulcan-overlays {
               display: none !important;
             }
           `}</style>
@@ -103,6 +130,7 @@ const Hero = () => {
             loop
             playsinline
             controls={false}
+            quality="720p"
           />
         </div>
         
