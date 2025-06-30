@@ -5,6 +5,9 @@ const Hero = () => {
   const [isVideoLoaded, setIsVideoLoaded] = useState(false);
 
   useEffect(() => {
+    // Initialize Wistia queue if it doesn't exist
+    window._wq = window._wq || [];
+
     // Load Wistia scripts
     const loadWistiaScripts = () => {
       // Load main Wistia player script
@@ -13,43 +16,32 @@ const Hero = () => {
       playerScript.async = true;
       document.head.appendChild(playerScript);
 
-      // Load specific video embed script for the new video
-      const embedScript = document.createElement('script');
-      embedScript.src = 'https://fast.wistia.com/embed/wqt4jdxids.js';
-      embedScript.async = true;
-      embedScript.type = 'module';
-      document.head.appendChild(embedScript);
-
-      // Wait for scripts to load and configure video
-      embedScript.onload = () => {
-        setTimeout(() => {
-          if (window.Wistia) {
-            // Use Wistia API for configuration
-            window.Wistia.api('wqt4jdxids', (video: any) => {
-              if (video) {
-                video.mute();
-                video.play();
-                video.qualityMax(720); // Set max quality to 720p
-                video.qualityMin(720); // Set min quality to 720p for consistency
-                
-                // Set up seamless looping
-                video.bind('end', () => {
-                  video.time(0);
-                  video.play();
-                });
-                
-                // Ensure video is muted and autoplays
-                video.bind('ready', () => {
-                  video.mute();
-                  video.play();
-                });
-                
-                setIsVideoLoaded(true);
-              }
+      // Use Wistia's recommended queue method to configure video
+      window._wq.push({
+        id: 'wqt4jdxids',
+        onReady: (video: any) => {
+          if (video) {
+            video.mute();
+            video.play();
+            video.qualityMax(720); // Set max quality to 720p
+            video.qualityMin(720); // Set min quality to 720p for consistency
+            
+            // Set up seamless looping
+            video.bind('end', () => {
+              video.time(0);
+              video.play();
             });
+            
+            // Ensure video is muted and autoplays
+            video.bind('ready', () => {
+              video.mute();
+              video.play();
+            });
+            
+            setIsVideoLoaded(true);
           }
-        }, 1000);
-      };
+        }
+      });
     };
 
     loadWistiaScripts();
