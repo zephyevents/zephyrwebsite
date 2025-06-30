@@ -152,12 +152,9 @@ const AboutPage = () => {
                       className="w-32 h-32 md:w-40 md:h-40 rounded-full object-cover mx-auto shadow-lg"
                     />
                   </div>
-                  <h3 className="text-xl font-semibold text-neutral-800 mb-2">
+                  <h3 className="text-xl font-semibold text-neutral-800 mb-4">
                     Hitin Sethi
                   </h3>
-                  <p className="text-primary-900 font-medium mb-4">
-                    Founder
-                  </p>
                   
                   {/* Social Links */}
                   <div className="flex justify-center space-x-4">
