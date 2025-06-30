@@ -5,32 +5,103 @@ const Hero = () => {
   const [isVideoLoaded, setIsVideoLoaded] = useState(false);
 
   useEffect(() => {
-    // Preload video for faster loading
-    const video = document.createElement('iframe');
-    video.src = "https://player.vimeo.com/video/1097212920?badge=0&autopause=0&player_id=0&app_id=58479&autoplay=1&loop=1&muted=1&background=1&quality=720p";
-    video.onload = () => setIsVideoLoaded(true);
+    // Load Wistia scripts
+    const loadWistiaScripts = () => {
+      // Load main Wistia player script
+      const playerScript = document.createElement('script');
+      playerScript.src = 'https://fast.wistia.com/player.js';
+      playerScript.async = true;
+      document.head.appendChild(playerScript);
+
+      // Load specific video embed script
+      const embedScript = document.createElement('script');
+      embedScript.src = 'https://fast.wistia.com/embed/2tbxg8pmpq.js';
+      embedScript.async = true;
+      embedScript.type = 'module';
+      document.head.appendChild(embedScript);
+
+      // Wait for scripts to load and configure video
+      embedScript.onload = () => {
+        setTimeout(() => {
+          const video = document.querySelector('wistia-player[media-id="2tbxg8pmpq"]') as any;
+          if (video && window.Wistia) {
+            // Configure video settings
+            video.muted = true;
+            video.autoplay = true;
+            video.loop = true;
+            video.controls = false;
+            video.playsinline = true;
+            
+            // Additional Wistia API configuration
+            window.Wistia.api('2tbxg8pmpq', (video: any) => {
+              video.mute();
+              video.play();
+              video.bind('end', () => {
+                video.time(0);
+                video.play();
+              });
+            });
+            
+            setIsVideoLoaded(true);
+          }
+        }, 1000);
+      };
+    };
+
+    loadWistiaScripts();
+
+    // Cleanup function
+    return () => {
+      // Remove scripts if component unmounts
+      const scripts = document.querySelectorAll('script[src*="wistia"]');
+      scripts.forEach(script => script.remove());
+    };
   }, []);
 
   return (
     <section className="hero-section relative h-[92vh] md:h-[90vh] lg:h-screen overflow-hidden w-full">
-      {/* Video Background - Optimized */}
+      {/* Wistia Video Background */}
       <div className="absolute inset-0 w-full h-full overflow-hidden">
         <div className="relative w-full h-full">
-          <iframe 
-            src="https://player.vimeo.com/video/1097212920?badge=0&autopause=0&player_id=0&app_id=58479&autoplay=1&loop=1&muted=1&background=1&quality=720p"
-            className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
-            style={{
-              width: '100vw',
-              height: '56.25vw',
-              minHeight: '100vh',
-              minWidth: '177.78vh',
-            }}
-            frameBorder="0"
-            allow="autoplay; fullscreen; picture-in-picture"
-            title="ZephyrEvents"
-            loading="eager"
-            fetchPriority="high"
-            onLoad={() => setIsVideoLoaded(true)}
+          <style>{`
+            wistia-player[media-id='2tbxg8pmpq']:not(:defined) { 
+              background: center / cover no-repeat url('https://fast.wistia.com/embed/medias/2tbxg8pmpq/swatch'); 
+              display: block; 
+              filter: blur(5px); 
+              padding-top: 56.25%; 
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              transform: translate(-50%, -50%);
+              width: 100vw;
+              height: 56.25vw;
+              min-height: 100vh;
+              min-width: 177.78vh;
+            }
+            wistia-player[media-id='2tbxg8pmpq'] {
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              transform: translate(-50%, -50%);
+              width: 100vw;
+              height: 56.25vw;
+              min-height: 100vh;
+              min-width: 177.78vh;
+              object-fit: cover;
+            }
+            wistia-player[media-id='2tbxg8pmpq'] video {
+              object-fit: cover !important;
+            }
+          `}</style>
+          
+          <wistia-player 
+            media-id="2tbxg8pmpq" 
+            aspect="1.7777777777777777"
+            muted
+            autoplay
+            loop
+            playsinline
+            controls={false}
           />
         </div>
         
