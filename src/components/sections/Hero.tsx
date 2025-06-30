@@ -13,9 +13,9 @@ const Hero = () => {
       playerScript.async = true;
       document.head.appendChild(playerScript);
 
-      // Load specific video embed script
+      // Load specific video embed script for the new video
       const embedScript = document.createElement('script');
-      embedScript.src = 'https://fast.wistia.com/embed/2tbxg8pmpq.js';
+      embedScript.src = 'https://fast.wistia.com/embed/wqt4jdxids.js';
       embedScript.async = true;
       embedScript.type = 'module';
       document.head.appendChild(embedScript);
@@ -23,19 +23,30 @@ const Hero = () => {
       // Wait for scripts to load and configure video
       embedScript.onload = () => {
         setTimeout(() => {
-          const video = document.querySelector('wistia-player[media-id="2tbxg8pmpq"]') as any;
-          if (video && window.Wistia) {
-            // Use Wistia API for configuration instead of direct property assignment
-            window.Wistia.api('2tbxg8pmpq', (video: any) => {
-              video.mute();
-              video.play();
-              video.bind('end', () => {
-                video.time(0);
+          if (window.Wistia) {
+            // Use Wistia API for configuration
+            window.Wistia.api('wqt4jdxids', (video: any) => {
+              if (video) {
+                video.mute();
                 video.play();
-              });
+                video.qualityMax(720); // Set max quality to 720p
+                video.qualityMin(720); // Set min quality to 720p for consistency
+                
+                // Set up seamless looping
+                video.bind('end', () => {
+                  video.time(0);
+                  video.play();
+                });
+                
+                // Ensure video is muted and autoplays
+                video.bind('ready', () => {
+                  video.mute();
+                  video.play();
+                });
+                
+                setIsVideoLoaded(true);
+              }
             });
-            
-            setIsVideoLoaded(true);
           }
         }, 1000);
       };
@@ -57,8 +68,8 @@ const Hero = () => {
       <div className="absolute inset-0 w-full h-full overflow-hidden">
         <div className="relative w-full h-full">
           <style>{`
-            wistia-player[media-id='2tbxg8pmpq']:not(:defined) { 
-              background: center / cover no-repeat url('https://fast.wistia.com/embed/medias/2tbxg8pmpq/swatch'); 
+            wistia-player[media-id='wqt4jdxids']:not(:defined) { 
+              background: center / cover no-repeat url('https://fast.wistia.com/embed/medias/wqt4jdxids/swatch'); 
               display: block; 
               filter: blur(5px); 
               padding-top: 56.25%; 
@@ -71,7 +82,7 @@ const Hero = () => {
               min-height: 100vh;
               min-width: 177.78vh;
             }
-            wistia-player[media-id='2tbxg8pmpq'] {
+            wistia-player[media-id='wqt4jdxids'] {
               position: absolute;
               top: 50%;
               left: 50%;
@@ -82,13 +93,18 @@ const Hero = () => {
               min-width: 177.78vh;
               object-fit: cover;
             }
-            wistia-player[media-id='2tbxg8pmpq'] video {
+            wistia-player[media-id='wqt4jdxids'] video {
               object-fit: cover !important;
+            }
+            /* Hide Wistia controls */
+            wistia-player[media-id='wqt4jdxids'] .w-control-bar,
+            wistia-player[media-id='wqt4jdxids'] .w-big-play-button {
+              display: none !important;
             }
           `}</style>
           
           <wistia-player 
-            media-id="2tbxg8pmpq" 
+            media-id="wqt4jdxids" 
             aspect="1.7777777777777777"
             muted
             autoplay
