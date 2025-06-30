@@ -2,44 +2,24 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
-import { Heart, Users, Award, Sparkles, Star, Camera } from 'lucide-react';
+import { Heart, Users, Award, Sparkles, Linkedin, Mail, Globe } from 'lucide-react';
 
 const AboutPage = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   const stats = [
-    { number: "500+", label: "Events Planned" },
+    { number: "200+", label: "Events Planned" },
     { number: "12+", label: "Years Experience" },
     { number: "98%", label: "Client Satisfaction" },
     { number: "50+", label: "Vendor Partners" }
   ];
 
-  const team = [
-    {
-      name: "Sarah Johnson",
-      role: "Founder & Lead Planner",
-      image: "https://images.pexels.com/photos/1036623/pexels-photo-1036623.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop",
-      bio: "With over 12 years in event planning, Sarah brings passion and precision to every celebration."
-    },
-    {
-      name: "Emily Chen",
-      role: "Creative Director",
-      image: "https://images.pexels.com/photos/1130626/pexels-photo-1130626.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop",
-      bio: "Emily's artistic vision transforms spaces into magical settings that perfectly reflect each couple's style."
-    },
-    {
-      name: "Michael Rodriguez",
-      role: "Logistics Coordinator",
-      image: "https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop",
-      bio: "Michael ensures every detail runs smoothly, managing timelines and vendor coordination flawlessly."
-    },
-    {
-      name: "Amanda Thompson",
-      role: "Client Relations Manager",
-      image: "https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop",
-      bio: "Amanda is dedicated to making your planning journey stress-free and enjoyable from start to finish."
-    }
+  const values = [
+    { icon: Heart, title: "Passion", description: "We pour our hearts into every event, treating each celebration as if it were our own." },
+    { icon: Users, title: "Collaboration", description: "We work closely with you to understand your vision and bring it to life authentically." },
+    { icon: Award, title: "Excellence", description: "We maintain the highest standards in every aspect of planning and execution." },
+    { icon: Sparkles, title: "Creativity", description: "We bring fresh ideas and innovative solutions to make your event truly special." }
   ];
 
   return (
@@ -48,11 +28,11 @@ const AboutPage = () => {
       <section className="relative h-[92vh] md:h-[90vh] lg:h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 w-full h-full">
           <img
-            src="https://images.pexels.com/photos/1024993/pexels-photo-1024993.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&fit=crop"
+            src="/about.webp"
             alt="About Us Hero"
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/40" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-black/50" />
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
@@ -61,19 +41,18 @@ const AboutPage = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h1 className="text-3xl sm:text-4xl lg:text-6xl font-heading font-bold mb-6">
-              About Zephyr Events
+            <h1 className="text-3xl sm:text-4xl lg:text-6xl font-oswald font-normal mb-6 leading-tight" style={{ textShadow: '2px 2px 4px rgba(0,0,0,0.7)' }}>
+              Behind every celebration lies a story.
             </h1>
-            <p className="text-lg sm:text-xl leading-relaxed max-w-3xl mx-auto">
-              We believe every love story deserves a celebration as unique and beautiful as the couple themselves. 
-              Since 2010, we've been crafting unforgettable moments with elegant design and flawless execution.
+            <p className="text-lg sm:text-xl font-oswald font-normal leading-relaxed" style={{ textShadow: '1px 1px 2px rgba(0,0,0,0.7)' }}>
+              Ours is one of passion, precision, and purpose.
             </p>
           </motion.div>
         </div>
       </section>
 
       {/* Our Story */}
-      <section ref={ref} className="py-20 lg:py-32 bg-background-500">
+      <section ref={ref} className="py-12 lg:py-20 bg-background-500">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             <motion.div
@@ -86,20 +65,13 @@ const AboutPage = () => {
               </h2>
               <div className="space-y-6 text-neutral-600 leading-relaxed">
                 <p>
-                  Zephyr Events was born from a simple belief: that every celebration should be as unique 
-                  as the people it honors. Founded in 2010 by Sarah Johnson, our company started as a 
-                  small dream to create meaningful, beautiful events that would be remembered for a lifetime.
+                  Zephyr Events is a Delhi/NCR-based event planning and design company with over 12 years of experience in crafting exceptional social and corporate events across India. From intimate gatherings to large-scale celebrations, we specialize in curating seamless experiences that are thoughtfully designed and flawlessly executed.
                 </p>
                 <p>
-                  What began as planning intimate gatherings for friends and family has grown into one of 
-                  the region's most trusted event planning companies. We've had the privilege of being 
-                  part of over 500 celebrations, each one teaching us something new about the art of 
-                  bringing people together.
+                  With a trusted network of vendors across the country, our team ensures smooth coordination, tailored concepts, and elevated guest experiences — no matter the scale or location. Every event we create is a reflection of our commitment to creativity, precision, and personalized service.
                 </p>
                 <p>
-                  Today, our team combines years of experience with fresh creativity, ensuring that every 
-                  event we plan reflects the personality and style of our clients while exceeding their 
-                  expectations in every way.
+                  Founded by Hitin Sethi, Zephyr stands as a symbol of passion-driven planning, where every detail is handled with care and every celebration tells a story worth remembering.
                 </p>
               </div>
             </motion.div>
@@ -111,15 +83,15 @@ const AboutPage = () => {
               className="relative"
             >
               <img
-                src="https://images.pexels.com/photos/169198/pexels-photo-169198.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop"
-                alt="Sarah Johnson planning an event"
+                src="/ourstoryimg.webp"
+                alt="Our story"
                 className="w-full h-96 lg:h-[500px] object-cover rounded-2xl shadow-xl"
               />
               <div className="absolute -bottom-6 -left-6 bg-white p-6 rounded-xl shadow-xl">
                 <div className="flex items-center space-x-4">
                   <Heart className="h-8 w-8 text-primary-900" />
                   <div>
-                    <div className="text-2xl font-bold text-neutral-800">500+</div>
+                    <div className="text-2xl font-bold text-neutral-800">100+</div>
                     <div className="text-sm text-neutral-600">Happy Couples</div>
                   </div>
                 </div>
@@ -149,8 +121,93 @@ const AboutPage = () => {
         </div>
       </section>
 
+      {/* Meet Our Founder */}
+      <section className="py-12 lg:py-20 bg-background-500">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+            transition={{ duration: 0.8 }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-4xl lg:text-5xl font-heading font-bold text-neutral-800 mb-6">
+              Meet Our Founder
+            </h2>
+          </motion.div>
+
+          <div className="max-w-4xl mx-auto">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow"
+            >
+              <div className="grid md:grid-cols-3 gap-8 items-center">
+                {/* Founder Image */}
+                <div className="text-center">
+                  <div className="relative mb-6">
+                    <img
+                      src="/founder.webp"
+                      alt="Hitin Sethi"
+                      className="w-32 h-32 md:w-40 md:h-40 rounded-full object-cover mx-auto shadow-lg"
+                    />
+                  </div>
+                  <h3 className="text-xl font-semibold text-neutral-800 mb-2">
+                    Hitin Sethi
+                  </h3>
+                  <p className="text-primary-900 font-medium mb-4">
+                    Founder
+                  </p>
+                  
+                  {/* Social Links */}
+                  <div className="flex justify-center space-x-4">
+                    <a
+                      href="https://www.linkedin.com/in/hitinsethi/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="p-2 bg-primary-100 rounded-full text-primary-900 hover:bg-primary-200 transition-colors"
+                    >
+                      <Linkedin className="h-5 w-5" />
+                    </a>
+                    <a
+                      href="mailto:hitin@wezephyr.com"
+                      className="p-2 bg-primary-100 rounded-full text-primary-900 hover:bg-primary-200 transition-colors"
+                    >
+                      <Mail className="h-5 w-5" />
+                    </a>
+                    <a
+                      href="https://hitinsethi.com"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="p-2 bg-primary-100 rounded-full text-primary-900 hover:bg-primary-200 transition-colors"
+                    >
+                      <Globe className="h-5 w-5" />
+                    </a>
+                  </div>
+                </div>
+
+                {/* Founder Description */}
+                <div className="md:col-span-2">
+                  <p className="text-neutral-600 leading-relaxed">
+                    With over a decade of experience in hospitality and event management, he brings a rare combination of structure, creativity, and calm precision to the ever-evolving world of events. From curating high-profile corporate gatherings to designing emotionally resonant social celebrations, his work is rooted in a deep understanding of guest experience and operational excellence.
+                  </p>
+                  <br />
+                  <p className="text-neutral-600 leading-relaxed">
+                    An engineer by education and a creator by passion, he has led the vision and execution behind countless seamless events across India. His journey also includes co-founding a successful café venture, reflecting his broader commitment to elevating experiences — whether through a plate, a party, or a perfectly planned moment.
+                  </p>
+                  <br />
+                  <p className="text-neutral-600 leading-relaxed">
+                    Driven by a love for design, detail, and genuine connection, he continues to push boundaries and set new standards in event planning.
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
       {/* Values and Approach */}
-      <section className="py-20 lg:py-32 bg-background-500">
+      <section className="py-12 lg:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -167,12 +224,7 @@ const AboutPage = () => {
           </motion.div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {[
-              { icon: Heart, title: "Passion", description: "We pour our hearts into every event, treating each celebration as if it were our own." },
-              { icon: Users, title: "Collaboration", description: "We work closely with you to understand your vision and bring it to life authentically." },
-              { icon: Award, title: "Excellence", description: "We maintain the highest standards in every aspect of planning and execution." },
-              { icon: Sparkles, title: "Creativity", description: "We bring fresh ideas and innovative solutions to make your event truly special." }
-            ].map((value, index) => (
+            {values.map((value, index) => (
               <motion.div
                 key={value.title}
                 initial={{ opacity: 0, y: 30 }}
@@ -183,101 +235,8 @@ const AboutPage = () => {
                 <div className="w-16 h-16 bg-primary-900 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
                   <value.icon className="h-8 w-8 text-white" />
                 </div>
-                <h3 className="text-xl font-semibold text-neutral-800 mb-4">{value.title}</h3>
+                <h4 className="text-xl font-semibold text-neutral-800 mb-4">{value.title}</h4>
                 <p className="text-neutral-600 leading-relaxed">{value.description}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Team Section */}
-      <section className="py-20 lg:py-32 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-            transition={{ duration: 0.8 }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-4xl lg:text-5xl font-heading font-bold text-neutral-800 mb-6">
-              Meet Our Team
-            </h2>
-            <p className="text-lg text-neutral-600 max-w-3xl mx-auto leading-relaxed">
-              Behind every successful event is a dedicated team of professionals who bring passion, 
-              creativity, and expertise to your celebration.
-            </p>
-          </motion.div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {team.map((member, index) => (
-              <motion.div
-                key={member.name}
-                initial={{ opacity: 0, y: 30 }}
-                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-                transition={{ duration: 0.8, delay: index * 0.1 }}
-                className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow group"
-              >
-                <div className="relative mb-6">
-                  <img
-                    src={member.image}
-                    alt={member.name}
-                    className="w-24 h-24 rounded-full object-cover mx-auto"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-primary-900/20 to-transparent rounded-full opacity-0 group-hover:opacity-100 transition-opacity" />
-                </div>
-                <h3 className="text-xl font-semibold text-neutral-800 mb-2 text-center">
-                  {member.name}
-                </h3>
-                <p className="text-primary-900 font-medium text-center mb-4">
-                  {member.role}
-                </p>
-                <p className="text-neutral-600 text-sm leading-relaxed text-center">
-                  {member.bio}
-                </p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Awards and Recognition */}
-      <section className="py-20 lg:py-32 bg-background-500">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-            transition={{ duration: 0.8 }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-4xl lg:text-5xl font-heading font-bold text-neutral-800 mb-6">
-              Awards & Recognition
-            </h2>
-            <p className="text-lg text-neutral-600 max-w-3xl mx-auto leading-relaxed">
-              We're honored to be recognized by industry leaders and publications for our 
-              commitment to excellence in event planning.
-            </p>
-          </motion.div>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            {[
-              { year: "2023", award: "Best Wedding Planner", organization: "Wedding Industry Awards", icon: Award },
-              { year: "2022", award: "Event Planner of the Year", organization: "Regional Business Awards", icon: Star },
-              { year: "2021", award: "Excellence in Design", organization: "Event Design Magazine", icon: Camera }
-            ].map((recognition, index) => (
-              <motion.div
-                key={recognition.award}
-                initial={{ opacity: 0, y: 30 }}
-                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-                transition={{ duration: 0.8, delay: index * 0.1 }}
-                className="text-center p-8 bg-white rounded-2xl"
-              >
-                <div className="w-16 h-16 bg-primary-900 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <recognition.icon className="h-8 w-8 text-white" />
-                </div>
-                <div className="text-2xl font-bold text-neutral-800 mb-2">{recognition.year}</div>
-                <h3 className="text-lg font-semibold text-neutral-800 mb-2">{recognition.award}</h3>
-                <p className="text-neutral-600">{recognition.organization}</p>
               </motion.div>
             ))}
           </div>
