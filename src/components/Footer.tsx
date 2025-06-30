@@ -60,8 +60,12 @@ const Footer = () => {
             <h4 className="text-lg font-opensauce font-medium mb-4" style={{ color: '#B03F3F' }}>Contact</h4>
             <div className="space-y-2">
               <div className="text-neutral-700 text-sm font-opensauce">contact@wezephyr.com</div>
-              <div className="text-neutral-700 text-sm font-opensauce">Feedback Form</div>
               <div className="text-neutral-700 text-sm font-opensauce">+91 7678590878</div>
+              <div className="text-neutral-700 text-sm font-opensauce">
+                <a href="#" className="hover:text-primary-900 transition-colors">
+                  Feedback Form
+                </a>
+              </div>
             </div>
           </div>
 
