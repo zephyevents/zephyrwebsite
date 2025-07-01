@@ -10,7 +10,7 @@ const Services = () => {
   const services = [
     {
       title: "Planning & Execution",
-      image: "/plan.webp",
+      image: "/plan.png",
     },
     {
       title: "Destination & Venue Selection",
@@ -18,39 +18,39 @@ const Services = () => {
     },
     {
       title: "Design & Décor Management",
-      image: "/decor.webp",
+      image: "https://images.pexels.com/photos/32808785/pexels-photo-32808785.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop",
     },
     {
       title: "RSVP & Hospitality",
-      image: "/hospitality.webp",
+      image: "https://images.pexels.com/photos/32808782/pexels-photo-32808782.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop",
     },
     {
       title: "Entertainment",
-      image: "/enter1.webp",
+      image: "https://images.pexels.com/photos/32808781/pexels-photo-32808781.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop",
     },
     {
       title: "Special Entries",
-      image: "/entry.webp",
+      image: "https://images.pexels.com/photos/32808784/pexels-photo-32808784.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop",
     },
     {
       title: "FnB & Catering",
-      image: "/catering.webp",
+      image: "https://images.pexels.com/photos/32808780/pexels-photo-32808780.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop",
     },
     {
       title: "Photography",
-      image: "/phot.webp",
+      image: "https://images.pexels.com/photos/32808778/pexels-photo-32808778.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop",
     },
     {
       title: "Choreography",
-      image: "/choreo.webp",
+      image: "https://images.pexels.com/photos/32808783/pexels-photo-32808783.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop",
     },
     {
       title: "Special Effects",
-      image: "/sfx.webp",
+      image: "https://images.pexels.com/photos/32808779/pexels-photo-32808779.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop",
     },
     {
       title: "Stationery & Invites",
-      image: "/station.webp",
+      image: "/station..jpg",
     },
     {
       title: "Miscellaneous",

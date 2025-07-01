@@ -1,102 +1,15 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
+import MuxPlayer from '@mux/mux-player-react';
 
 const Hero = () => {
-  const [isVideoLoaded, setIsVideoLoaded] = useState(false);
-
-  useEffect(() => {
-    // Initialize Wistia queue if it doesn't exist
-    window._wq = window._wq || [];
-
-    // Load Wistia scripts
-    const loadWistiaScripts = () => {
-      // Load main Wistia player script
-      const playerScript = document.createElement('script');
-      playerScript.src = 'https://fast.wistia.com/player.js';
-      playerScript.async = true;
-      document.head.appendChild(playerScript);
-
-      // Use Wistia's recommended queue method to configure video
-      window._wq.push({
-        id: 'wqt4jdxids',
-        onReady: (video: any) => {
-          if (video) {
-            // Set quality to 720p first
-            video.qualityMax(720);
-            video.qualityMin(720);
-            video.quality(720);
-            
-            // Mute and play
-            video.mute();
-            video.play();
-            
-            // Set up seamless looping with better event handling
-            video.bind('end', () => {
-              setTimeout(() => {
-                video.time(0);
-                video.play();
-              }, 50); // Small delay to ensure smooth transition
-            });
-            
-            // Additional loop safety - check every few seconds if video ended
-            setInterval(() => {
-              if (video.state() === 'ended') {
-                video.time(0);
-                video.play();
-              }
-            }, 1000);
-            
-            // Ensure video stays muted and plays
-            video.bind('play', () => {
-              video.mute();
-            });
-            
-            // Force quality setting after video loads
-            video.bind('ready', () => {
-              video.qualityMax(720);
-              video.qualityMin(720);
-              video.quality(720);
-              video.mute();
-              video.play();
-            });
-            
-            setIsVideoLoaded(true);
-          }
-        }
-      });
-    };
-
-    loadWistiaScripts();
-
-    // Cleanup function
-    return () => {
-      // Remove scripts if component unmounts
-      const scripts = document.querySelectorAll('script[src*="wistia"]');
-      scripts.forEach(script => script.remove());
-    };
-  }, []);
-
   return (
     <section className="hero-section relative h-[92vh] md:h-[90vh] lg:h-screen overflow-hidden w-full">
-      {/* Wistia Video Background */}
+      {/* Mux Video Background */}
       <div className="absolute inset-0 w-full h-full overflow-hidden">
         <div className="relative w-full h-full">
           <style>{`
-            wistia-player[media-id='wqt4jdxids']:not(:defined) { 
-              background: center / cover no-repeat url('https://fast.wistia.com/embed/medias/wqt4jdxids/swatch'); 
-              display: block; 
-              filter: blur(5px); 
-              padding-top: 56.25%; 
-              position: absolute;
-              top: 50%;
-              left: 50%;
-              transform: translate(-50%, -50%);
-              width: 100vw;
-              height: 56.25vw;
-              min-height: 100vh;
-              min-width: 177.78vh;
-            }
-            wistia-player[media-id='wqt4jdxids'] {
+            mux-player {
               position: absolute;
               top: 50%;
               left: 50%;
@@ -107,30 +20,35 @@ const Hero = () => {
               min-width: 177.78vh;
               object-fit: cover;
             }
-            wistia-player[media-id='wqt4jdxids'] video {
+            mux-player video {
               object-fit: cover !important;
             }
-            /* Hide Wistia controls */
-            wistia-player[media-id='wqt4jdxids'] .w-control-bar,
-            wistia-player[media-id='wqt4jdxids'] .w-big-play-button,
-            wistia-player[media-id='wqt4jdxids'] .w-vulcan-v2-button {
-              display: none !important;
-            }
-            /* Force video quality */
-            wistia-player[media-id='wqt4jdxids'] .w-vulcan-overlays {
+            /* Hide Mux controls */
+            mux-player .mux-control-bar,
+            mux-player .mux-big-play-button {
               display: none !important;
             }
           `}</style>
           
-          <wistia-player 
-            media-id="wqt4jdxids" 
-            aspect="1.7777777777777777"
+          <MuxPlayer
+            playbackId="FB00u02e3i01WpBTlMf01yJlT3wOWe02XHEyY6vpxg7mMrzs"
+            metadata={{
+              video_title: 'zephyrhero',
+              viewer_user_id: 'Placeholder (optional)',
+            }}
+            streamType="on-demand"
+            autoPlay
             muted
-            autoplay
             loop
-            playsinline
+            playsInline
             controls={false}
-            quality="720p"
+            style={{
+              aspectRatio: '16/9',
+              width: '100%',
+              height: '100%',
+            }}
+            preload="auto"
+            defaultHiddenCaptions={true}
           />
         </div>
         

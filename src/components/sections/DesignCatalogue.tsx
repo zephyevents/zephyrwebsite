@@ -7,32 +7,38 @@ const DesignCatalogue = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
-  // Sample decor images for the carousel
+  // Sample decor images for the carousel - 15 images
   const decorImages = [
-    "https://images.pexels.com/photos/1444442/pexels-photo-1444442.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop",
-    "https://images.pexels.com/photos/1128782/pexels-photo-1128782.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop",
-    "https://images.pexels.com/photos/1616113/pexels-photo-1616113.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop",
-    "https://images.pexels.com/photos/169198/pexels-photo-169198.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop",
-    "https://images.pexels.com/photos/1024993/pexels-photo-1024993.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop",
-    "https://images.pexels.com/photos/958545/pexels-photo-958545.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop",
-    "https://images.pexels.com/photos/8108042/pexels-photo-8108042.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop",
-    "https://images.pexels.com/photos/1763075/pexels-photo-1763075.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop"
+    "https://images.pexels.com/photos/1444442/pexels-photo-1444442.jpeg?auto=compress&cs=tinysrgb&w=400&h=600&fit=crop",
+    "https://images.pexels.com/photos/1128782/pexels-photo-1128782.jpeg?auto=compress&cs=tinysrgb&w=400&h=600&fit=crop",
+    "https://images.pexels.com/photos/1616113/pexels-photo-1616113.jpeg?auto=compress&cs=tinysrgb&w=400&h=600&fit=crop",
+    "https://images.pexels.com/photos/169198/pexels-photo-169198.jpeg?auto=compress&cs=tinysrgb&w=400&h=600&fit=crop",
+    "https://images.pexels.com/photos/1024993/pexels-photo-1024993.jpeg?auto=compress&cs=tinysrgb&w=400&h=600&fit=crop",
+    "https://images.pexels.com/photos/958545/pexels-photo-958545.jpeg?auto=compress&cs=tinysrgb&w=400&h=600&fit=crop",
+    "https://images.pexels.com/photos/8108042/pexels-photo-8108042.jpeg?auto=compress&cs=tinysrgb&w=400&h=600&fit=crop",
+    "https://images.pexels.com/photos/1763075/pexels-photo-1763075.jpeg?auto=compress&cs=tinysrgb&w=400&h=600&fit=crop",
+    "https://images.pexels.com/photos/2959192/pexels-photo-2959192.jpeg?auto=compress&cs=tinysrgb&w=400&h=600&fit=crop",
+    "https://images.pexels.com/photos/1779487/pexels-photo-1779487.jpeg?auto=compress&cs=tinysrgb&w=400&h=600&fit=crop",
+    "https://images.pexels.com/photos/1036623/pexels-photo-1036623.jpeg?auto=compress&cs=tinysrgb&w=400&h=600&fit=crop",
+    "https://images.pexels.com/photos/264917/pexels-photo-264917.jpeg?auto=compress&cs=tinysrgb&w=400&h=600&fit=crop",
+    "https://images.pexels.com/photos/1130626/pexels-photo-1130626.jpeg?auto=compress&cs=tinysrgb&w=400&h=600&fit=crop",
+    "https://images.pexels.com/photos/1130623/pexels-photo-1130623.jpeg?auto=compress&cs=tinysrgb&w=400&h=600&fit=crop",
+    "https://images.pexels.com/photos/1444442/pexels-photo-1444442.jpeg?auto=compress&cs=tinysrgb&w=400&h=600&fit=crop"
   ];
 
-  // Partner brand placeholders (will be replaced with actual brand images)
+  // Partner brand placeholders (7 brands)
   const partnerBrands = [
-    { name: "Brand 1", logo: "https://via.placeholder.com/120x60/B03F3F/FFFFFF?text=Brand+1" },
-    { name: "Brand 2", logo: "https://via.placeholder.com/120x60/B03F3F/FFFFFF?text=Brand+2" },
-    { name: "Brand 3", logo: "https://via.placeholder.com/120x60/B03F3F/FFFFFF?text=Brand+3" },
-    { name: "Brand 4", logo: "https://via.placeholder.com/120x60/B03F3F/FFFFFF?text=Brand+4" },
-    { name: "Brand 5", logo: "https://via.placeholder.com/120x60/B03F3F/FFFFFF?text=Brand+5" },
-    { name: "Brand 6", logo: "https://via.placeholder.com/120x60/B03F3F/FFFFFF?text=Brand+6" },
-    { name: "Brand 7", logo: "https://via.placeholder.com/120x60/B03F3F/FFFFFF?text=Brand+7" },
-    { name: "Brand 8", logo: "https://via.placeholder.com/120x60/B03F3F/FFFFFF?text=Brand+8" }
+    { name: "Brand 1", logo: "https://via.placeholder.com/120x120/B03F3F/FFFFFF?text=Brand+1" },
+    { name: "Brand 2", logo: "https://via.placeholder.com/120x120/B03F3F/FFFFFF?text=Brand+2" },
+    { name: "Brand 3", logo: "https://via.placeholder.com/120x120/B03F3F/FFFFFF?text=Brand+3" },
+    { name: "Brand 4", logo: "https://via.placeholder.com/120x120/B03F3F/FFFFFF?text=Brand+4" },
+    { name: "Brand 5", logo: "https://via.placeholder.com/120x120/B03F3F/FFFFFF?text=Brand+5" },
+    { name: "Brand 6", logo: "https://via.placeholder.com/120x120/B03F3F/FFFFFF?text=Brand+6" },
+    { name: "Brand 7", logo: "https://via.placeholder.com/120x120/B03F3F/FFFFFF?text=Brand+7" }
   ];
 
   return (
-    <section ref={ref} className="py-20 lg:py-32 bg-gradient-to-br from-rose-50 to-mauve-50 overflow-x-hidden">
+    <section ref={ref} className="py-12 lg:py-20 bg-gradient-to-br from-rose-50 to-mauve-50 overflow-x-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div
@@ -57,12 +63,12 @@ const DesignCatalogue = () => {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="relative mb-20 overflow-hidden"
         >
-          <div className="flex animate-scroll-right space-x-6">
+          <div className="flex animate-scroll-right space-x-3">
             {/* First set of images */}
             {decorImages.map((image, index) => (
               <div
                 key={`first-${index}`}
-                className="flex-shrink-0 w-80 h-60 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300"
+                className="flex-shrink-0 w-64 h-96 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300"
               >
                 <img
                   src={image}
@@ -75,7 +81,7 @@ const DesignCatalogue = () => {
             {decorImages.map((image, index) => (
               <div
                 key={`second-${index}`}
-                className="flex-shrink-0 w-80 h-60 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300"
+                className="flex-shrink-0 w-64 h-96 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300"
               >
                 <img
                   src={image}
@@ -100,7 +106,7 @@ const DesignCatalogue = () => {
           
           {/* Floating Bubbles Animation */}
           <div className="relative">
-            <div className="flex flex-wrap justify-center items-center gap-8 lg:gap-12">
+            <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-4 gap-6 lg:gap-8 max-w-4xl mx-auto">
               {partnerBrands.map((brand, index) => (
                 <motion.div
                   key={brand.name}
@@ -111,16 +117,16 @@ const DesignCatalogue = () => {
                     delay: 0.6 + index * 0.1,
                     ease: "easeOut"
                   }}
-                  className="floating-bubble"
+                  className="floating-bubble flex justify-center"
                   style={{
                     animationDelay: `${index * 0.5}s`
                   }}
                 >
-                  <div className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-neutral-100">
+                  <div className="bg-white rounded-full p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-neutral-100 w-24 h-24 lg:w-28 lg:h-28 flex items-center justify-center">
                     <img
                       src={brand.logo}
                       alt={brand.name}
-                      className="h-12 w-auto mx-auto opacity-70 hover:opacity-100 transition-opacity duration-300"
+                      className="w-full h-full rounded-full object-cover opacity-70 hover:opacity-100 transition-opacity duration-300"
                     />
                   </div>
                 </motion.div>
@@ -142,8 +148,8 @@ const DesignCatalogue = () => {
         }
 
         .animate-scroll-right {
-          animation: scroll-right 30s linear infinite;
-          width: calc(320px * 16 + 24px * 15); /* 16 images + gaps */
+          animation: scroll-right 60s linear infinite;
+          width: calc(256px * 30 + 12px * 29); /* 30 images + gaps */
         }
 
         @keyframes float {
