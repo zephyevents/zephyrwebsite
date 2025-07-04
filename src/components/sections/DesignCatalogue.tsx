@@ -236,8 +236,8 @@ const DesignCatalogue = () => {
           className="relative mb-16 overflow-hidden"
           style={{ 
             height: isMobile ? '500px' : '800px', // Fixed heights instead of clamp
-            paddingTop: isMobile ? '2rem' : '4rem', // Reduced mobile padding
-            paddingBottom: isMobile ? '2rem' : '4rem' // Reduced mobile padding
+            paddingTop: isMobile ? '2rem' : '3rem', // Reduced mobile padding
+            paddingBottom: isMobile ? '2rem' : '3rem' // Reduced mobile padding
           }}
         >
           <div 
@@ -269,7 +269,7 @@ const DesignCatalogue = () => {
               
               // MUCH LARGER RESPONSIVE CARD DIMENSIONS
               const cardWidth = isMobile ? '220px' : isTablet ? '480px' : '720px'; // 3x larger desktop
-              const cardHeight = isMobile ? '320px' : isTablet ? '320px' : '480px'; // 3x larger desktop
+              const cardHeight = isMobile ? '320px' : isTablet ? '320px' : '600px'; // 3x larger desktop
               
               return (
                 <div
