@@ -5,7 +5,7 @@ import MuxPlayer from '@mux/mux-player-react';
 const Hero = () => {
   return (
     <section className="hero-section relative h-[92vh] md:h-[90vh] lg:h-screen overflow-hidden w-full">
-      {/* Mux Video Background */}
+      {/* Mux Video Background with perfect fit */}
       <div className="absolute inset-0 w-full h-full overflow-hidden">
         <div className="relative w-full h-full">
           <style>{`
@@ -15,8 +15,8 @@ const Hero = () => {
               left: 50%;
               transform: translate(-50%, -50%);
               width: 100vw !important;
-              height: 100vh !important;
-              min-width: 100vw !important;
+              height: 56.25vw !important;
+              min-width: 177.78vh !important;
               min-height: 100vh !important;
               object-fit: cover !important;
             }
@@ -33,14 +33,24 @@ const Hero = () => {
               display: none !important;
             }
             
-            /* Force full coverage on all devices */
+            /* Ensure perfect coverage on all devices */
             @media (max-width: 768px) {
               mux-player {
                 width: 100vw !important;
-                height: 100vh !important;
-                min-width: 100vw !important;
+                height: 56.25vw !important;
+                min-width: 177.78vh !important;
                 min-height: 100vh !important;
                 transform: translate(-50%, -50%) !important;
+              }
+            }
+            
+            /* Portrait orientation handling */
+            @media (orientation: portrait) {
+              mux-player {
+                width: 177.78vh !important;
+                height: 100vh !important;
+                min-width: 100vw !important;
+                min-height: 56.25vw !important;
               }
             }
             

@@ -53,7 +53,7 @@ const DesignCatalogue = () => {
     setShuffledImages(shuffled);
   }, []);
 
-  // Auto-advance carousel every 3 seconds
+  // Auto-advance carousel every 3 seconds with smooth transition
   useEffect(() => {
     if (isDragging) return;
     
@@ -64,7 +64,7 @@ const DesignCatalogue = () => {
     return () => clearInterval(interval);
   }, [shuffledImages.length, isDragging]);
 
-  // Partner brand logos - 4 in first row, 2 in second row
+  // Partner brand logos - 6 brands total
   const partnerBrands = [
     { name: "Partner 1", logo: "/partnerslogo/4.webp" },
     { name: "Partner 2", logo: "/partnerslogo/5.webp" },
@@ -110,10 +110,8 @@ const DesignCatalogue = () => {
     
     const threshold = 50;
     if (dragOffset > threshold) {
-      // Swipe right - go to previous
       setCurrentIndex((prev) => (prev - 1 + shuffledImages.length) % shuffledImages.length);
     } else if (dragOffset < -threshold) {
-      // Swipe left - go to next
       setCurrentIndex((prev) => (prev + 1) % shuffledImages.length);
     }
     
@@ -148,12 +146,13 @@ const DesignCatalogue = () => {
           </p>
         </motion.div>
 
-        {/* Enhanced Swipeable Carousel with proper dimensions */}
+        {/* Enhanced Swipeable Carousel - 2000px width on desktop with proper mobile padding */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="relative mb-16 overflow-hidden h-96 md:h-[500px] lg:h-[600px]"
+          className="relative mb-16 overflow-hidden py-8 md:py-12 lg:py-16"
+          style={{ height: 'calc(100vh - 200px)', minHeight: '500px', maxHeight: '700px' }}
         >
           <div 
             className="flex items-center justify-center h-full relative cursor-grab active:cursor-grabbing"
@@ -165,39 +164,44 @@ const DesignCatalogue = () => {
             onTouchMove={(e) => handleMove(e.touches[0].clientX)}
             onTouchEnd={handleEnd}
           >
-            {getVisibleImages().map((image, idx) => (
-              <motion.div
-                key={`${currentIndex}-${idx}`}
-                initial={{ opacity: 0, scale: 0.6, x: 400 }}
-                animate={{ 
-                  opacity: image.isCenter ? 1 : 0.4,
-                  scale: image.isCenter ? 1.2 : 0.7,
-                  x: (idx - 2) * (window.innerWidth < 768 ? 200 : 320) + (isDragging ? dragOffset * 0.5 : 0),
-                  filter: image.isCenter ? 'blur(0px)' : 'blur(3px)',
-                  zIndex: image.isCenter ? 20 : 5
-                }}
-                transition={{ 
-                  duration: isDragging ? 0.1 : 2,
-                  ease: isDragging ? "linear" : [0.23, 1, 0.32, 1],
-                  type: "tween"
-                }}
-                className="absolute rounded-3xl overflow-hidden shadow-2xl border-4 border-white/30"
-                style={{
-                  width: window.innerWidth < 768 ? '280px' : '380px',
-                  height: window.innerWidth < 768 ? '380px' : '500px',
-                  aspectRatio: '1900/2560'
-                }}
-              >
-                <img
-                  src={image.src}
-                  alt={`Event ${idx + 1}`}
-                  className="w-full h-full object-cover"
-                  loading="lazy"
-                  draggable={false}
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
-              </motion.div>
-            ))}
+            {getVisibleImages().map((image, idx) => {
+              const isCenter = idx === 2;
+              const offset = (idx - 2) * (window.innerWidth < 768 ? 250 : 400);
+              const dragAdjustment = isDragging ? dragOffset * 0.3 : 0;
+              
+              return (
+                <motion.div
+                  key={`${currentIndex}-${idx}`}
+                  animate={{ 
+                    opacity: isCenter ? 1 : 0.5,
+                    scale: isCenter ? 1 : 0.8,
+                    x: offset + dragAdjustment,
+                    filter: isCenter ? 'blur(0px)' : 'blur(2px)',
+                    zIndex: isCenter ? 20 : 5
+                  }}
+                  transition={{ 
+                    duration: isDragging ? 0.1 : 0.8,
+                    ease: isDragging ? "linear" : [0.25, 0.46, 0.45, 0.94],
+                    type: "tween"
+                  }}
+                  className="absolute rounded-3xl overflow-hidden shadow-2xl border-4 border-white/30"
+                  style={{
+                    width: window.innerWidth < 768 ? '300px' : window.innerWidth < 1024 ? '450px' : '500px',
+                    height: window.innerWidth < 768 ? '400px' : window.innerWidth < 1024 ? '600px' : '667px',
+                    aspectRatio: '1900/2560'
+                  }}
+                >
+                  <img
+                    src={image.src}
+                    alt={`Event ${idx + 1}`}
+                    className="w-full h-full object-cover"
+                    loading="lazy"
+                    draggable={false}
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
+                </motion.div>
+              );
+            })}
           </div>
 
           {/* Navigation Arrows */}
@@ -231,7 +235,7 @@ const DesignCatalogue = () => {
           </div>
         </motion.div>
 
-        {/* Partner Brands Section - Reduced heading and improved layout */}
+        {/* Partner Brands Section - Mobile: 3x2 grid, Desktop: 4+2 layout */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
@@ -242,8 +246,39 @@ const DesignCatalogue = () => {
             Partner Brands
           </h3>
           
-          {/* Partner Brands Layout - 4 in first row, 2 in second row with proper positioning */}
-          <div className="relative max-w-6xl mx-auto">
+          {/* Mobile Layout - 3x2 Grid */}
+          <div className="block md:hidden">
+            <div className="grid grid-cols-3 gap-6 max-w-sm mx-auto">
+              {partnerBrands.map((brand, index) => (
+                <motion.div
+                  key={brand.name}
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
+                  transition={{ 
+                    duration: 0.8, 
+                    delay: 0.6 + index * 0.1,
+                    ease: "easeOut"
+                  }}
+                  className="floating-bubble"
+                >
+                  <div className="bg-white rounded-full shadow-xl hover:shadow-2xl transition-all duration-500 border border-neutral-100 flex items-center justify-center group overflow-hidden w-24 h-24 p-3">
+                    <img
+                      src={brand.logo}
+                      alt={brand.name}
+                      className="w-full h-full object-contain scale-110 opacity-80 group-hover:opacity-100 group-hover:scale-125 transition-all duration-500"
+                      onError={(e) => {
+                        const target = e.currentTarget as HTMLImageElement;
+                        target.src = `https://via.placeholder.com/200x200/B03F3F/FFFFFF?text=${encodeURIComponent(brand.name)}`;
+                      }}
+                    />
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+
+          {/* Desktop/Tablet Layout - 4 in first row, 2 in second row */}
+          <div className="hidden md:block relative max-w-6xl mx-auto">
             <div className="relative">
               {/* First row - 4 brands */}
               <div className="flex justify-center items-center space-x-8 md:space-x-16 lg:space-x-20 mb-12 lg:mb-16">
@@ -262,7 +297,7 @@ const DesignCatalogue = () => {
                       animationDelay: `${index * 0.7}s`
                     }}
                   >
-                    <div className="bg-white rounded-full shadow-xl hover:shadow-2xl transition-all duration-500 border border-neutral-100 flex items-center justify-center group overflow-hidden w-24 h-24 md:w-36 md:h-36 lg:w-44 lg:h-44 p-4 md:p-6 lg:p-8">
+                    <div className="bg-white rounded-full shadow-xl hover:shadow-2xl transition-all duration-500 border border-neutral-100 flex items-center justify-center group overflow-hidden w-32 h-32 md:w-40 md:h-40 lg:w-48 lg:h-48 p-4 md:p-6 lg:p-8">
                       <img
                         src={brand.logo}
                         alt={brand.name}
@@ -294,7 +329,7 @@ const DesignCatalogue = () => {
                       animationDelay: `${(index + 4) * 0.7}s`
                     }}
                   >
-                    <div className="bg-white rounded-full shadow-xl hover:shadow-2xl transition-all duration-500 border border-neutral-100 flex items-center justify-center group overflow-hidden w-24 h-24 md:w-36 md:h-36 lg:w-44 lg:h-44 p-4 md:p-6 lg:p-8">
+                    <div className="bg-white rounded-full shadow-xl hover:shadow-2xl transition-all duration-500 border border-neutral-100 flex items-center justify-center group overflow-hidden w-32 h-32 md:w-40 md:h-40 lg:w-48 lg:h-48 p-4 md:p-6 lg:p-8">
                       <img
                         src={brand.logo}
                         alt={brand.name}
@@ -346,23 +381,6 @@ const DesignCatalogue = () => {
 
         .floating-bubble:nth-child(6n) {
           animation-delay: 2.5s;
-        }
-
-        /* Mobile responsive adjustments */
-        @media (max-width: 768px) {
-          .floating-bubble div {
-            width: 96px !important;
-            height: 96px !important;
-            padding: 12px !important;
-          }
-        }
-
-        @media (max-width: 640px) {
-          .floating-bubble div {
-            width: 80px !important;
-            height: 80px !important;
-            padding: 10px !important;
-          }
         }
       `}</style>
     </section>
