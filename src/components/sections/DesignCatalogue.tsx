@@ -1,83 +1,89 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback, useMemo } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 const DesignCatalogue = () => {
   const ref = useRef(null);
+  const containerRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
   const [startX, setStartX] = useState(0);
   const [dragOffset, setDragOffset] = useState(0);
+  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+  const animationFrameRef = useRef<number>();
 
-  // All available images with proper Pexels URLs
-  const allImages = [
-    "https://images.pexels.com/photos/32866211/pexels-photo-32866211.jpeg?auto=compress&cs=tinysrgb&w=1900&h=2560&fit=crop",
-    "https://images.pexels.com/photos/32866213/pexels-photo-32866213.jpeg?auto=compress&cs=tinysrgb&w=1900&h=2560&fit=crop",
-    "https://images.pexels.com/photos/32866210/pexels-photo-32866210.jpeg?auto=compress&cs=tinysrgb&w=1900&h=2560&fit=crop",
-    "https://images.pexels.com/photos/32866209/pexels-photo-32866209.jpeg?auto=compress&cs=tinysrgb&w=1900&h=2560&fit=crop",
-    "https://images.pexels.com/photos/32866208/pexels-photo-32866208.jpeg?auto=compress&cs=tinysrgb&w=1900&h=2560&fit=crop",
-    "https://images.pexels.com/photos/32866207/pexels-photo-32866207.jpeg?auto=compress&cs=tinysrgb&w=1900&h=2560&fit=crop",
-    "https://images.pexels.com/photos/32866206/pexels-photo-32866206.jpeg?auto=compress&cs=tinysrgb&w=1900&h=2560&fit=crop",
-    "https://images.pexels.com/photos/32866205/pexels-photo-32866205.jpeg?auto=compress&cs=tinysrgb&w=1900&h=2560&fit=crop",
-    "https://images.pexels.com/photos/32866204/pexels-photo-32866204.jpeg?auto=compress&cs=tinysrgb&w=1900&h=2560&fit=crop",
-    "https://images.pexels.com/photos/32866203/pexels-photo-32866203.jpeg?auto=compress&cs=tinysrgb&w=1900&h=2560&fit=crop",
-    "https://images.pexels.com/photos/32866202/pexels-photo-32866202.jpeg?auto=compress&cs=tinysrgb&w=1900&h=2560&fit=crop",
-    "https://images.pexels.com/photos/32866201/pexels-photo-32866201.jpeg?auto=compress&cs=tinysrgb&w=1900&h=2560&fit=crop",
-    "https://images.pexels.com/photos/32866200/pexels-photo-32866200.jpeg?auto=compress&cs=tinysrgb&w=1900&h=2560&fit=crop",
-    "https://images.pexels.com/photos/32866199/pexels-photo-32866199.jpeg?auto=compress&cs=tinysrgb&w=1900&h=2560&fit=crop",
-    "https://images.pexels.com/photos/32866198/pexels-photo-32866198.jpeg?auto=compress&cs=tinysrgb&w=1900&h=2560&fit=crop",
-    "https://images.pexels.com/photos/32866197/pexels-photo-32866197.jpeg?auto=compress&cs=tinysrgb&w=1900&h=2560&fit=crop",
-    "https://images.pexels.com/photos/32866195/pexels-photo-32866195.jpeg?auto=compress&cs=tinysrgb&w=1900&h=2560&fit=crop",
-    "https://images.pexels.com/photos/32866194/pexels-photo-32866194.jpeg?auto=compress&cs=tinysrgb&w=1900&h=2560&fit=crop",
-    "https://images.pexels.com/photos/32866193/pexels-photo-32866193.jpeg?auto=compress&cs=tinysrgb&w=1900&h=2560&fit=crop",
-    "https://images.pexels.com/photos/32866192/pexels-photo-32866192.jpeg?auto=compress&cs=tinysrgb&w=1900&h=2560&fit=crop",
-    "https://images.pexels.com/photos/32866191/pexels-photo-32866191.jpeg?auto=compress&cs=tinysrgb&w=1900&h=2560&fit=crop",
-    "https://images.pexels.com/photos/32866190/pexels-photo-32866190.jpeg?auto=compress&cs=tinysrgb&w=1900&h=2560&fit=crop",
-    "https://images.pexels.com/photos/32866189/pexels-photo-32866189.jpeg?auto=compress&cs=tinysrgb&w=1900&h=2560&fit=crop",
-    "https://images.pexels.com/photos/32866188/pexels-photo-32866188.jpeg?auto=compress&cs=tinysrgb&w=1900&h=2560&fit=crop",
-    "https://images.pexels.com/photos/32866187/pexels-photo-32866187.jpeg?auto=compress&cs=tinysrgb&w=1900&h=2560&fit=crop",
-    "https://images.pexels.com/photos/32866186/pexels-photo-32866186.jpeg?auto=compress&cs=tinysrgb&w=1900&h=2560&fit=crop",
-    "https://images.pexels.com/photos/32866184/pexels-photo-32866184.jpeg?auto=compress&cs=tinysrgb&w=1900&h=2560&fit=crop",
-    "https://images.pexels.com/photos/32866183/pexels-photo-32866183.jpeg?auto=compress&cs=tinysrgb&w=1900&h=2560&fit=crop",
-    "https://images.pexels.com/photos/32866182/pexels-photo-32866182.jpeg?auto=compress&cs=tinysrgb&w=1900&h=2560&fit=crop",
-    "https://images.pexels.com/photos/32864600/pexels-photo-32864600.jpeg?auto=compress&cs=tinysrgb&w=1900&h=2560&fit=crop"
-  ];
+  // Memoized images array for performance
+  const allImages = useMemo(() => [
+    "https://images.pexels.com/photos/32866211/pexels-photo-32866211.jpeg?auto=compress&cs=tinysrgb&w=1200&h=1600&fit=crop",
+    "https://images.pexels.com/photos/32866213/pexels-photo-32866213.jpeg?auto=compress&cs=tinysrgb&w=1200&h=1600&fit=crop",
+    "https://images.pexels.com/photos/32866210/pexels-photo-32866210.jpeg?auto=compress&cs=tinysrgb&w=1200&h=1600&fit=crop",
+    "https://images.pexels.com/photos/32866209/pexels-photo-32866209.jpeg?auto=compress&cs=tinysrgb&w=1200&h=1600&fit=crop",
+    "https://images.pexels.com/photos/32866208/pexels-photo-32866208.jpeg?auto=compress&cs=tinysrgb&w=1200&h=1600&fit=crop",
+    "https://images.pexels.com/photos/32866207/pexels-photo-32866207.jpeg?auto=compress&cs=tinysrgb&w=1200&h=1600&fit=crop",
+    "https://images.pexels.com/photos/32866206/pexels-photo-32866206.jpeg?auto=compress&cs=tinysrgb&w=1200&h=1600&fit=crop",
+    "https://images.pexels.com/photos/32866205/pexels-photo-32866205.jpeg?auto=compress&cs=tinysrgb&w=1200&h=1600&fit=crop",
+    "https://images.pexels.com/photos/32866204/pexels-photo-32866204.jpeg?auto=compress&cs=tinysrgb&w=1200&h=1600&fit=crop",
+    "https://images.pexels.com/photos/32866203/pexels-photo-32866203.jpeg?auto=compress&cs=tinysrgb&w=1200&h=1600&fit=crop",
+    "https://images.pexels.com/photos/32866202/pexels-photo-32866202.jpeg?auto=compress&cs=tinysrgb&w=1200&h=1600&fit=crop",
+    "https://images.pexels.com/photos/32866201/pexels-photo-32866201.jpeg?auto=compress&cs=tinysrgb&w=1200&h=1600&fit=crop",
+    "https://images.pexels.com/photos/32866200/pexels-photo-32866200.jpeg?auto=compress&cs=tinysrgb&w=1200&h=1600&fit=crop",
+    "https://images.pexels.com/photos/32866199/pexels-photo-32866199.jpeg?auto=compress&cs=tinysrgb&w=1200&h=1600&fit=crop",
+    "https://images.pexels.com/photos/32866198/pexels-photo-32866198.jpeg?auto=compress&cs=tinysrgb&w=1200&h=1600&fit=crop",
+    "https://images.pexels.com/photos/32866197/pexels-photo-32866197.jpeg?auto=compress&cs=tinysrgb&w=1200&h=1600&fit=crop",
+    "https://images.pexels.com/photos/32866195/pexels-photo-32866195.jpeg?auto=compress&cs=tinysrgb&w=1200&h=1600&fit=crop",
+    "https://images.pexels.com/photos/32866194/pexels-photo-32866194.jpeg?auto=compress&cs=tinysrgb&w=1200&h=1600&fit=crop",
+    "https://images.pexels.com/photos/32866193/pexels-photo-32866193.jpeg?auto=compress&cs=tinysrgb&w=1200&h=1600&fit=crop",
+    "https://images.pexels.com/photos/32866192/pexels-photo-32866192.jpeg?auto=compress&cs=tinysrgb&w=1200&h=1600&fit=crop",
+    "https://images.pexels.com/photos/32866191/pexels-photo-32866191.jpeg?auto=compress&cs=tinysrgb&w=1200&h=1600&fit=crop",
+    "https://images.pexels.com/photos/32866190/pexels-photo-32866190.jpeg?auto=compress&cs=tinysrgb&w=1200&h=1600&fit=crop",
+    "https://images.pexels.com/photos/32866189/pexels-photo-32866189.jpeg?auto=compress&cs=tinysrgb&w=1200&h=1600&fit=crop",
+    "https://images.pexels.com/photos/32866188/pexels-photo-32866188.jpeg?auto=compress&cs=tinysrgb&w=1200&h=1600&fit=crop",
+    "https://images.pexels.com/photos/32866187/pexels-photo-32866187.jpeg?auto=compress&cs=tinysrgb&w=1200&h=1600&fit=crop",
+    "https://images.pexels.com/photos/32866186/pexels-photo-32866186.jpeg?auto=compress&cs=tinysrgb&w=1200&h=1600&fit=crop",
+    "https://images.pexels.com/photos/32866184/pexels-photo-32866184.jpeg?auto=compress&cs=tinysrgb&w=1200&h=1600&fit=crop",
+    "https://images.pexels.com/photos/32866183/pexels-photo-32866183.jpeg?auto=compress&cs=tinysrgb&w=1200&h=1600&fit=crop",
+    "https://images.pexels.com/photos/32866182/pexels-photo-32866182.jpeg?auto=compress&cs=tinysrgb&w=1200&h=1600&fit=crop",
+    "https://images.pexels.com/photos/32864600/pexels-photo-32864600.jpeg?auto=compress&cs=tinysrgb&w=1200&h=1600&fit=crop"
+  ], []);
 
-  // Randomize images on component mount
+  // Shuffled images state
   const [shuffledImages, setShuffledImages] = useState<string[]>([]);
 
+  // Initialize shuffled images
   useEffect(() => {
     const shuffled = [...allImages].sort(() => Math.random() - 0.5);
     setShuffledImages(shuffled);
-  }, []);
+  }, [allImages]);
 
-  // Auto-advance carousel every 4 seconds with smooth transition
-  useEffect(() => {
-    if (isDragging) return;
-    
-    const interval = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % shuffledImages.length);
-    }, 4000);
-
-    return () => clearInterval(interval);
-  }, [shuffledImages.length, isDragging]);
-
-  // Partner brand logos - 6 brands total
-  const partnerBrands = [
+  // Partner brand logos
+  const partnerBrands = useMemo(() => [
     { name: "Partner 1", logo: "/partnerslogo/4.webp" },
     { name: "Partner 2", logo: "/partnerslogo/5.webp" },
     { name: "Partner 3", logo: "/partnerslogo/6.webp" },
     { name: "Partner 4", logo: "/partnerslogo/7.webp" },
     { name: "Partner 5", logo: "/partnerslogo/8.webp" },
     { name: "Partner 6", logo: "/partnerslogo/9.webp" }
-  ];
+  ], []);
 
-  const getVisibleImages = () => {
+  // Auto-advance carousel with RAF for smooth timing
+  useEffect(() => {
+    if (!isAutoPlaying || isDragging || shuffledImages.length === 0) return;
+    
+    const autoAdvance = () => {
+      setCurrentIndex((prev) => (prev + 1) % shuffledImages.length);
+    };
+
+    const interval = setInterval(autoAdvance, 4000);
+    return () => clearInterval(interval);
+  }, [shuffledImages.length, isDragging, isAutoPlaying]);
+
+  // Optimized visible images calculation
+  const getVisibleImages = useCallback(() => {
     if (shuffledImages.length === 0) return [];
     
-    const visibleCount = 7; // Show 7 cards for better 3D effect
+    const visibleCount = 7;
     const images = [];
     
     for (let i = 0; i < visibleCount; i++) {
@@ -85,52 +91,81 @@ const DesignCatalogue = () => {
       images.push({
         src: shuffledImages[index],
         index: i,
-        isCenter: i === 3 // Center card is at index 3
+        isCenter: i === 3
       });
     }
     
     return images;
-  };
+  }, [shuffledImages, currentIndex]);
 
-  // Touch/Mouse handlers for swiping
-  const handleStart = (clientX: number) => {
+  // Optimized drag handlers with RAF
+  const handleStart = useCallback((clientX: number) => {
     setIsDragging(true);
+    setIsAutoPlaying(false);
     setStartX(clientX);
     setDragOffset(0);
-  };
+  }, []);
 
-  const handleMove = (clientX: number) => {
-    if (!isDragging) return;
-    const offset = clientX - startX;
-    setDragOffset(offset);
-  };
-
-  const handleEnd = () => {
+  const handleMove = useCallback((clientX: number) => {
     if (!isDragging) return;
     
-    const threshold = 50;
-    if (dragOffset > threshold) {
-      setCurrentIndex((prev) => (prev - 1 + shuffledImages.length) % shuffledImages.length);
-    } else if (dragOffset < -threshold) {
-      setCurrentIndex((prev) => (prev + 1) % shuffledImages.length);
+    if (animationFrameRef.current) {
+      cancelAnimationFrame(animationFrameRef.current);
+    }
+    
+    animationFrameRef.current = requestAnimationFrame(() => {
+      const offset = clientX - startX;
+      setDragOffset(offset);
+    });
+  }, [isDragging, startX]);
+
+  const handleEnd = useCallback(() => {
+    if (!isDragging) return;
+    
+    const threshold = 80;
+    if (Math.abs(dragOffset) > threshold) {
+      if (dragOffset > 0) {
+        setCurrentIndex((prev) => (prev - 1 + shuffledImages.length) % shuffledImages.length);
+      } else {
+        setCurrentIndex((prev) => (prev + 1) % shuffledImages.length);
+      }
     }
     
     setIsDragging(false);
     setDragOffset(0);
-  };
+    
+    // Resume autoplay after interaction
+    setTimeout(() => setIsAutoPlaying(true), 2000);
+  }, [isDragging, dragOffset, shuffledImages.length]);
 
-  const nextSlide = () => {
+  // Navigation functions
+  const nextSlide = useCallback(() => {
     setCurrentIndex((prev) => (prev + 1) % shuffledImages.length);
-  };
+    setIsAutoPlaying(false);
+    setTimeout(() => setIsAutoPlaying(true), 3000);
+  }, [shuffledImages.length]);
 
-  const prevSlide = () => {
+  const prevSlide = useCallback(() => {
     setCurrentIndex((prev) => (prev - 1 + shuffledImages.length) % shuffledImages.length);
-  };
+    setIsAutoPlaying(false);
+    setTimeout(() => setIsAutoPlaying(true), 3000);
+  }, [shuffledImages.length]);
+
+  // Cleanup animation frame on unmount
+  useEffect(() => {
+    return () => {
+      if (animationFrameRef.current) {
+        cancelAnimationFrame(animationFrameRef.current);
+      }
+    };
+  }, []);
+
+  const visibleImages = getVisibleImages();
 
   return (
-    <section ref={ref} className="py-16 md:py-20 lg:py-24 xl:py-32 bg-gradient-to-br from-rose-50 to-mauve-50 overflow-x-hidden">
+    <section ref={ref} className="py-16 md:py-20 lg:py-24 xl:py-32 bg-gradient-to-br from-rose-50 to-mauve-50 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header - Responsive sizing */}
+        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
@@ -146,21 +181,21 @@ const DesignCatalogue = () => {
           </p>
         </motion.div>
 
-        {/* Enhanced 3D Carousel - Responsive padding and sizing */}
+        {/* 3D Carousel Container */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="relative mb-16 md:mb-20 lg:mb-24 overflow-hidden"
+          className="relative mb-16 md:mb-20 lg:mb-24"
           style={{ 
-            height: 'clamp(400px, 60vh, 700px)',
-            paddingTop: 'clamp(2rem, 5vw, 4rem)',
-            paddingBottom: 'clamp(2rem, 5vw, 4rem)'
+            height: 'clamp(500px, 70vh, 800px)',
+            paddingTop: 'clamp(3rem, 6vw, 5rem)',
+            paddingBottom: 'clamp(3rem, 6vw, 5rem)'
           }}
         >
           <div 
-            className="flex items-center justify-center h-full relative cursor-grab active:cursor-grabbing"
-            style={{ perspective: '1200px' }}
+            ref={containerRef}
+            className="carousel-container"
             onMouseDown={(e) => handleStart(e.clientX)}
             onMouseMove={(e) => handleMove(e.clientX)}
             onMouseUp={handleEnd}
@@ -169,93 +204,93 @@ const DesignCatalogue = () => {
             onTouchMove={(e) => handleMove(e.touches[0].clientX)}
             onTouchEnd={handleEnd}
           >
-            {getVisibleImages().map((image, idx) => {
+            {visibleImages.map((image, idx) => {
               const isCenter = idx === 3;
               const distanceFromCenter = idx - 3;
               
-              // 3D positioning calculations
-              const translateX = distanceFromCenter * (window.innerWidth < 768 ? 120 : window.innerWidth < 1024 ? 180 : 220);
-              const translateZ = isCenter ? 0 : -Math.abs(distanceFromCenter) * 150;
-              const rotateY = distanceFromCenter * (window.innerWidth < 768 ? 15 : 20);
-              const scale = isCenter ? 1 : Math.max(0.6, 1 - Math.abs(distanceFromCenter) * 0.15);
-              const opacity = Math.max(0.3, 1 - Math.abs(distanceFromCenter) * 0.2);
+              // Responsive calculations
+              const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+              const isTablet = typeof window !== 'undefined' && window.innerWidth < 1024;
               
-              const dragAdjustment = isDragging ? dragOffset * 0.5 : 0;
+              // 3D positioning with GPU optimization
+              const translateX = distanceFromCenter * (isMobile ? 140 : isTablet ? 200 : 280);
+              const translateZ = isCenter ? 50 : -Math.abs(distanceFromCenter) * 200;
+              const rotateY = distanceFromCenter * (isMobile ? 12 : 18);
+              const scale = isCenter ? 1 : Math.max(0.65, 1 - Math.abs(distanceFromCenter) * 0.12);
+              const opacity = Math.max(0.4, 1 - Math.abs(distanceFromCenter) * 0.15);
+              
+              const dragAdjustment = isDragging ? dragOffset * 0.6 : 0;
               
               return (
-                <motion.div
+                <div
                   key={`${currentIndex}-${idx}`}
-                  animate={{ 
-                    x: translateX + dragAdjustment,
-                    z: translateZ,
-                    rotateY: rotateY,
-                    scale: scale,
-                    opacity: opacity,
-                    zIndex: isCenter ? 20 : 10 - Math.abs(distanceFromCenter)
-                  }}
-                  transition={{ 
-                    duration: isDragging ? 0.1 : 0.8,
-                    ease: isDragging ? "linear" : [0.25, 0.46, 0.45, 0.94],
-                    type: "tween"
-                  }}
-                  className="absolute rounded-2xl md:rounded-3xl overflow-hidden shadow-2xl border-4 border-white/50"
+                  className="carousel-card"
                   style={{
-                    width: 'clamp(200px, 25vw, 350px)',
-                    height: 'clamp(280px, 35vw, 480px)',
-                    transformStyle: 'preserve-3d',
-                    backfaceVisibility: 'hidden'
+                    transform: `translate3d(${translateX + dragAdjustment}px, 0, ${translateZ}px) rotateY(${rotateY}deg) scale3d(${scale}, ${scale}, 1)`,
+                    opacity: opacity,
+                    zIndex: isCenter ? 20 : 10 - Math.abs(distanceFromCenter),
+                    width: isMobile ? '220px' : isTablet ? '280px' : '350px',
+                    height: isMobile ? '320px' : isTablet ? '420px' : '520px',
+                    transition: isDragging ? 'none' : 'transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.8s ease',
+                    willChange: 'transform, opacity'
                   }}
                 >
-                  <img
-                    src={image.src}
-                    alt={`Event ${idx + 1}`}
-                    className="w-full h-full object-cover"
-                    loading="lazy"
-                    draggable={false}
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
-                  
-                  {/* Center card highlight */}
-                  {isCenter && (
-                    <div className="absolute inset-0 ring-4 ring-white/60 rounded-2xl md:rounded-3xl pointer-events-none" />
-                  )}
-                </motion.div>
+                  <div className="card-inner">
+                    <img
+                      src={image.src}
+                      alt={`Event ${idx + 1}`}
+                      className="card-image"
+                      loading="lazy"
+                      draggable={false}
+                    />
+                    <div className="card-overlay" />
+                    
+                    {/* Center card highlight */}
+                    {isCenter && <div className="center-highlight" />}
+                    
+                    {/* Hover effect */}
+                    <div className="hover-effect" />
+                  </div>
+                </div>
               );
             })}
           </div>
 
-          {/* Navigation Arrows - Responsive positioning */}
+          {/* Navigation Arrows */}
           <button
             onClick={prevSlide}
-            className="absolute left-2 md:left-4 lg:left-8 top-1/2 transform -translate-y-1/2 p-2 md:p-3 bg-white/20 backdrop-blur-sm rounded-full text-white hover:bg-white/30 transition-colors z-30 shadow-lg"
+            className="nav-arrow nav-arrow-left"
+            aria-label="Previous image"
           >
             <ChevronLeft className="h-5 w-5 md:h-6 md:w-6" />
           </button>
           
           <button
             onClick={nextSlide}
-            className="absolute right-2 md:right-4 lg:right-8 top-1/2 transform -translate-y-1/2 p-2 md:p-3 bg-white/20 backdrop-blur-sm rounded-full text-white hover:bg-white/30 transition-colors z-30 shadow-lg"
+            className="nav-arrow nav-arrow-right"
+            aria-label="Next image"
           >
             <ChevronRight className="h-5 w-5 md:h-6 md:w-6" />
           </button>
 
-          {/* Dots Indicator - Responsive */}
-          <div className="absolute bottom-4 md:bottom-6 left-1/2 transform -translate-x-1/2 flex space-x-2">
+          {/* Dots Indicator */}
+          <div className="dots-container">
             {shuffledImages.slice(0, 8).map((_, index) => (
               <button
                 key={index}
-                onClick={() => setCurrentIndex(index)}
-                className={`w-2 h-2 md:w-2.5 md:h-2.5 rounded-full transition-all duration-300 ${
-                  index === currentIndex % 8
-                    ? 'bg-white scale-125'
-                    : 'bg-white/60 hover:bg-white/80'
-                }`}
+                onClick={() => {
+                  setCurrentIndex(index);
+                  setIsAutoPlaying(false);
+                  setTimeout(() => setIsAutoPlaying(true), 3000);
+                }}
+                className={`dot ${index === currentIndex % 8 ? 'dot-active' : ''}`}
+                aria-label={`Go to slide ${index + 1}`}
               />
             ))}
           </div>
         </motion.div>
 
-        {/* Partner Brands Section - Enhanced responsive padding */}
+        {/* Partner Brands Section */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
@@ -266,9 +301,9 @@ const DesignCatalogue = () => {
             Partner Brands
           </h3>
           
-          {/* Mobile Layout - 3x2 Grid with better spacing */}
+          {/* Mobile Layout */}
           <div className="block md:hidden">
-            <div className="grid grid-cols-3 gap-4 max-w-xs mx-auto px-4">
+            <div className="grid grid-cols-3 gap-6 max-w-sm mx-auto px-4">
               {partnerBrands.map((brand, index) => (
                 <motion.div
                   key={brand.name}
@@ -281,11 +316,11 @@ const DesignCatalogue = () => {
                   }}
                   className="floating-bubble"
                 >
-                  <div className="bg-white rounded-full shadow-xl hover:shadow-2xl transition-all duration-500 border border-neutral-100 flex items-center justify-center group overflow-hidden w-20 h-20 p-3">
+                  <div className="brand-bubble brand-bubble-mobile">
                     <img
                       src={brand.logo}
                       alt={brand.name}
-                      className="w-full h-full object-contain scale-110 opacity-80 group-hover:opacity-100 group-hover:scale-125 transition-all duration-500"
+                      className="brand-image"
                       onError={(e) => {
                         const target = e.currentTarget as HTMLImageElement;
                         target.src = `https://via.placeholder.com/200x200/B03F3F/FFFFFF?text=${encodeURIComponent(brand.name)}`;
@@ -297,82 +332,10 @@ const DesignCatalogue = () => {
             </div>
           </div>
 
-          {/* Tablet Layout - Enhanced padding to prevent edge touching */}
+          {/* Tablet Layout */}
           <div className="hidden md:block lg:hidden">
-            <div className="relative max-w-4xl mx-auto px-8">
-              <div className="relative">
-                {/* First row - 4 brands with better spacing */}
-                <div className="flex justify-center items-center space-x-12 mb-12">
-                  {partnerBrands.slice(0, 4).map((brand, index) => (
-                    <motion.div
-                      key={brand.name}
-                      initial={{ opacity: 0, scale: 0.8 }}
-                      animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
-                      transition={{ 
-                        duration: 0.8, 
-                        delay: 0.6 + index * 0.15,
-                        ease: "easeOut"
-                      }}
-                      className="floating-bubble"
-                      style={{
-                        animationDelay: `${index * 0.7}s`
-                      }}
-                    >
-                      <div className="bg-white rounded-full shadow-xl hover:shadow-2xl transition-all duration-500 border border-neutral-100 flex items-center justify-center group overflow-hidden w-32 h-32 p-6">
-                        <img
-                          src={brand.logo}
-                          alt={brand.name}
-                          className="w-full h-full object-contain scale-110 opacity-80 group-hover:opacity-100 group-hover:scale-125 transition-all duration-500"
-                          onError={(e) => {
-                            const target = e.currentTarget as HTMLImageElement;
-                            target.src = `https://via.placeholder.com/200x200/B03F3F/FFFFFF?text=${encodeURIComponent(brand.name)}`;
-                          }}
-                        />
-                      </div>
-                    </motion.div>
-                  ))}
-                </div>
-
-                {/* Second row - 2 brands centered */}
-                <div className="flex justify-center items-center space-x-24">
-                  {partnerBrands.slice(4, 6).map((brand, index) => (
-                    <motion.div
-                      key={brand.name}
-                      initial={{ opacity: 0, scale: 0.8 }}
-                      animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
-                      transition={{ 
-                        duration: 0.8, 
-                        delay: 1.2 + index * 0.15,
-                        ease: "easeOut"
-                      }}
-                      className="floating-bubble"
-                      style={{
-                        animationDelay: `${(index + 4) * 0.7}s`
-                      }}
-                    >
-                      <div className="bg-white rounded-full shadow-xl hover:shadow-2xl transition-all duration-500 border border-neutral-100 flex items-center justify-center group overflow-hidden w-32 h-32 p-6">
-                        <img
-                          src={brand.logo}
-                          alt={brand.name}
-                          className="w-full h-full object-contain scale-110 opacity-80 group-hover:opacity-100 group-hover:scale-125 transition-all duration-500"
-                          onError={(e) => {
-                            const target = e.currentTarget as HTMLImageElement;
-                            target.src = `https://via.placeholder.com/200x200/B03F3F/FFFFFF?text=${encodeURIComponent(brand.name)}`;
-                          }}
-                        />
-                      </div>
-                    </motion.div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Desktop Layout - 4+2 layout with optimal spacing */}
-          <div className="hidden lg:block relative max-w-6xl mx-auto">
-            <div className="relative">
-              {/* First row - 4 brands */}
-              <div className="flex justify-center items-center space-x-16 xl:space-x-20 mb-16">
+            <div className="relative max-w-5xl mx-auto px-8">
+              <div className="flex justify-center items-center space-x-16 mb-12">
                 {partnerBrands.slice(0, 4).map((brand, index) => (
                   <motion.div
                     key={brand.name}
@@ -384,15 +347,13 @@ const DesignCatalogue = () => {
                       ease: "easeOut"
                     }}
                     className="floating-bubble"
-                    style={{
-                      animationDelay: `${index * 0.7}s`
-                    }}
+                    style={{ animationDelay: `${index * 0.7}s` }}
                   >
-                    <div className="bg-white rounded-full shadow-xl hover:shadow-2xl transition-all duration-500 border border-neutral-100 flex items-center justify-center group overflow-hidden w-40 h-40 xl:w-48 xl:h-48 p-6 xl:p-8">
+                    <div className="brand-bubble brand-bubble-tablet">
                       <img
                         src={brand.logo}
                         alt={brand.name}
-                        className="w-full h-full object-contain scale-110 opacity-80 group-hover:opacity-100 group-hover:scale-125 transition-all duration-500"
+                        className="brand-image"
                         onError={(e) => {
                           const target = e.currentTarget as HTMLImageElement;
                           target.src = `https://via.placeholder.com/200x200/B03F3F/FFFFFF?text=${encodeURIComponent(brand.name)}`;
@@ -403,8 +364,7 @@ const DesignCatalogue = () => {
                 ))}
               </div>
 
-              {/* Second row - 2 brands positioned between the bubbles above */}
-              <div className="flex justify-center items-center space-x-32 xl:space-x-40">
+              <div className="flex justify-center items-center space-x-32">
                 {partnerBrands.slice(4, 6).map((brand, index) => (
                   <motion.div
                     key={brand.name}
@@ -416,15 +376,13 @@ const DesignCatalogue = () => {
                       ease: "easeOut"
                     }}
                     className="floating-bubble"
-                    style={{
-                      animationDelay: `${(index + 4) * 0.7}s`
-                    }}
+                    style={{ animationDelay: `${(index + 4) * 0.7}s` }}
                   >
-                    <div className="bg-white rounded-full shadow-xl hover:shadow-2xl transition-all duration-500 border border-neutral-100 flex items-center justify-center group overflow-hidden w-40 h-40 xl:w-48 xl:h-48 p-6 xl:p-8">
+                    <div className="brand-bubble brand-bubble-tablet">
                       <img
                         src={brand.logo}
                         alt={brand.name}
-                        className="w-full h-full object-contain scale-110 opacity-80 group-hover:opacity-100 group-hover:scale-125 transition-all duration-500"
+                        className="brand-image"
                         onError={(e) => {
                           const target = e.currentTarget as HTMLImageElement;
                           target.src = `https://via.placeholder.com/200x200/B03F3F/FFFFFF?text=${encodeURIComponent(brand.name)}`;
@@ -436,22 +394,238 @@ const DesignCatalogue = () => {
               </div>
             </div>
           </div>
+
+          {/* Desktop Layout */}
+          <div className="hidden lg:block relative max-w-6xl mx-auto">
+            <div className="flex justify-center items-center space-x-20 xl:space-x-24 mb-16">
+              {partnerBrands.slice(0, 4).map((brand, index) => (
+                <motion.div
+                  key={brand.name}
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
+                  transition={{ 
+                    duration: 0.8, 
+                    delay: 0.6 + index * 0.15,
+                    ease: "easeOut"
+                  }}
+                  className="floating-bubble"
+                  style={{ animationDelay: `${index * 0.7}s` }}
+                >
+                  <div className="brand-bubble brand-bubble-desktop">
+                    <img
+                      src={brand.logo}
+                      alt={brand.name}
+                      className="brand-image"
+                      onError={(e) => {
+                        const target = e.currentTarget as HTMLImageElement;
+                        target.src = `https://via.placeholder.com/200x200/B03F3F/FFFFFF?text=${encodeURIComponent(brand.name)}`;
+                      }}
+                    />
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+
+            <div className="flex justify-center items-center space-x-40 xl:space-x-48">
+              {partnerBrands.slice(4, 6).map((brand, index) => (
+                <motion.div
+                  key={brand.name}
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
+                  transition={{ 
+                    duration: 0.8, 
+                    delay: 1.2 + index * 0.15,
+                    ease: "easeOut"
+                  }}
+                  className="floating-bubble"
+                  style={{ animationDelay: `${(index + 4) * 0.7}s` }}
+                >
+                  <div className="brand-bubble brand-bubble-desktop">
+                    <img
+                      src={brand.logo}
+                      alt={brand.name}
+                      className="brand-image"
+                      onError={(e) => {
+                        const target = e.currentTarget as HTMLImageElement;
+                        target.src = `https://via.placeholder.com/200x200/B03F3F/FFFFFF?text=${encodeURIComponent(brand.name)}`;
+                      }}
+                    />
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
         </motion.div>
       </div>
 
-      {/* Enhanced CSS for 3D animations */}
+      {/* Optimized CSS with GPU acceleration */}
       <style jsx>{`
-        @keyframes float {
-          0%, 100% {
-            transform: translateY(0px);
+        /* 3D Carousel Styles with GPU Acceleration */
+        .carousel-container {
+          position: relative;
+          width: 100%;
+          height: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          perspective: 1500px;
+          perspective-origin: center center;
+          cursor: grab;
+          user-select: none;
+          -webkit-user-select: none;
+          -moz-user-select: none;
+          -ms-user-select: none;
+        }
+
+        .carousel-container:active {
+          cursor: grabbing;
+        }
+
+        .carousel-card {
+          position: absolute;
+          border-radius: 1.5rem;
+          overflow: hidden;
+          transform-style: preserve-3d;
+          backface-visibility: hidden;
+          will-change: transform, opacity;
+          contain: layout style paint;
+        }
+
+        .card-inner {
+          position: relative;
+          width: 100%;
+          height: 100%;
+          border-radius: 1.5rem;
+          overflow: hidden;
+          box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(255, 255, 255, 0.3);
+          transform: translateZ(0);
+          will-change: transform;
+        }
+
+        .card-image {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          object-position: center;
+          transform: translateZ(0);
+          will-change: transform;
+          transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .card-overlay {
+          position: absolute;
+          inset: 0;
+          background: linear-gradient(to top, rgba(0, 0, 0, 0.3) 0%, transparent 50%);
+          pointer-events: none;
+        }
+
+        .center-highlight {
+          position: absolute;
+          inset: -4px;
+          border: 4px solid rgba(255, 255, 255, 0.6);
+          border-radius: 1.5rem;
+          pointer-events: none;
+          box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+        }
+
+        .hover-effect {
+          position: absolute;
+          inset: 0;
+          background: rgba(255, 255, 255, 0.1);
+          opacity: 0;
+          transition: opacity 0.3s ease;
+          pointer-events: none;
+        }
+
+        .carousel-card:hover .hover-effect {
+          opacity: 1;
+        }
+
+        .carousel-card:hover .card-image {
+          transform: translateZ(0) scale3d(1.05, 1.05, 1);
+        }
+
+        /* Navigation Arrows */
+        .nav-arrow {
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%) translateZ(0);
+          padding: 0.75rem;
+          background: rgba(255, 255, 255, 0.2);
+          backdrop-filter: blur(8px);
+          border: none;
+          border-radius: 50%;
+          color: white;
+          cursor: pointer;
+          transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+          z-index: 30;
+          box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+          will-change: transform, background-color;
+        }
+
+        .nav-arrow:hover {
+          background: rgba(255, 255, 255, 0.3);
+          transform: translateY(-50%) translateZ(0) scale3d(1.1, 1.1, 1);
+        }
+
+        .nav-arrow-left {
+          left: 1rem;
+        }
+
+        .nav-arrow-right {
+          right: 1rem;
+        }
+
+        @media (min-width: 768px) {
+          .nav-arrow {
+            padding: 1rem;
           }
-          50% {
-            transform: translateY(-15px);
+          
+          .nav-arrow-left {
+            left: 2rem;
+          }
+          
+          .nav-arrow-right {
+            right: 2rem;
           }
         }
 
+        /* Dots Indicator */
+        .dots-container {
+          position: absolute;
+          bottom: 1.5rem;
+          left: 50%;
+          transform: translateX(-50%) translateZ(0);
+          display: flex;
+          gap: 0.5rem;
+          z-index: 30;
+        }
+
+        .dot {
+          width: 0.75rem;
+          height: 0.75rem;
+          border-radius: 50%;
+          border: none;
+          background: rgba(255, 255, 255, 0.6);
+          cursor: pointer;
+          transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+          will-change: transform, background-color;
+        }
+
+        .dot:hover {
+          background: rgba(255, 255, 255, 0.8);
+          transform: translateZ(0) scale3d(1.2, 1.2, 1);
+        }
+
+        .dot-active {
+          background: white;
+          transform: translateZ(0) scale3d(1.25, 1.25, 1);
+        }
+
+        /* Partner Brands */
         .floating-bubble {
           animation: float 4s ease-in-out infinite;
+          will-change: transform;
         }
 
         .floating-bubble:nth-child(2n) {
@@ -474,9 +648,94 @@ const DesignCatalogue = () => {
           animation-delay: 2.5s;
         }
 
-        /* 3D Carousel specific styles */
-        [style*="perspective"] {
-          perspective-origin: center center;
+        .brand-bubble {
+          background: white;
+          border-radius: 50%;
+          box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+          border: 1px solid rgba(229, 231, 235, 1);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          overflow: hidden;
+          transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+          will-change: transform, box-shadow;
+          transform: translateZ(0);
+        }
+
+        .brand-bubble:hover {
+          box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+          transform: translateZ(0) scale3d(1.05, 1.05, 1);
+        }
+
+        .brand-bubble-mobile {
+          width: 5rem;
+          height: 5rem;
+          padding: 0.75rem;
+        }
+
+        .brand-bubble-tablet {
+          width: 8rem;
+          height: 8rem;
+          padding: 1.5rem;
+        }
+
+        .brand-bubble-desktop {
+          width: 10rem;
+          height: 10rem;
+          padding: 2rem;
+        }
+
+        @media (min-width: 1280px) {
+          .brand-bubble-desktop {
+            width: 12rem;
+            height: 12rem;
+            padding: 2.5rem;
+          }
+        }
+
+        .brand-image {
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
+          transform: translateZ(0) scale3d(1.1, 1.1, 1);
+          opacity: 0.8;
+          transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+          will-change: transform, opacity;
+        }
+
+        .brand-bubble:hover .brand-image {
+          opacity: 1;
+          transform: translateZ(0) scale3d(1.25, 1.25, 1);
+        }
+
+        /* Keyframes */
+        @keyframes float {
+          0%, 100% {
+            transform: translateY(0px) translateZ(0);
+          }
+          50% {
+            transform: translateY(-15px) translateZ(0);
+          }
+        }
+
+        /* Performance optimizations */
+        * {
+          -webkit-font-smoothing: antialiased;
+          -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Reduce motion for accessibility */
+        @media (prefers-reduced-motion: reduce) {
+          .carousel-card,
+          .card-image,
+          .nav-arrow,
+          .dot,
+          .brand-bubble,
+          .brand-image,
+          .floating-bubble {
+            transition: none !important;
+            animation: none !important;
+          }
         }
       `}</style>
     </section>
