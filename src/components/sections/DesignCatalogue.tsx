@@ -12,50 +12,97 @@ const DesignCatalogue = () => {
   const [startX, setStartX] = useState(0);
   const [dragOffset, setDragOffset] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+  const [isMobile, setIsMobile] = useState(false);
   const animationFrameRef = useRef<number>();
+
+  // Detect screen size
+  useEffect(() => {
+    const checkScreenSize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    checkScreenSize();
+    window.addEventListener('resize', checkScreenSize);
+    return () => window.removeEventListener('resize', checkScreenSize);
+  }, []);
 
   // Memoized images array for performance
   const allImages = useMemo(() => [
-    "https://images.pexels.com/photos/32866211/pexels-photo-32866211.jpeg?auto=compress&cs=tinysrgb&w=1200&h=1600&fit=crop",
-    "https://images.pexels.com/photos/32866213/pexels-photo-32866213.jpeg?auto=compress&cs=tinysrgb&w=1200&h=1600&fit=crop",
-    "https://images.pexels.com/photos/32866210/pexels-photo-32866210.jpeg?auto=compress&cs=tinysrgb&w=1200&h=1600&fit=crop",
-    "https://images.pexels.com/photos/32866209/pexels-photo-32866209.jpeg?auto=compress&cs=tinysrgb&w=1200&h=1600&fit=crop",
-    "https://images.pexels.com/photos/32866208/pexels-photo-32866208.jpeg?auto=compress&cs=tinysrgb&w=1200&h=1600&fit=crop",
-    "https://images.pexels.com/photos/32866207/pexels-photo-32866207.jpeg?auto=compress&cs=tinysrgb&w=1200&h=1600&fit=crop",
-    "https://images.pexels.com/photos/32866206/pexels-photo-32866206.jpeg?auto=compress&cs=tinysrgb&w=1200&h=1600&fit=crop",
-    "https://images.pexels.com/photos/32866205/pexels-photo-32866205.jpeg?auto=compress&cs=tinysrgb&w=1200&h=1600&fit=crop",
-    "https://images.pexels.com/photos/32866204/pexels-photo-32866204.jpeg?auto=compress&cs=tinysrgb&w=1200&h=1600&fit=crop",
-    "https://images.pexels.com/photos/32866203/pexels-photo-32866203.jpeg?auto=compress&cs=tinysrgb&w=1200&h=1600&fit=crop",
-    "https://images.pexels.com/photos/32866202/pexels-photo-32866202.jpeg?auto=compress&cs=tinysrgb&w=1200&h=1600&fit=crop",
-    "https://images.pexels.com/photos/32866201/pexels-photo-32866201.jpeg?auto=compress&cs=tinysrgb&w=1200&h=1600&fit=crop",
-    "https://images.pexels.com/photos/32866200/pexels-photo-32866200.jpeg?auto=compress&cs=tinysrgb&w=1200&h=1600&fit=crop",
-    "https://images.pexels.com/photos/32866199/pexels-photo-32866199.jpeg?auto=compress&cs=tinysrgb&w=1200&h=1600&fit=crop",
-    "https://images.pexels.com/photos/32866198/pexels-photo-32866198.jpeg?auto=compress&cs=tinysrgb&w=1200&h=1600&fit=crop",
-    "https://images.pexels.com/photos/32866197/pexels-photo-32866197.jpeg?auto=compress&cs=tinysrgb&w=1200&h=1600&fit=crop",
-    "https://images.pexels.com/photos/32866195/pexels-photo-32866195.jpeg?auto=compress&cs=tinysrgb&w=1200&h=1600&fit=crop",
-    "https://images.pexels.com/photos/32866194/pexels-photo-32866194.jpeg?auto=compress&cs=tinysrgb&w=1200&h=1600&fit=crop",
-    "https://images.pexels.com/photos/32866193/pexels-photo-32866193.jpeg?auto=compress&cs=tinysrgb&w=1200&h=1600&fit=crop",
-    "https://images.pexels.com/photos/32866192/pexels-photo-32866192.jpeg?auto=compress&cs=tinysrgb&w=1200&h=1600&fit=crop",
-    "https://images.pexels.com/photos/32866191/pexels-photo-32866191.jpeg?auto=compress&cs=tinysrgb&w=1200&h=1600&fit=crop",
-    "https://images.pexels.com/photos/32866190/pexels-photo-32866190.jpeg?auto=compress&cs=tinysrgb&w=1200&h=1600&fit=crop",
-    "https://images.pexels.com/photos/32866189/pexels-photo-32866189.jpeg?auto=compress&cs=tinysrgb&w=1200&h=1600&fit=crop",
-    "https://images.pexels.com/photos/32866188/pexels-photo-32866188.jpeg?auto=compress&cs=tinysrgb&w=1200&h=1600&fit=crop",
-    "https://images.pexels.com/photos/32866187/pexels-photo-32866187.jpeg?auto=compress&cs=tinysrgb&w=1200&h=1600&fit=crop",
-    "https://images.pexels.com/photos/32866186/pexels-photo-32866186.jpeg?auto=compress&cs=tinysrgb&w=1200&h=1600&fit=crop",
-    "https://images.pexels.com/photos/32866184/pexels-photo-32866184.jpeg?auto=compress&cs=tinysrgb&w=1200&h=1600&fit=crop",
-    "https://images.pexels.com/photos/32866183/pexels-photo-32866183.jpeg?auto=compress&cs=tinysrgb&w=1200&h=1600&fit=crop",
-    "https://images.pexels.com/photos/32866182/pexels-photo-32866182.jpeg?auto=compress&cs=tinysrgb&w=1200&h=1600&fit=crop",
-    "https://images.pexels.com/photos/32864600/pexels-photo-32864600.jpeg?auto=compress&cs=tinysrgb&w=1200&h=1600&fit=crop"
+    "https://images.pexels.com/photos/32866211/pexels-photo-32866211.jpeg?auto=compress&cs=tinysrgb&w=1200&h=800&fit=crop",
+    "https://images.pexels.com/photos/32866213/pexels-photo-32866213.jpeg?auto=compress&cs=tinysrgb&w=1200&h=800&fit=crop",
+    "https://images.pexels.com/photos/32866210/pexels-photo-32866210.jpeg?auto=compress&cs=tinysrgb&w=1200&h=800&fit=crop",
+    "https://images.pexels.com/photos/32866209/pexels-photo-32866209.jpeg?auto=compress&cs=tinysrgb&w=1200&h=800&fit=crop",
+    "https://images.pexels.com/photos/32866208/pexels-photo-32866208.jpeg?auto=compress&cs=tinysrgb&w=1200&h=800&fit=crop",
+    "https://images.pexels.com/photos/32866207/pexels-photo-32866207.jpeg?auto=compress&cs=tinysrgb&w=1200&h=800&fit=crop",
+    "https://images.pexels.com/photos/32866206/pexels-photo-32866206.jpeg?auto=compress&cs=tinysrgb&w=1200&h=800&fit=crop",
+    "https://images.pexels.com/photos/32866205/pexels-photo-32866205.jpeg?auto=compress&cs=tinysrgb&w=1200&h=800&fit=crop",
+    "https://images.pexels.com/photos/32866204/pexels-photo-32866204.jpeg?auto=compress&cs=tinysrgb&w=1200&h=800&fit=crop",
+    "https://images.pexels.com/photos/32866203/pexels-photo-32866203.jpeg?auto=compress&cs=tinysrgb&w=1200&h=800&fit=crop",
+    "https://images.pexels.com/photos/32866202/pexels-photo-32866202.jpeg?auto=compress&cs=tinysrgb&w=1200&h=800&fit=crop",
+    "https://images.pexels.com/photos/32866201/pexels-photo-32866201.jpeg?auto=compress&cs=tinysrgb&w=1200&h=800&fit=crop",
+    "https://images.pexels.com/photos/32866200/pexels-photo-32866200.jpeg?auto=compress&cs=tinysrgb&w=1200&h=800&fit=crop",
+    "https://images.pexels.com/photos/32866199/pexels-photo-32866199.jpeg?auto=compress&cs=tinysrgb&w=1200&h=800&fit=crop",
+    "https://images.pexels.com/photos/32866198/pexels-photo-32866198.jpeg?auto=compress&cs=tinysrgb&w=1200&h=800&fit=crop",
+    "https://images.pexels.com/photos/32866197/pexels-photo-32866197.jpeg?auto=compress&cs=tinysrgb&w=1200&h=800&fit=crop",
+    "https://images.pexels.com/photos/32866195/pexels-photo-32866195.jpeg?auto=compress&cs=tinysrgb&w=1200&h=800&fit=crop",
+    "https://images.pexels.com/photos/32866194/pexels-photo-32866194.jpeg?auto=compress&cs=tinysrgb&w=1200&h=800&fit=crop",
+    "https://images.pexels.com/photos/32866193/pexels-photo-32866193.jpeg?auto=compress&cs=tinysrgb&w=1200&h=800&fit=crop",
+    "https://images.pexels.com/photos/32866192/pexels-photo-32866192.jpeg?auto=compress&cs=tinysrgb&w=1200&h=800&fit=crop",
+    "https://images.pexels.com/photos/32866191/pexels-photo-32866191.jpeg?auto=compress&cs=tinysrgb&w=1200&h=800&fit=crop",
+    "https://images.pexels.com/photos/32866190/pexels-photo-32866190.jpeg?auto=compress&cs=tinysrgb&w=1200&h=800&fit=crop",
+    "https://images.pexels.com/photos/32866189/pexels-photo-32866189.jpeg?auto=compress&cs=tinysrgb&w=1200&h=800&fit=crop",
+    "https://images.pexels.com/photos/32866188/pexels-photo-32866188.jpeg?auto=compress&cs=tinysrgb&w=1200&h=800&fit=crop",
+    "https://images.pexels.com/photos/32866187/pexels-photo-32866187.jpeg?auto=compress&cs=tinysrgb&w=1200&h=800&fit=crop",
+    "https://images.pexels.com/photos/32866186/pexels-photo-32866186.jpeg?auto=compress&cs=tinysrgb&w=1200&h=800&fit=crop",
+    "https://images.pexels.com/photos/32866184/pexels-photo-32866184.jpeg?auto=compress&cs=tinysrgb&w=1200&h=800&fit=crop",
+    "https://images.pexels.com/photos/32866183/pexels-photo-32866183.jpeg?auto=compress&cs=tinysrgb&w=1200&h=800&fit=crop",
+    "https://images.pexels.com/photos/32866182/pexels-photo-32866182.jpeg?auto=compress&cs=tinysrgb&w=1200&h=800&fit=crop",
+    "https://images.pexels.com/photos/32864600/pexels-photo-32864600.jpeg?auto=compress&cs=tinysrgb&w=1200&h=800&fit=crop"
+  ], []);
+
+  // Mobile vertical images (portrait)
+  const mobileImages = useMemo(() => [
+    "https://images.pexels.com/photos/32866211/pexels-photo-32866211.jpeg?auto=compress&cs=tinysrgb&w=800&h=1200&fit=crop",
+    "https://images.pexels.com/photos/32866213/pexels-photo-32866213.jpeg?auto=compress&cs=tinysrgb&w=800&h=1200&fit=crop",
+    "https://images.pexels.com/photos/32866210/pexels-photo-32866210.jpeg?auto=compress&cs=tinysrgb&w=800&h=1200&fit=crop",
+    "https://images.pexels.com/photos/32866209/pexels-photo-32866209.jpeg?auto=compress&cs=tinysrgb&w=800&h=1200&fit=crop",
+    "https://images.pexels.com/photos/32866208/pexels-photo-32866208.jpeg?auto=compress&cs=tinysrgb&w=800&h=1200&fit=crop",
+    "https://images.pexels.com/photos/32866207/pexels-photo-32866207.jpeg?auto=compress&cs=tinysrgb&w=800&h=1200&fit=crop",
+    "https://images.pexels.com/photos/32866206/pexels-photo-32866206.jpeg?auto=compress&cs=tinysrgb&w=800&h=1200&fit=crop",
+    "https://images.pexels.com/photos/32866205/pexels-photo-32866205.jpeg?auto=compress&cs=tinysrgb&w=800&h=1200&fit=crop",
+    "https://images.pexels.com/photos/32866204/pexels-photo-32866204.jpeg?auto=compress&cs=tinysrgb&w=800&h=1200&fit=crop",
+    "https://images.pexels.com/photos/32866203/pexels-photo-32866203.jpeg?auto=compress&cs=tinysrgb&w=800&h=1200&fit=crop",
+    "https://images.pexels.com/photos/32866202/pexels-photo-32866202.jpeg?auto=compress&cs=tinysrgb&w=800&h=1200&fit=crop",
+    "https://images.pexels.com/photos/32866201/pexels-photo-32866201.jpeg?auto=compress&cs=tinysrgb&w=800&h=1200&fit=crop",
+    "https://images.pexels.com/photos/32866200/pexels-photo-32866200.jpeg?auto=compress&cs=tinysrgb&w=800&h=1200&fit=crop",
+    "https://images.pexels.com/photos/32866199/pexels-photo-32866199.jpeg?auto=compress&cs=tinysrgb&w=800&h=1200&fit=crop",
+    "https://images.pexels.com/photos/32866198/pexels-photo-32866198.jpeg?auto=compress&cs=tinysrgb&w=800&h=1200&fit=crop",
+    "https://images.pexels.com/photos/32866197/pexels-photo-32866197.jpeg?auto=compress&cs=tinysrgb&w=800&h=1200&fit=crop",
+    "https://images.pexels.com/photos/32866195/pexels-photo-32866195.jpeg?auto=compress&cs=tinysrgb&w=800&h=1200&fit=crop",
+    "https://images.pexels.com/photos/32866194/pexels-photo-32866194.jpeg?auto=compress&cs=tinysrgb&w=800&h=1200&fit=crop",
+    "https://images.pexels.com/photos/32866193/pexels-photo-32866193.jpeg?auto=compress&cs=tinysrgb&w=800&h=1200&fit=crop",
+    "https://images.pexels.com/photos/32866192/pexels-photo-32866192.jpeg?auto=compress&cs=tinysrgb&w=800&h=1200&fit=crop",
+    "https://images.pexels.com/photos/32866191/pexels-photo-32866191.jpeg?auto=compress&cs=tinysrgb&w=800&h=1200&fit=crop",
+    "https://images.pexels.com/photos/32866190/pexels-photo-32866190.jpeg?auto=compress&cs=tinysrgb&w=800&h=1200&fit=crop",
+    "https://images.pexels.com/photos/32866189/pexels-photo-32866189.jpeg?auto=compress&cs=tinysrgb&w=800&h=1200&fit=crop",
+    "https://images.pexels.com/photos/32866188/pexels-photo-32866188.jpeg?auto=compress&cs=tinysrgb&w=800&h=1200&fit=crop",
+    "https://images.pexels.com/photos/32866187/pexels-photo-32866187.jpeg?auto=compress&cs=tinysrgb&w=800&h=1200&fit=crop",
+    "https://images.pexels.com/photos/32866186/pexels-photo-32866186.jpeg?auto=compress&cs=tinysrgb&w=800&h=1200&fit=crop",
+    "https://images.pexels.com/photos/32866184/pexels-photo-32866184.jpeg?auto=compress&cs=tinysrgb&w=800&h=1200&fit=crop",
+    "https://images.pexels.com/photos/32866183/pexels-photo-32866183.jpeg?auto=compress&cs=tinysrgb&w=800&h=1200&fit=crop",
+    "https://images.pexels.com/photos/32866182/pexels-photo-32866182.jpeg?auto=compress&cs=tinysrgb&w=800&h=1200&fit=crop",
+    "https://images.pexels.com/photos/32864600/pexels-photo-32864600.jpeg?auto=compress&cs=tinysrgb&w=800&h=1200&fit=crop"
   ], []);
 
   // Shuffled images state
   const [shuffledImages, setShuffledImages] = useState<string[]>([]);
 
-  // Initialize shuffled images
+  // Initialize shuffled images based on screen size
   useEffect(() => {
-    const shuffled = [...allImages].sort(() => Math.random() - 0.5);
+    const imagesToUse = isMobile ? mobileImages : allImages;
+    const shuffled = [...imagesToUse].sort(() => Math.random() - 0.5);
     setShuffledImages(shuffled);
-  }, [allImages]);
+  }, [allImages, mobileImages, isMobile]);
 
   // Partner brand logos
   const partnerBrands = useMemo(() => [
@@ -188,7 +235,7 @@ const DesignCatalogue = () => {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="relative mb-16 md:mb-20 lg:mb-24"
           style={{ 
-            height: 'clamp(500px, 70vh, 800px)',
+            height: isMobile ? 'clamp(600px, 80vh, 900px)' : 'clamp(400px, 50vh, 600px)',
             paddingTop: 'clamp(3rem, 6vw, 5rem)',
             paddingBottom: 'clamp(3rem, 6vw, 5rem)'
           }}
@@ -209,8 +256,7 @@ const DesignCatalogue = () => {
               const distanceFromCenter = idx - 3;
               
               // Responsive calculations
-              const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
-              const isTablet = typeof window !== 'undefined' && window.innerWidth < 1024;
+              const isTablet = typeof window !== 'undefined' && window.innerWidth >= 768 && window.innerWidth < 1024;
               
               // 3D positioning with GPU optimization
               const translateX = distanceFromCenter * (isMobile ? 140 : isTablet ? 200 : 280);
@@ -221,6 +267,10 @@ const DesignCatalogue = () => {
               
               const dragAdjustment = isDragging ? dragOffset * 0.6 : 0;
               
+              // Responsive card dimensions
+              const cardWidth = isMobile ? '220px' : isTablet ? '320px' : '450px';
+              const cardHeight = isMobile ? '320px' : isTablet ? '240px' : '300px';
+              
               return (
                 <div
                   key={`${currentIndex}-${idx}`}
@@ -229,8 +279,8 @@ const DesignCatalogue = () => {
                     transform: `translate3d(${translateX + dragAdjustment}px, 0, ${translateZ}px) rotateY(${rotateY}deg) scale3d(${scale}, ${scale}, 1)`,
                     opacity: opacity,
                     zIndex: isCenter ? 20 : 10 - Math.abs(distanceFromCenter),
-                    width: isMobile ? '220px' : isTablet ? '280px' : '350px',
-                    height: isMobile ? '320px' : isTablet ? '420px' : '520px',
+                    width: cardWidth,
+                    height: cardHeight,
                     transition: isDragging ? 'none' : 'transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.8s ease',
                     willChange: 'transform, opacity'
                   }}
