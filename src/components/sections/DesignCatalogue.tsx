@@ -235,7 +235,7 @@ const DesignCatalogue = () => {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="relative mb-16 overflow-hidden"
           style={{ 
-            height: isMobile ? '500px' : '600px', // Fixed heights instead of clamp
+            height: isMobile ? '500px' : '800px', // Fixed heights instead of clamp
             paddingTop: isMobile ? '2rem' : '4rem', // Reduced mobile padding
             paddingBottom: isMobile ? '2rem' : '4rem' // Reduced mobile padding
           }}
