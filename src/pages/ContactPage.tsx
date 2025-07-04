@@ -92,8 +92,8 @@ ${formData.message}
     },
     {
       icon: MapPin,
-      title: "Visit Our Office",
-      details: "Zephyr Events E-Commerce Private Limited,",
+      title: "Our Location",
+      details: "Zephyr Events,",
       subtitle: "B 36, Second Floor, Block B, Mayapuri Industrial Area Phase I, Mayapuri, New Delhi, Delhi, 110064",
       description: "Schedule an appointment to visit our planning office."
     }
@@ -109,7 +109,7 @@ ${formData.message}
       <section className="relative h-[92vh] md:h-[90vh] lg:h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 w-full h-full">
           <img
-            src="/contacthero.webp"
+            src="https://images.pexels.com/photos/32867556/pexels-photo-32867556.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&fit=crop"
             alt="Contact Hero"
             className="w-full h-full object-cover"
           />

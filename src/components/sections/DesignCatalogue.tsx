@@ -1,12 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
-import { useRef } from 'react';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 const DesignCatalogue = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isDragging, setIsDragging] = useState(false);
+  const [startX, setStartX] = useState(0);
+  const [dragOffset, setDragOffset] = useState(0);
 
   // All available images
   const allImages = [
@@ -50,29 +53,30 @@ const DesignCatalogue = () => {
     setShuffledImages(shuffled);
   }, []);
 
-  // Auto-advance carousel with much slower, smoother speed
+  // Auto-advance carousel every 3 seconds
   useEffect(() => {
+    if (isDragging) return;
+    
     const interval = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % shuffledImages.length);
-    }, 8000); // Very slow - 8 seconds
+    }, 3000);
 
     return () => clearInterval(interval);
-  }, [shuffledImages.length]);
+  }, [shuffledImages.length, isDragging]);
 
   // Partner brand logos with proper paths
   const partnerBrands = [
-    { name: "Taj", logo: "/src/assets/logopartners/taj.png" },
-    { name: "ITC", logo: "/src/assets/logopartners/itc.png" },
-    { name: "Oberoi", logo: "/src/assets/logopartners/oebroi.png" },
-    { name: "Leela", logo: "/src/assets/logopartners/leela.png" },
-    { name: "JW Marriott", logo: "/src/assets/logopartners/jwmarriott.png" },
-    { name: "Accor", logo: "/src/assets/logopartners/accor.png" }
+    { name: "Partner 1", logo: "/partnerslogo/4.webp" },
+    { name: "Partner 2", logo: "/partnerslogo/5.webp" },
+    { name: "Partner 3", logo: "/partnerslogo/6.webp" },
+    { name: "Partner 4", logo: "/partnerslogo/7.webp" },
+    { name: "Partner 5", logo: "/partnerslogo/8.webp" }
   ];
 
   const getVisibleImages = () => {
     if (shuffledImages.length === 0) return [];
     
-    const visibleCount = 5; // Show 5 images at once
+    const visibleCount = 5;
     const images = [];
     
     for (let i = 0; i < visibleCount; i++) {
@@ -80,24 +84,61 @@ const DesignCatalogue = () => {
       images.push({
         src: shuffledImages[index],
         index: i,
-        isCenter: i === 2 // Center image
+        isCenter: i === 2
       });
     }
     
     return images;
   };
 
+  // Touch/Mouse handlers for swiping
+  const handleStart = (clientX: number) => {
+    setIsDragging(true);
+    setStartX(clientX);
+    setDragOffset(0);
+  };
+
+  const handleMove = (clientX: number) => {
+    if (!isDragging) return;
+    const offset = clientX - startX;
+    setDragOffset(offset);
+  };
+
+  const handleEnd = () => {
+    if (!isDragging) return;
+    
+    const threshold = 50;
+    if (dragOffset > threshold) {
+      // Swipe right - go to previous
+      setCurrentIndex((prev) => (prev - 1 + shuffledImages.length) % shuffledImages.length);
+    } else if (dragOffset < -threshold) {
+      // Swipe left - go to next
+      setCurrentIndex((prev) => (prev + 1) % shuffledImages.length);
+    }
+    
+    setIsDragging(false);
+    setDragOffset(0);
+  };
+
+  const nextSlide = () => {
+    setCurrentIndex((prev) => (prev + 1) % shuffledImages.length);
+  };
+
+  const prevSlide = () => {
+    setCurrentIndex((prev) => (prev - 1 + shuffledImages.length) % shuffledImages.length);
+  };
+
   return (
-    <section ref={ref} className="py-12 lg:py-20 bg-gradient-to-br from-rose-50 to-mauve-50 overflow-x-hidden">
+    <section ref={ref} className="py-12 lg:py-16 bg-gradient-to-br from-rose-50 to-mauve-50 overflow-x-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-16"
+          className="text-center mb-12"
         >
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-heading font-normal text-neutral-800 mb-6">
+          <h2 className="text-3xl sm:text-4xl lg:text-4xl font-heading font-normal text-neutral-800 mb-6">
             A Glimpse Into Our Celebrations
           </h2>
           <p className="text-lg text-neutral-600 max-w-3xl mx-auto leading-relaxed">
@@ -106,173 +147,176 @@ const DesignCatalogue = () => {
           </p>
         </motion.div>
 
-        {/* Enhanced Ultra-Smooth Carousel */}
+        {/* Enhanced Swipeable Carousel */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="relative mb-20 overflow-hidden h-96 md:h-[500px] lg:h-[600px]"
+          className="relative mb-16 overflow-hidden h-80 md:h-96 lg:h-[500px]"
         >
-          <div className="flex items-center justify-center h-full relative">
+          <div 
+            className="flex items-center justify-center h-full relative cursor-grab active:cursor-grabbing"
+            onMouseDown={(e) => handleStart(e.clientX)}
+            onMouseMove={(e) => handleMove(e.clientX)}
+            onMouseUp={handleEnd}
+            onMouseLeave={handleEnd}
+            onTouchStart={(e) => handleStart(e.touches[0].clientX)}
+            onTouchMove={(e) => handleMove(e.touches[0].clientX)}
+            onTouchEnd={handleEnd}
+          >
             {getVisibleImages().map((image, idx) => (
               <motion.div
                 key={`${currentIndex}-${idx}`}
                 initial={{ opacity: 0, scale: 0.6, x: 400 }}
                 animate={{ 
                   opacity: image.isCenter ? 1 : 0.4,
-                  scale: image.isCenter ? 1.2 : 0.6, // Much bigger center card
-                  x: (idx - 2) * (window.innerWidth < 768 ? 200 : 320),
-                  filter: image.isCenter ? 'blur(0px)' : 'blur(4px)',
+                  scale: image.isCenter ? 1.1 : 0.7,
+                  x: (idx - 2) * (window.innerWidth < 768 ? 180 : 280) + (isDragging ? dragOffset * 0.5 : 0),
+                  filter: image.isCenter ? 'blur(0px)' : 'blur(2px)',
                   zIndex: image.isCenter ? 20 : 5
                 }}
                 transition={{ 
-                  duration: 2.5, // Much slower transition
-                  ease: [0.23, 1, 0.32, 1], // Ultra-smooth cubic-bezier easing
+                  duration: isDragging ? 0.1 : 1.5,
+                  ease: isDragging ? "linear" : [0.23, 1, 0.32, 1],
                   type: "tween"
                 }}
-                className="absolute w-72 md:w-96 lg:w-[450px] h-80 md:h-96 lg:h-[550px] rounded-3xl overflow-hidden shadow-2xl"
+                className="absolute w-64 md:w-80 lg:w-96 h-72 md:h-80 lg:h-96 rounded-2xl overflow-hidden shadow-xl border-2 border-white/20"
               >
                 <img
                   src={image.src}
                   alt={`Event ${idx + 1}`}
                   className="w-full h-full object-cover"
                   loading="lazy"
+                  draggable={false}
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
               </motion.div>
             ))}
           </div>
 
-          {/* Enhanced Dots Indicator */}
-          <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex space-x-3">
+          {/* Navigation Arrows */}
+          <button
+            onClick={prevSlide}
+            className="absolute left-4 top-1/2 transform -translate-y-1/2 p-3 bg-white/20 backdrop-blur-sm rounded-full text-white hover:bg-white/30 transition-colors z-30"
+          >
+            <ChevronLeft className="h-6 w-6" />
+          </button>
+          
+          <button
+            onClick={nextSlide}
+            className="absolute right-4 top-1/2 transform -translate-y-1/2 p-3 bg-white/20 backdrop-blur-sm rounded-full text-white hover:bg-white/30 transition-colors z-30"
+          >
+            <ChevronRight className="h-6 w-6" />
+          </button>
+
+          {/* Dots Indicator */}
+          <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex space-x-2">
             {shuffledImages.slice(0, 8).map((_, index) => (
               <button
                 key={index}
                 onClick={() => setCurrentIndex(index)}
-                className={`w-3 h-3 rounded-full transition-all duration-500 ${
+                className={`w-2 h-2 rounded-full transition-all duration-300 ${
                   index === currentIndex % 8
-                    ? 'bg-white scale-150 shadow-lg'
-                    : 'bg-white/60 hover:bg-white/80 scale-100'
+                    ? 'bg-white scale-125'
+                    : 'bg-white/60 hover:bg-white/80'
                 }`}
               />
             ))}
           </div>
         </motion.div>
 
-        {/* Partner Brands Section - Enhanced */}
+        {/* Partner Brands Section - Reduced size */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ duration: 0.8, delay: 0.4 }}
           className="text-center"
         >
-          <h3 className="text-4xl lg:text-6xl font-heading font-semibold text-neutral-800 mb-16">
+          <h3 className="text-3xl lg:text-4xl font-heading font-semibold text-neutral-800 mb-12">
             Partner Brands
           </h3>
           
-          {/* Enhanced Partner Brands Layout */}
-          <div className="relative max-w-6xl mx-auto">
-            <div className="relative">
-              {/* First row - 4 brands */}
-              <div className="flex justify-center items-center space-x-8 md:space-x-16 lg:space-x-20 mb-12 lg:mb-20">
-                {partnerBrands.slice(0, 4).map((brand, index) => (
-                  <motion.div
-                    key={brand.name}
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
-                    transition={{ 
-                      duration: 0.8, 
-                      delay: 0.6 + index * 0.15,
-                      ease: "easeOut"
-                    }}
-                    className="floating-bubble"
-                    style={{
-                      animationDelay: `${index * 0.7}s`
-                    }}
-                  >
-                    <div className="bg-white rounded-full p-6 md:p-8 lg:p-12 shadow-xl hover:shadow-2xl transition-all duration-500 border border-neutral-100 w-32 h-32 md:w-48 lg:w-56 md:h-48 lg:h-56 flex items-center justify-center group">
-                      <img
-                        src={brand.logo}
-                        alt={brand.name}
-                        className="w-full h-full object-contain scale-150 opacity-80 group-hover:opacity-100 group-hover:scale-[1.7] transition-all duration-500"
-                        onError={(e) => {
-                          const target = e.currentTarget as HTMLImageElement;
-                          target.src = `https://via.placeholder.com/200x200/B03F3F/FFFFFF?text=${encodeURIComponent(brand.name)}`;
-                        }}
-                      />
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-
-              {/* Second row - 2 brands positioned between the bubbles above */}
-              <div className="flex justify-center items-center space-x-16 md:space-x-32 lg:space-x-40">
-                {partnerBrands.slice(4, 6).map((brand, index) => (
-                  <motion.div
-                    key={brand.name}
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
-                    transition={{ 
-                      duration: 0.8, 
-                      delay: 1.2 + index * 0.15,
-                      ease: "easeOut"
-                    }}
-                    className="floating-bubble"
-                    style={{
-                      animationDelay: `${(index + 4) * 0.7}s`
-                    }}
-                  >
-                    <div className="bg-white rounded-full p-6 md:p-8 lg:p-12 shadow-xl hover:shadow-2xl transition-all duration-500 border border-neutral-100 w-32 h-32 md:w-48 lg:w-56 md:h-48 lg:h-56 flex items-center justify-center group">
-                      <img
-                        src={brand.logo}
-                        alt={brand.name}
-                        className="w-full h-full object-contain scale-150 opacity-80 group-hover:opacity-100 group-hover:scale-[1.7] transition-all duration-500"
-                        onError={(e) => {
-                          const target = e.currentTarget as HTMLImageElement;
-                          target.src = `https://via.placeholder.com/200x200/B03F3F/FFFFFF?text=${encodeURIComponent(brand.name)}`;
-                        }}
-                      />
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
+          {/* Partner Brands Layout - Single row with 5 brands */}
+          <div className="relative max-w-5xl mx-auto">
+            <div className="flex justify-center items-center space-x-6 md:space-x-12 lg:space-x-16">
+              {partnerBrands.map((brand, index) => (
+                <motion.div
+                  key={brand.name}
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
+                  transition={{ 
+                    duration: 0.8, 
+                    delay: 0.6 + index * 0.15,
+                    ease: "easeOut"
+                  }}
+                  className="floating-bubble"
+                  style={{
+                    animationDelay: `${index * 0.7}s`
+                  }}
+                >
+                  <div className="bg-white rounded-full p-4 md:p-6 lg:p-8 shadow-lg hover:shadow-xl transition-all duration-500 border border-neutral-100 w-20 h-20 md:w-32 md:h-32 lg:w-40 lg:h-40 flex items-center justify-center group">
+                    <img
+                      src={brand.logo}
+                      alt={brand.name}
+                      className="w-full h-full object-contain scale-125 opacity-80 group-hover:opacity-100 group-hover:scale-150 transition-all duration-500"
+                      onError={(e) => {
+                        const target = e.currentTarget as HTMLImageElement;
+                        target.src = `https://via.placeholder.com/150x150/B03F3F/FFFFFF?text=${encodeURIComponent(brand.name)}`;
+                      }}
+                    />
+                  </div>
+                </motion.div>
+              ))}
             </div>
           </div>
         </motion.div>
       </div>
 
-      {/* Custom CSS for enhanced animations */}
+      {/* Custom CSS for animations */}
       <style jsx>{`
         @keyframes float {
           0%, 100% {
             transform: translateY(0px);
           }
           50% {
-            transform: translateY(-20px);
+            transform: translateY(-15px);
           }
         }
 
         .floating-bubble {
-          animation: float 5s ease-in-out infinite;
+          animation: float 4s ease-in-out infinite;
         }
 
         .floating-bubble:nth-child(2n) {
-          animation-delay: 1.5s;
+          animation-delay: 1s;
         }
 
         .floating-bubble:nth-child(3n) {
-          animation-delay: 3s;
+          animation-delay: 2s;
         }
 
         .floating-bubble:nth-child(4n) {
-          animation-delay: 0.8s;
+          animation-delay: 0.5s;
+        }
+
+        .floating-bubble:nth-child(5n) {
+          animation-delay: 1.5s;
         }
 
         /* Mobile responsive adjustments */
         @media (max-width: 768px) {
           .floating-bubble div {
-            width: 120px !important;
-            height: 120px !important;
+            width: 80px !important;
+            height: 80px !important;
+            padding: 12px !important;
+          }
+        }
+
+        @media (max-width: 640px) {
+          .floating-bubble div {
+            width: 70px !important;
+            height: 70px !important;
+            padding: 10px !important;
           }
         }
       `}</style>

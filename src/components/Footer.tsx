@@ -11,11 +11,11 @@ const Footer = () => {
           <div className="text-center md:text-left">
             <div className="flex justify-center md:justify-start mb-3 md:mb-6">
               <img
-                src="/src/assets/LOGO-ZEPHYR7.png"
+                src="/src/assets/logozephyrfooter.png"
                 alt="Zephyr Events"
                 className="h-28 w-auto"
                 onError={(e) => {
-                  console.log('Logo failed to load, showing fallback text');
+                  console.log('Footer logo failed to load, showing fallback text');
                   const target = e.currentTarget as HTMLImageElement;
                   target.style.display = 'none';
                   const fallback = target.nextElementSibling as HTMLElement;
@@ -74,7 +74,7 @@ const Footer = () => {
           <div className="text-center md:text-left">
             <h4 className="text-lg font-opensauce font-medium mb-4" style={{ color: '#B03F3F' }}>Address</h4>
             <div className="text-neutral-700 text-sm font-opensauce leading-relaxed">
-              Zephyr Events E-Commerce Private Limited,<br />
+              Zephyr Events,<br />
               B 36, Second Floor, Block B,<br />
               Mayapuri Industrial Area Phase I,<br />
               Mayapuri, New Delhi, Delhi, 110064
@@ -82,7 +82,7 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Bottom Bar - Updated for mobile layout */}
+        {/* Bottom Bar */}
         <div className="border-t border-neutral-300 mt-6 pt-4">
           <div className="flex flex-col sm:flex-row justify-between items-center space-y-2 sm:space-y-0">
             {/* Left side - Copyright */}
