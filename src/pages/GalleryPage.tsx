@@ -127,7 +127,7 @@ const GalleryPage = () => {
       <section className="relative h-[92vh] md:h-[90vh] lg:h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 w-full h-full">
           <img
-            src="https://images.pexels.com/photos/1616113/pexels-photo-1616113.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&fit=crop"
+            src="https://images.pexels.com/photos/32808870/pexels-photo-32808870.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&fit=crop"
             alt="Gallery Hero"
             className="w-full h-full object-cover"
           />

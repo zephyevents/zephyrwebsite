@@ -11,7 +11,7 @@ const Footer = () => {
           <div className="text-center md:text-left">
             <div className="flex justify-center md:justify-start mb-3 md:mb-6">
               <img
-                src="/logozephyrfooter.png"
+                src="/src/assets/LOGO-ZEPHYR7.png"
                 alt="Zephyr Events"
                 className="h-28 w-auto"
                 onError={(e) => {

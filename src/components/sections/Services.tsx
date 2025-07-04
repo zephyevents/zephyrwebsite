@@ -18,35 +18,35 @@ const Services = () => {
     },
     {
       title: "Design & Décor Management",
-      image: "https://images.pexels.com/photos/32808785/pexels-photo-32808785.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop",
+      image: "https://images.pexels.com/photos/32808785/pexels-photo-32808785.jpeg?auto=compress&cs=tinysrgb&w=800&h=800&fit=crop",
     },
     {
       title: "RSVP & Hospitality",
-      image: "https://images.pexels.com/photos/32808782/pexels-photo-32808782.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop",
+      image: "https://images.pexels.com/photos/32808782/pexels-photo-32808782.jpeg?auto=compress&cs=tinysrgb&w=800&h=800&fit=crop",
     },
     {
       title: "Entertainment",
-      image: "https://images.pexels.com/photos/32808781/pexels-photo-32808781.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop",
+      image: "https://images.pexels.com/photos/32808781/pexels-photo-32808781.jpeg?auto=compress&cs=tinysrgb&w=800&h=800&fit=crop",
     },
     {
       title: "Special Entries",
-      image: "https://images.pexels.com/photos/32808784/pexels-photo-32808784.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop",
+      image: "https://images.pexels.com/photos/32864600/pexels-photo-32864600.jpeg?auto=compress&cs=tinysrgb&w=800&h=800&fit=crop",
     },
     {
       title: "FnB & Catering",
-      image: "https://images.pexels.com/photos/32808780/pexels-photo-32808780.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop",
+      image: "https://images.pexels.com/photos/32808780/pexels-photo-32808780.jpeg?auto=compress&cs=tinysrgb&w=800&h=800&fit=crop",
     },
     {
       title: "Photography",
-      image: "https://images.pexels.com/photos/32808778/pexels-photo-32808778.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop",
+      image: "https://images.pexels.com/photos/32864598/pexels-photo-32864598.jpeg?auto=compress&cs=tinysrgb&w=800&h=800&fit=crop",
     },
     {
       title: "Choreography",
-      image: "https://images.pexels.com/photos/32808783/pexels-photo-32808783.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop",
+      image: "https://images.pexels.com/photos/32864597/pexels-photo-32864597.jpeg?auto=compress&cs=tinysrgb&w=800&h=800&fit=crop",
     },
     {
       title: "Special Effects",
-      image: "https://images.pexels.com/photos/32808779/pexels-photo-32808779.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop",
+      image: "https://images.pexels.com/photos/32864599/pexels-photo-32864599.jpeg?auto=compress&cs=tinysrgb&w=800&h=800&fit=crop",
     },
     {
       title: "Stationery & Invites",
@@ -99,7 +99,7 @@ const Services = () => {
                 src={service.image}
                 alt={service.title}
                 className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                loading="eager"
+                loading="lazy"
                 style={{ objectFit: 'cover' }}
               />
               

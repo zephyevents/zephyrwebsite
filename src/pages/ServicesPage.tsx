@@ -22,42 +22,42 @@ const ServicesPage = () => {
     },
     {
       title: "Design & Décor Management",
-      image: "https://images.pexels.com/photos/32808785/pexels-photo-32808785.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop",
+      image: "https://images.pexels.com/photos/32808785/pexels-photo-32808785.jpeg?auto=compress&cs=tinysrgb&w=800&h=800&fit=crop",
       features: ["Custom Design", "Floral Arrangements", "Lighting Design", "Décor-Based Special Entries (Matrix, Vogue, Retro Glam)"]
     },
     {
       title: "RSVP & Hospitality",
-      image: "https://images.pexels.com/photos/32808782/pexels-photo-32808782.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop",
+      image: "https://images.pexels.com/photos/32808782/pexels-photo-32808782.jpeg?auto=compress&cs=tinysrgb&w=800&h=800&fit=crop",
       features: ["Guest Management", "RSVP Tracking", "Check-in Welcome Desk", "Pickup Support"]
     },
     {
       title: "Entertainment",
-      image: "https://images.pexels.com/photos/32808781/pexels-photo-32808781.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop",
+      image: "https://images.pexels.com/photos/32808781/pexels-photo-32808781.jpeg?auto=compress&cs=tinysrgb&w=800&h=800&fit=crop",
       features: ["DJ Services", "Live Bands", "Sound Systems", "Choreography"]
     },
     {
       title: "Special Entries",
-      image: "https://images.pexels.com/photos/32808784/pexels-photo-32808784.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop",
+      image: "https://images.pexels.com/photos/32864600/pexels-photo-32864600.jpeg?auto=compress&cs=tinysrgb&w=800&h=800&fit=crop",
       features: ["Entrance Design", "Special Effects", "Choreography", "Timing Coordination"]
     },
     {
       title: "FnB & Catering",
-      image: "https://images.pexels.com/photos/32808780/pexels-photo-32808780.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop",
+      image: "https://images.pexels.com/photos/32808780/pexels-photo-32808780.jpeg?auto=compress&cs=tinysrgb&w=800&h=800&fit=crop",
       features: ["Menu Planning", "Dietary Accommodations", "Service Staff", "Bar Services"]
     },
     {
       title: "Photography",
-      image: "https://images.pexels.com/photos/32808778/pexels-photo-32808778.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop",
+      image: "https://images.pexels.com/photos/32864598/pexels-photo-32864598.jpeg?auto=compress&cs=tinysrgb&w=800&h=800&fit=crop",
       features: ["Engagement Sessions", "Wedding Day Coverage", "Photo Albums", "Video Editing"]
     },
     {
       title: "Choreography",
-      image: "https://images.pexels.com/photos/32808783/pexels-photo-32808783.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop",
+      image: "https://images.pexels.com/photos/32864597/pexels-photo-32864597.jpeg?auto=compress&cs=tinysrgb&w=800&h=800&fit=crop",
       features: ["Dance Lessons", "Performance Choreography", "Music Selection", "Rehearsal Coordination"]
     },
     {
       title: "Special Effects",
-      image: "https://images.pexels.com/photos/32808779/pexels-photo-32808779.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop",
+      image: "https://images.pexels.com/photos/32864599/pexels-photo-32864599.jpeg?auto=compress&cs=tinysrgb&w=800&h=800&fit=crop",
       features: ["LED Displays", "Skyshots", "Fireworks", "Fog Machines"]
     },
     {
@@ -94,7 +94,7 @@ const ServicesPage = () => {
       <section className="relative h-[92vh] md:h-[90vh] lg:h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 w-full h-full">
           <img
-            src="/serviceshero.webp"
+            src="https://images.pexels.com/photos/32808831/pexels-photo-32808831.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&fit=crop"
             alt="Services Hero"
             className="w-full h-full object-cover"
           />

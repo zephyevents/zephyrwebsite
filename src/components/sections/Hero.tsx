@@ -28,7 +28,27 @@ const Hero = () => {
             mux-player .mux-big-play-button {
               display: none !important;
             }
+            
+            /* Mobile responsive video */
+            @media (max-width: 768px) {
+              mux-player {
+                width: 100vw;
+                height: 100vh;
+                min-width: 100vw;
+                min-height: 100vh;
+              }
+            }
           `}</style>
+          
+          {/* Placeholder image while video loads */}
+          <div className="absolute inset-0 w-full h-full">
+            <img
+              src="https://images.pexels.com/photos/32808870/pexels-photo-32808870.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&fit=crop"
+              alt="Elegant wedding ceremony setup"
+              className="w-full h-full object-cover"
+              style={{ zIndex: -1 }}
+            />
+          </div>
           
           <MuxPlayer
             playbackId="FB00u02e3i01WpBTlMf01yJlT3wOWe02XHEyY6vpxg7mMrzs"
@@ -49,6 +69,7 @@ const Hero = () => {
             }}
             preload="auto"
             defaultHiddenCaptions={true}
+            poster="https://images.pexels.com/photos/32808870/pexels-photo-32808870.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&fit=crop"
           />
         </div>
         

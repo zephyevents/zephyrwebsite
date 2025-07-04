@@ -28,7 +28,7 @@ const AboutPage = () => {
       <section className="relative h-[92vh] md:h-[90vh] lg:h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 w-full h-full">
           <img
-            src="/about.webp"
+            src="https://images.pexels.com/photos/32864596/pexels-photo-32864596.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&fit=crop"
             alt="About Us Hero"
             className="w-full h-full object-cover"
           />
@@ -83,7 +83,7 @@ const AboutPage = () => {
               className="relative"
             >
               <img
-                src="/ourstoryimg.webp"
+                src="https://images.pexels.com/photos/32866219/pexels-photo-32866219.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop"
                 alt="Our story"
                 className="w-full h-96 lg:h-[500px] object-cover rounded-2xl shadow-xl"
               />
