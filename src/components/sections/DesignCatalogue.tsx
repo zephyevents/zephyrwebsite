@@ -269,7 +269,7 @@ const DesignCatalogue = () => {
               
               // MUCH LARGER RESPONSIVE CARD DIMENSIONS
               const cardWidth = isMobile ? '220px' : isTablet ? '480px' : '720px'; // 3x larger desktop
-              const cardHeight = isMobile ? '320px' : isTablet ? '320px' : '600px'; // 3x larger desktop
+              const cardHeight = isMobile ? '320px' : isTablet ? '320px' : '800px'; // 3x larger desktop
               
               return (
                 <div
