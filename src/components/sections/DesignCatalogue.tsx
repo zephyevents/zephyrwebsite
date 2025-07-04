@@ -50,11 +50,11 @@ const DesignCatalogue = () => {
     setShuffledImages(shuffled);
   }, []);
 
-  // Auto-advance carousel
+  // Auto-advance carousel with slower speed
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % shuffledImages.length);
-    }, 4000); // Slower speed - 4 seconds
+    }, 5000); // Much slower - 5 seconds
 
     return () => clearInterval(interval);
   }, [shuffledImages.length]);
@@ -106,7 +106,7 @@ const DesignCatalogue = () => {
           </p>
         </motion.div>
 
-        {/* Enhanced Carousel */}
+        {/* Enhanced Smooth Carousel */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
@@ -117,14 +117,17 @@ const DesignCatalogue = () => {
             {getVisibleImages().map((image, idx) => (
               <motion.div
                 key={`${currentIndex}-${idx}`}
-                initial={{ opacity: 0, scale: 0.8 }}
+                initial={{ opacity: 0, scale: 0.8, x: 300 }}
                 animate={{ 
-                  opacity: image.isCenter ? 1 : 0.4,
-                  scale: image.isCenter ? 1 : 0.8,
-                  x: (idx - 2) * (window.innerWidth < 768 ? 200 : 300),
-                  filter: image.isCenter ? 'blur(0px)' : 'blur(2px)'
+                  opacity: image.isCenter ? 1 : 0.3,
+                  scale: image.isCenter ? 1 : 0.7,
+                  x: (idx - 2) * (window.innerWidth < 768 ? 180 : 280),
+                  filter: image.isCenter ? 'blur(0px)' : 'blur(3px)'
                 }}
-                transition={{ duration: 0.8, ease: "easeInOut" }}
+                transition={{ 
+                  duration: 1.2, 
+                  ease: [0.25, 0.46, 0.45, 0.94] // Smooth easing
+                }}
                 className="absolute w-64 md:w-80 lg:w-96 h-80 md:h-96 lg:h-[500px] rounded-2xl overflow-hidden shadow-2xl"
                 style={{ zIndex: image.isCenter ? 10 : 5 }}
               >
@@ -161,15 +164,15 @@ const DesignCatalogue = () => {
           transition={{ duration: 0.8, delay: 0.4 }}
           className="text-center"
         >
-          <h3 className="text-3xl lg:text-5xl font-heading font-semibold text-neutral-800 mb-12">
+          <h3 className="text-4xl lg:text-6xl font-heading font-semibold text-neutral-800 mb-16">
             Partner Brands
           </h3>
           
           {/* Enhanced Floating Bubbles Animation */}
-          <div className="relative max-w-4xl mx-auto">
+          <div className="relative max-w-5xl mx-auto">
             <div className="relative">
               {/* First row - 4 brands */}
-              <div className="flex justify-center items-center space-x-8 lg:space-x-12 mb-8 lg:mb-12">
+              <div className="flex justify-center items-center space-x-12 lg:space-x-16 mb-12 lg:mb-16">
                 {partnerBrands.slice(0, 4).map((brand, index) => (
                   <motion.div
                     key={brand.name}
@@ -185,11 +188,15 @@ const DesignCatalogue = () => {
                       animationDelay: `${index * 0.5}s`
                     }}
                   >
-                    <div className="bg-white rounded-full p-6 lg:p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-neutral-100 w-28 h-28 lg:w-36 lg:h-36 flex items-center justify-center">
+                    <div className="bg-white rounded-full p-8 lg:p-10 shadow-lg hover:shadow-xl transition-all duration-300 border border-neutral-100 w-36 h-36 lg:w-44 lg:h-44 flex items-center justify-center">
                       <img
                         src={brand.logo}
                         alt={brand.name}
-                        className="w-full h-full rounded-full object-contain opacity-70 hover:opacity-100 transition-opacity duration-300"
+                        className="w-full h-full object-contain opacity-70 hover:opacity-100 transition-opacity duration-300"
+                        onError={(e) => {
+                          const target = e.currentTarget as HTMLImageElement;
+                          target.src = `https://via.placeholder.com/120x120/B03F3F/FFFFFF?text=${encodeURIComponent(brand.name)}`;
+                        }}
                       />
                     </div>
                   </motion.div>
@@ -197,7 +204,7 @@ const DesignCatalogue = () => {
               </div>
 
               {/* Second row - 2 brands positioned between the bubbles above */}
-              <div className="flex justify-center items-center space-x-16 lg:space-x-24">
+              <div className="flex justify-center items-center space-x-24 lg:space-x-32">
                 {partnerBrands.slice(4, 6).map((brand, index) => (
                   <motion.div
                     key={brand.name}
@@ -213,11 +220,15 @@ const DesignCatalogue = () => {
                       animationDelay: `${(index + 4) * 0.5}s`
                     }}
                   >
-                    <div className="bg-white rounded-full p-6 lg:p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-neutral-100 w-28 h-28 lg:w-36 lg:h-36 flex items-center justify-center">
+                    <div className="bg-white rounded-full p-8 lg:p-10 shadow-lg hover:shadow-xl transition-all duration-300 border border-neutral-100 w-36 h-36 lg:w-44 lg:h-44 flex items-center justify-center">
                       <img
                         src={brand.logo}
                         alt={brand.name}
-                        className="w-full h-full rounded-full object-contain opacity-70 hover:opacity-100 transition-opacity duration-300"
+                        className="w-full h-full object-contain opacity-70 hover:opacity-100 transition-opacity duration-300"
+                        onError={(e) => {
+                          const target = e.currentTarget as HTMLImageElement;
+                          target.src = `https://via.placeholder.com/120x120/B03F3F/FFFFFF?text=${encodeURIComponent(brand.name)}`;
+                        }}
                       />
                     </div>
                   </motion.div>

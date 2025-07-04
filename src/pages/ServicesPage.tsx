@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { Check } from 'lucide-react';
+import { Check, Calendar, Users, TrendingUp } from 'lucide-react';
 
 const ServicesPage = () => {
   const ref = useRef(null);
@@ -96,7 +96,8 @@ const ServicesPage = () => {
           <img
             src="https://images.pexels.com/photos/32808831/pexels-photo-32808831.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&fit=crop"
             alt="Services Hero"
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover md:object-right"
+            style={{ objectPosition: 'center right' }}
           />
           <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-black/50" />
         </div>
@@ -152,8 +153,7 @@ const ServicesPage = () => {
                     alt={service.title}
                     className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                     loading="lazy"
-                    decoding="async"
-                    sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                    style={{ objectFit: 'cover' }}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-neutral-900/60 to-transparent" />
                   
@@ -200,14 +200,17 @@ const ServicesPage = () => {
           <div className="grid md:grid-cols-3 gap-8">
             {[
               {
+                icon: Calendar,
                 title: "12+ Years Experience",
                 description: "Over a decade of creating unforgettable celebrations with expertise you can trust."
               },
               {
+                icon: Users,
                 title: "200+ Events Planned",
                 description: "From intimate gatherings to grand celebrations, we've brought countless visions to life."
               },
               {
+                icon: TrendingUp,
                 title: "98% Client Satisfaction",
                 description: "Our clients consistently rate us highly for our professionalism and attention to detail."
               }
@@ -219,6 +222,9 @@ const ServicesPage = () => {
                 transition={{ duration: 0.8, delay: index * 0.2 }}
                 className="text-center p-8 bg-white rounded-2xl"
               >
+                <div className="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <item.icon className="h-8 w-8 text-primary-900" />
+                </div>
                 <h3 className="text-xl font-semibold mb-4" style={{ color: '#B14040' }}>
                   {item.title}
                 </h3>

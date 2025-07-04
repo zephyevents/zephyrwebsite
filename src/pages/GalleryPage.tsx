@@ -140,12 +140,11 @@ const GalleryPage = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h1 className="text-3xl sm:text-4xl lg:text-6xl font-heading font-bold mb-6">
-              Event Gallery
+            <h1 className="text-3xl sm:text-4xl lg:text-6xl font-oswald font-normal mb-6 leading-tight" style={{ textShadow: '2px 2px 4px rgba(0,0,0,0.7)' }}>
+              Frames of Forever
             </h1>
-            <p className="text-lg sm:text-xl leading-relaxed max-w-3xl mx-auto">
-              Explore our portfolio of beautiful weddings and events. Each celebration tells a unique 
-              story of love, joy, and unforgettable moments.
+            <p className="text-lg sm:text-xl font-oswald font-normal leading-relaxed" style={{ textShadow: '1px 1px 2px rgba(0,0,0,0.7)' }}>
+              Step into a world of curated decor, heartfelt rituals, and unforgettable memories — captured beautifully.
             </p>
           </motion.div>
         </div>
