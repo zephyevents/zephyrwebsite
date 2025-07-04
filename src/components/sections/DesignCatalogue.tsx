@@ -11,38 +11,38 @@ const DesignCatalogue = () => {
   const [startX, setStartX] = useState(0);
   const [dragOffset, setDragOffset] = useState(0);
 
-  // All available images
+  // All available images with proper Pexels URLs
   const allImages = [
-    "https://images.pexels.com/photos/32866211/pexels-photo-32866211.jpeg?auto=compress&cs=tinysrgb&w=800&h=1000&fit=crop",
-    "https://images.pexels.com/photos/32866213/pexels-photo-32866213.jpeg?auto=compress&cs=tinysrgb&w=800&h=1000&fit=crop",
-    "https://images.pexels.com/photos/32866210/pexels-photo-32866210.jpeg?auto=compress&cs=tinysrgb&w=800&h=1000&fit=crop",
-    "https://images.pexels.com/photos/32866209/pexels-photo-32866209.jpeg?auto=compress&cs=tinysrgb&w=800&h=1000&fit=crop",
-    "https://images.pexels.com/photos/32866208/pexels-photo-32866208.jpeg?auto=compress&cs=tinysrgb&w=800&h=1000&fit=crop",
-    "https://images.pexels.com/photos/32866207/pexels-photo-32866207.jpeg?auto=compress&cs=tinysrgb&w=800&h=1000&fit=crop",
-    "https://images.pexels.com/photos/32866206/pexels-photo-32866206.jpeg?auto=compress&cs=tinysrgb&w=800&h=1000&fit=crop",
-    "https://images.pexels.com/photos/32866205/pexels-photo-32866205.jpeg?auto=compress&cs=tinysrgb&w=800&h=1000&fit=crop",
-    "https://images.pexels.com/photos/32866204/pexels-photo-32866204.jpeg?auto=compress&cs=tinysrgb&w=800&h=1000&fit=crop",
-    "https://images.pexels.com/photos/32866203/pexels-photo-32866203.jpeg?auto=compress&cs=tinysrgb&w=800&h=1000&fit=crop",
-    "https://images.pexels.com/photos/32866202/pexels-photo-32866202.jpeg?auto=compress&cs=tinysrgb&w=800&h=1000&fit=crop",
-    "https://images.pexels.com/photos/32866201/pexels-photo-32866201.jpeg?auto=compress&cs=tinysrgb&w=800&h=1000&fit=crop",
-    "https://images.pexels.com/photos/32866200/pexels-photo-32866200.jpeg?auto=compress&cs=tinysrgb&w=800&h=1000&fit=crop",
-    "https://images.pexels.com/photos/32866199/pexels-photo-32866199.jpeg?auto=compress&cs=tinysrgb&w=800&h=1000&fit=crop",
-    "https://images.pexels.com/photos/32866198/pexels-photo-32866198.jpeg?auto=compress&cs=tinysrgb&w=800&h=1000&fit=crop",
-    "https://images.pexels.com/photos/32866197/pexels-photo-32866197.jpeg?auto=compress&cs=tinysrgb&w=800&h=1000&fit=crop",
-    "https://images.pexels.com/photos/32866195/pexels-photo-32866195.jpeg?auto=compress&cs=tinysrgb&w=800&h=1000&fit=crop",
-    "https://images.pexels.com/photos/32866194/pexels-photo-32866194.jpeg?auto=compress&cs=tinysrgb&w=800&h=1000&fit=crop",
-    "https://images.pexels.com/photos/32866193/pexels-photo-32866193.jpeg?auto=compress&cs=tinysrgb&w=800&h=1000&fit=crop",
-    "https://images.pexels.com/photos/32866192/pexels-photo-32866192.jpeg?auto=compress&cs=tinysrgb&w=800&h=1000&fit=crop",
-    "https://images.pexels.com/photos/32866191/pexels-photo-32866191.jpeg?auto=compress&cs=tinysrgb&w=800&h=1000&fit=crop",
-    "https://images.pexels.com/photos/32866190/pexels-photo-32866190.jpeg?auto=compress&cs=tinysrgb&w=800&h=1000&fit=crop",
-    "https://images.pexels.com/photos/32866189/pexels-photo-32866189.jpeg?auto=compress&cs=tinysrgb&w=800&h=1000&fit=crop",
-    "https://images.pexels.com/photos/32866188/pexels-photo-32866188.jpeg?auto=compress&cs=tinysrgb&w=800&h=1000&fit=crop",
-    "https://images.pexels.com/photos/32866187/pexels-photo-32866187.jpeg?auto=compress&cs=tinysrgb&w=800&h=1000&fit=crop",
-    "https://images.pexels.com/photos/32866186/pexels-photo-32866186.jpeg?auto=compress&cs=tinysrgb&w=800&h=1000&fit=crop",
-    "https://images.pexels.com/photos/32866184/pexels-photo-32866184.jpeg?auto=compress&cs=tinysrgb&w=800&h=1000&fit=crop",
-    "https://images.pexels.com/photos/32866183/pexels-photo-32866183.jpeg?auto=compress&cs=tinysrgb&w=800&h=1000&fit=crop",
-    "https://images.pexels.com/photos/32866182/pexels-photo-32866182.jpeg?auto=compress&cs=tinysrgb&w=800&h=1000&fit=crop",
-    "https://images.pexels.com/photos/32864600/pexels-photo-32864600.jpeg?auto=compress&cs=tinysrgb&w=800&h=1000&fit=crop"
+    "https://images.pexels.com/photos/32866211/pexels-photo-32866211.jpeg?auto=compress&cs=tinysrgb&w=1900&h=2560&fit=crop",
+    "https://images.pexels.com/photos/32866213/pexels-photo-32866213.jpeg?auto=compress&cs=tinysrgb&w=1900&h=2560&fit=crop",
+    "https://images.pexels.com/photos/32866210/pexels-photo-32866210.jpeg?auto=compress&cs=tinysrgb&w=1900&h=2560&fit=crop",
+    "https://images.pexels.com/photos/32866209/pexels-photo-32866209.jpeg?auto=compress&cs=tinysrgb&w=1900&h=2560&fit=crop",
+    "https://images.pexels.com/photos/32866208/pexels-photo-32866208.jpeg?auto=compress&cs=tinysrgb&w=1900&h=2560&fit=crop",
+    "https://images.pexels.com/photos/32866207/pexels-photo-32866207.jpeg?auto=compress&cs=tinysrgb&w=1900&h=2560&fit=crop",
+    "https://images.pexels.com/photos/32866206/pexels-photo-32866206.jpeg?auto=compress&cs=tinysrgb&w=1900&h=2560&fit=crop",
+    "https://images.pexels.com/photos/32866205/pexels-photo-32866205.jpeg?auto=compress&cs=tinysrgb&w=1900&h=2560&fit=crop",
+    "https://images.pexels.com/photos/32866204/pexels-photo-32866204.jpeg?auto=compress&cs=tinysrgb&w=1900&h=2560&fit=crop",
+    "https://images.pexels.com/photos/32866203/pexels-photo-32866203.jpeg?auto=compress&cs=tinysrgb&w=1900&h=2560&fit=crop",
+    "https://images.pexels.com/photos/32866202/pexels-photo-32866202.jpeg?auto=compress&cs=tinysrgb&w=1900&h=2560&fit=crop",
+    "https://images.pexels.com/photos/32866201/pexels-photo-32866201.jpeg?auto=compress&cs=tinysrgb&w=1900&h=2560&fit=crop",
+    "https://images.pexels.com/photos/32866200/pexels-photo-32866200.jpeg?auto=compress&cs=tinysrgb&w=1900&h=2560&fit=crop",
+    "https://images.pexels.com/photos/32866199/pexels-photo-32866199.jpeg?auto=compress&cs=tinysrgb&w=1900&h=2560&fit=crop",
+    "https://images.pexels.com/photos/32866198/pexels-photo-32866198.jpeg?auto=compress&cs=tinysrgb&w=1900&h=2560&fit=crop",
+    "https://images.pexels.com/photos/32866197/pexels-photo-32866197.jpeg?auto=compress&cs=tinysrgb&w=1900&h=2560&fit=crop",
+    "https://images.pexels.com/photos/32866195/pexels-photo-32866195.jpeg?auto=compress&cs=tinysrgb&w=1900&h=2560&fit=crop",
+    "https://images.pexels.com/photos/32866194/pexels-photo-32866194.jpeg?auto=compress&cs=tinysrgb&w=1900&h=2560&fit=crop",
+    "https://images.pexels.com/photos/32866193/pexels-photo-32866193.jpeg?auto=compress&cs=tinysrgb&w=1900&h=2560&fit=crop",
+    "https://images.pexels.com/photos/32866192/pexels-photo-32866192.jpeg?auto=compress&cs=tinysrgb&w=1900&h=2560&fit=crop",
+    "https://images.pexels.com/photos/32866191/pexels-photo-32866191.jpeg?auto=compress&cs=tinysrgb&w=1900&h=2560&fit=crop",
+    "https://images.pexels.com/photos/32866190/pexels-photo-32866190.jpeg?auto=compress&cs=tinysrgb&w=1900&h=2560&fit=crop",
+    "https://images.pexels.com/photos/32866189/pexels-photo-32866189.jpeg?auto=compress&cs=tinysrgb&w=1900&h=2560&fit=crop",
+    "https://images.pexels.com/photos/32866188/pexels-photo-32866188.jpeg?auto=compress&cs=tinysrgb&w=1900&h=2560&fit=crop",
+    "https://images.pexels.com/photos/32866187/pexels-photo-32866187.jpeg?auto=compress&cs=tinysrgb&w=1900&h=2560&fit=crop",
+    "https://images.pexels.com/photos/32866186/pexels-photo-32866186.jpeg?auto=compress&cs=tinysrgb&w=1900&h=2560&fit=crop",
+    "https://images.pexels.com/photos/32866184/pexels-photo-32866184.jpeg?auto=compress&cs=tinysrgb&w=1900&h=2560&fit=crop",
+    "https://images.pexels.com/photos/32866183/pexels-photo-32866183.jpeg?auto=compress&cs=tinysrgb&w=1900&h=2560&fit=crop",
+    "https://images.pexels.com/photos/32866182/pexels-photo-32866182.jpeg?auto=compress&cs=tinysrgb&w=1900&h=2560&fit=crop",
+    "https://images.pexels.com/photos/32864600/pexels-photo-32864600.jpeg?auto=compress&cs=tinysrgb&w=1900&h=2560&fit=crop"
   ];
 
   // Randomize images on component mount
@@ -64,13 +64,14 @@ const DesignCatalogue = () => {
     return () => clearInterval(interval);
   }, [shuffledImages.length, isDragging]);
 
-  // Partner brand logos with proper paths
+  // Partner brand logos - 4 in first row, 2 in second row
   const partnerBrands = [
     { name: "Partner 1", logo: "/partnerslogo/4.webp" },
     { name: "Partner 2", logo: "/partnerslogo/5.webp" },
     { name: "Partner 3", logo: "/partnerslogo/6.webp" },
     { name: "Partner 4", logo: "/partnerslogo/7.webp" },
-    { name: "Partner 5", logo: "/partnerslogo/8.webp" }
+    { name: "Partner 5", logo: "/partnerslogo/8.webp" },
+    { name: "Partner 6", logo: "/partnerslogo/9.webp" }
   ];
 
   const getVisibleImages = () => {
@@ -131,7 +132,7 @@ const DesignCatalogue = () => {
   return (
     <section ref={ref} className="py-12 lg:py-16 bg-gradient-to-br from-rose-50 to-mauve-50 overflow-x-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
+        {/* Header - Reduced size */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
@@ -147,12 +148,12 @@ const DesignCatalogue = () => {
           </p>
         </motion.div>
 
-        {/* Enhanced Swipeable Carousel */}
+        {/* Enhanced Swipeable Carousel with proper dimensions */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="relative mb-16 overflow-hidden h-80 md:h-96 lg:h-[500px]"
+          className="relative mb-16 overflow-hidden h-96 md:h-[500px] lg:h-[600px]"
         >
           <div 
             className="flex items-center justify-center h-full relative cursor-grab active:cursor-grabbing"
@@ -170,17 +171,22 @@ const DesignCatalogue = () => {
                 initial={{ opacity: 0, scale: 0.6, x: 400 }}
                 animate={{ 
                   opacity: image.isCenter ? 1 : 0.4,
-                  scale: image.isCenter ? 1.1 : 0.7,
-                  x: (idx - 2) * (window.innerWidth < 768 ? 180 : 280) + (isDragging ? dragOffset * 0.5 : 0),
-                  filter: image.isCenter ? 'blur(0px)' : 'blur(2px)',
+                  scale: image.isCenter ? 1.2 : 0.7,
+                  x: (idx - 2) * (window.innerWidth < 768 ? 200 : 320) + (isDragging ? dragOffset * 0.5 : 0),
+                  filter: image.isCenter ? 'blur(0px)' : 'blur(3px)',
                   zIndex: image.isCenter ? 20 : 5
                 }}
                 transition={{ 
-                  duration: isDragging ? 0.1 : 1.5,
+                  duration: isDragging ? 0.1 : 2,
                   ease: isDragging ? "linear" : [0.23, 1, 0.32, 1],
                   type: "tween"
                 }}
-                className="absolute w-64 md:w-80 lg:w-96 h-72 md:h-80 lg:h-96 rounded-2xl overflow-hidden shadow-xl border-2 border-white/20"
+                className="absolute rounded-3xl overflow-hidden shadow-2xl border-4 border-white/30"
+                style={{
+                  width: window.innerWidth < 768 ? '280px' : '380px',
+                  height: window.innerWidth < 768 ? '380px' : '500px',
+                  aspectRatio: '1900/2560'
+                }}
               >
                 <img
                   src={image.src}
@@ -225,7 +231,7 @@ const DesignCatalogue = () => {
           </div>
         </motion.div>
 
-        {/* Partner Brands Section - Reduced size */}
+        {/* Partner Brands Section - Reduced heading and improved layout */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
@@ -236,43 +242,78 @@ const DesignCatalogue = () => {
             Partner Brands
           </h3>
           
-          {/* Partner Brands Layout - Single row with 5 brands */}
-          <div className="relative max-w-5xl mx-auto">
-            <div className="flex justify-center items-center space-x-6 md:space-x-12 lg:space-x-16">
-              {partnerBrands.map((brand, index) => (
-                <motion.div
-                  key={brand.name}
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
-                  transition={{ 
-                    duration: 0.8, 
-                    delay: 0.6 + index * 0.15,
-                    ease: "easeOut"
-                  }}
-                  className="floating-bubble"
-                  style={{
-                    animationDelay: `${index * 0.7}s`
-                  }}
-                >
-                  <div className="bg-white rounded-full p-4 md:p-6 lg:p-8 shadow-lg hover:shadow-xl transition-all duration-500 border border-neutral-100 w-20 h-20 md:w-32 md:h-32 lg:w-40 lg:h-40 flex items-center justify-center group">
-                    <img
-                      src={brand.logo}
-                      alt={brand.name}
-                      className="w-full h-full object-contain scale-125 opacity-80 group-hover:opacity-100 group-hover:scale-150 transition-all duration-500"
-                      onError={(e) => {
-                        const target = e.currentTarget as HTMLImageElement;
-                        target.src = `https://via.placeholder.com/150x150/B03F3F/FFFFFF?text=${encodeURIComponent(brand.name)}`;
-                      }}
-                    />
-                  </div>
-                </motion.div>
-              ))}
+          {/* Partner Brands Layout - 4 in first row, 2 in second row with proper positioning */}
+          <div className="relative max-w-6xl mx-auto">
+            <div className="relative">
+              {/* First row - 4 brands */}
+              <div className="flex justify-center items-center space-x-8 md:space-x-16 lg:space-x-20 mb-12 lg:mb-16">
+                {partnerBrands.slice(0, 4).map((brand, index) => (
+                  <motion.div
+                    key={brand.name}
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
+                    transition={{ 
+                      duration: 0.8, 
+                      delay: 0.6 + index * 0.15,
+                      ease: "easeOut"
+                    }}
+                    className="floating-bubble"
+                    style={{
+                      animationDelay: `${index * 0.7}s`
+                    }}
+                  >
+                    <div className="bg-white rounded-full shadow-xl hover:shadow-2xl transition-all duration-500 border border-neutral-100 flex items-center justify-center group overflow-hidden w-24 h-24 md:w-36 md:h-36 lg:w-44 lg:h-44 p-4 md:p-6 lg:p-8">
+                      <img
+                        src={brand.logo}
+                        alt={brand.name}
+                        className="w-full h-full object-contain scale-110 opacity-80 group-hover:opacity-100 group-hover:scale-125 transition-all duration-500"
+                        onError={(e) => {
+                          const target = e.currentTarget as HTMLImageElement;
+                          target.src = `https://via.placeholder.com/200x200/B03F3F/FFFFFF?text=${encodeURIComponent(brand.name)}`;
+                        }}
+                      />
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+
+              {/* Second row - 2 brands positioned between the bubbles above */}
+              <div className="flex justify-center items-center space-x-16 md:space-x-32 lg:space-x-40">
+                {partnerBrands.slice(4, 6).map((brand, index) => (
+                  <motion.div
+                    key={brand.name}
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
+                    transition={{ 
+                      duration: 0.8, 
+                      delay: 1.2 + index * 0.15,
+                      ease: "easeOut"
+                    }}
+                    className="floating-bubble"
+                    style={{
+                      animationDelay: `${(index + 4) * 0.7}s`
+                    }}
+                  >
+                    <div className="bg-white rounded-full shadow-xl hover:shadow-2xl transition-all duration-500 border border-neutral-100 flex items-center justify-center group overflow-hidden w-24 h-24 md:w-36 md:h-36 lg:w-44 lg:h-44 p-4 md:p-6 lg:p-8">
+                      <img
+                        src={brand.logo}
+                        alt={brand.name}
+                        className="w-full h-full object-contain scale-110 opacity-80 group-hover:opacity-100 group-hover:scale-125 transition-all duration-500"
+                        onError={(e) => {
+                          const target = e.currentTarget as HTMLImageElement;
+                          target.src = `https://via.placeholder.com/200x200/B03F3F/FFFFFF?text=${encodeURIComponent(brand.name)}`;
+                        }}
+                      />
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
             </div>
           </div>
         </motion.div>
       </div>
 
-      {/* Custom CSS for animations */}
+      {/* Custom CSS for enhanced animations */}
       <style jsx>{`
         @keyframes float {
           0%, 100% {
@@ -303,19 +344,23 @@ const DesignCatalogue = () => {
           animation-delay: 1.5s;
         }
 
+        .floating-bubble:nth-child(6n) {
+          animation-delay: 2.5s;
+        }
+
         /* Mobile responsive adjustments */
         @media (max-width: 768px) {
           .floating-bubble div {
-            width: 80px !important;
-            height: 80px !important;
+            width: 96px !important;
+            height: 96px !important;
             padding: 12px !important;
           }
         }
 
         @media (max-width: 640px) {
           .floating-bubble div {
-            width: 70px !important;
-            height: 70px !important;
+            width: 80px !important;
+            height: 80px !important;
             padding: 10px !important;
           }
         }
