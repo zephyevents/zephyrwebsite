@@ -96,8 +96,13 @@ const ServicesPage = () => {
           <img
             src="https://images.pexels.com/photos/32808831/pexels-photo-32808831.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&fit=crop"
             alt="Services Hero"
-            className="w-full h-full object-cover md:object-right"
-            style={{ objectPosition: 'center right' }}
+            className="w-full h-full object-cover"
+            style={{ 
+              objectPosition: 'center',
+              '@media (max-width: 768px)': {
+                objectPosition: 'left center'
+              }
+            }}
           />
           <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-black/50" />
         </div>
@@ -116,6 +121,15 @@ const ServicesPage = () => {
             </p>
           </motion.div>
         </div>
+
+        {/* Mobile-specific CSS for hero image positioning */}
+        <style jsx>{`
+          @media (max-width: 768px) {
+            .absolute img {
+              object-position: left center !important;
+            }
+          }
+        `}</style>
       </section>
 
       {/* What We Offer Section */}

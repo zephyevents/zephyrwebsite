@@ -14,38 +14,44 @@ const Hero = () => {
               top: 50%;
               left: 50%;
               transform: translate(-50%, -50%);
-              width: 100vw;
-              height: 56.25vw;
-              min-height: 100vh;
-              min-width: 177.78vh;
-              object-fit: cover;
-            }
-            mux-player video {
+              width: 100vw !important;
+              height: 100vh !important;
+              min-width: 100vw !important;
+              min-height: 100vh !important;
               object-fit: cover !important;
             }
+            
+            mux-player video {
+              object-fit: cover !important;
+              width: 100% !important;
+              height: 100% !important;
+            }
+            
             /* Hide Mux controls */
             mux-player .mux-control-bar,
             mux-player .mux-big-play-button {
               display: none !important;
             }
             
-            /* Ensure full coverage on all devices */
+            /* Force full coverage on all devices */
             @media (max-width: 768px) {
               mux-player {
-                width: 100vw;
-                height: 100vh;
-                min-width: 100vw;
-                min-height: 100vh;
-                transform: translate(-50%, -50%);
+                width: 100vw !important;
+                height: 100vh !important;
+                min-width: 100vw !important;
+                min-height: 100vh !important;
+                transform: translate(-50%, -50%) !important;
               }
             }
             
-            /* Remove any black borders */
+            /* Remove any black borders and ensure seamless loop */
             mux-player,
             mux-player video {
-              background: transparent;
-              border: none;
-              outline: none;
+              background: transparent !important;
+              border: none !important;
+              outline: none !important;
+              margin: 0 !important;
+              padding: 0 !important;
             }
           `}</style>
           

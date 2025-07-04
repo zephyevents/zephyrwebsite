@@ -15,6 +15,7 @@ const Footer = () => {
                 alt="Zephyr Events"
                 className="h-28 w-auto"
                 onError={(e) => {
+                  console.log('Logo failed to load, showing fallback text');
                   const target = e.currentTarget as HTMLImageElement;
                   target.style.display = 'none';
                   const fallback = target.nextElementSibling as HTMLElement;
