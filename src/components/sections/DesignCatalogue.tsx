@@ -60,38 +60,38 @@ const DesignCatalogue = () => {
     "https://images.pexels.com/photos/32864600/pexels-photo-32864600.jpeg?auto=compress&cs=tinysrgb&w=1600&h=900&fit=crop"
   ], []);
 
-  // Mobile vertical images (portrait)
+  // Mobile vertical images (portrait) - REDUCED HEIGHT BY 50px
   const mobileImages = useMemo(() => [
-    "https://images.pexels.com/photos/32866211/pexels-photo-32866211.jpeg?auto=compress&cs=tinysrgb&w=800&h=1200&fit=crop",
-    "https://images.pexels.com/photos/32866213/pexels-photo-32866213.jpeg?auto=compress&cs=tinysrgb&w=800&h=1200&fit=crop",
-    "https://images.pexels.com/photos/32866210/pexels-photo-32866210.jpeg?auto=compress&cs=tinysrgb&w=800&h=1200&fit=crop",
-    "https://images.pexels.com/photos/32866209/pexels-photo-32866209.jpeg?auto=compress&cs=tinysrgb&w=800&h=1200&fit=crop",
-    "https://images.pexels.com/photos/32866208/pexels-photo-32866208.jpeg?auto=compress&cs=tinysrgb&w=800&h=1200&fit=crop",
-    "https://images.pexels.com/photos/32866207/pexels-photo-32866207.jpeg?auto=compress&cs=tinysrgb&w=800&h=1200&fit=crop",
-    "https://images.pexels.com/photos/32866206/pexels-photo-32866206.jpeg?auto=compress&cs=tinysrgb&w=800&h=1200&fit=crop",
-    "https://images.pexels.com/photos/32866205/pexels-photo-32866205.jpeg?auto=compress&cs=tinysrgb&w=800&h=1200&fit=crop",
-    "https://images.pexels.com/photos/32866204/pexels-photo-32866204.jpeg?auto=compress&cs=tinysrgb&w=800&h=1200&fit=crop",
-    "https://images.pexels.com/photos/32866203/pexels-photo-32866203.jpeg?auto=compress&cs=tinysrgb&w=800&h=1200&fit=crop",
-    "https://images.pexels.com/photos/32866202/pexels-photo-32866202.jpeg?auto=compress&cs=tinysrgb&w=800&h=1200&fit=crop",
-    "https://images.pexels.com/photos/32866201/pexels-photo-32866201.jpeg?auto=compress&cs=tinysrgb&w=800&h=1200&fit=crop",
-    "https://images.pexels.com/photos/32866200/pexels-photo-32866200.jpeg?auto=compress&cs=tinysrgb&w=800&h=1200&fit=crop",
-    "https://images.pexels.com/photos/32866199/pexels-photo-32866199.jpeg?auto=compress&cs=tinysrgb&w=800&h=1200&fit=crop",
-    "https://images.pexels.com/photos/32866198/pexels-photo-32866198.jpeg?auto=compress&cs=tinysrgb&w=800&h=1200&fit=crop",
-    "https://images.pexels.com/photos/32866197/pexels-photo-32866197.jpeg?auto=compress&cs=tinysrgb&w=800&h=1200&fit=crop",
-    "https://images.pexels.com/photos/32866195/pexels-photo-32866195.jpeg?auto=compress&cs=tinysrgb&w=800&h=1200&fit=crop",
-    "https://images.pexels.com/photos/32866194/pexels-photo-32866194.jpeg?auto=compress&cs=tinysrgb&w=800&h=1200&fit=crop",
-    "https://images.pexels.com/photos/32866193/pexels-photo-32866193.jpeg?auto=compress&cs=tinysrgb&w=800&h=1200&fit=crop",
-    "https://images.pexels.com/photos/32866192/pexels-photo-32866192.jpeg?auto=compress&cs=tinysrgb&w=800&h=1200&fit=crop",
-    "https://images.pexels.com/photos/32866191/pexels-photo-32866191.jpeg?auto=compress&cs=tinysrgb&w=800&h=1200&fit=crop",
-    "https://images.pexels.com/photos/32866190/pexels-photo-32866190.jpeg?auto=compress&cs=tinysrgb&w=800&h=1200&fit=crop",
-    "https://images.pexels.com/photos/32866189/pexels-photo-32866189.jpeg?auto=compress&cs=tinysrgb&w=800&h=1200&fit=crop",
-    "https://images.pexels.com/photos/32866188/pexels-photo-32866188.jpeg?auto=compress&cs=tinysrgb&w=800&h=1200&fit=crop",
-    "https://images.pexels.com/photos/32866187/pexels-photo-32866187.jpeg?auto=compress&cs=tinysrgb&w=800&h=1200&fit=crop",
-    "https://images.pexels.com/photos/32866186/pexels-photo-32866186.jpeg?auto=compress&cs=tinysrgb&w=800&h=1200&fit=crop",
-    "https://images.pexels.com/photos/32866184/pexels-photo-32866184.jpeg?auto=compress&cs=tinysrgb&w=800&h=1200&fit=crop",
-    "https://images.pexels.com/photos/32866183/pexels-photo-32866183.jpeg?auto=compress&cs=tinysrgb&w=800&h=1200&fit=crop",
-    "https://images.pexels.com/photos/32866182/pexels-photo-32866182.jpeg?auto=compress&cs=tinysrgb&w=800&h=1200&fit=crop",
-    "https://images.pexels.com/photos/32864600/pexels-photo-32864600.jpeg?auto=compress&cs=tinysrgb&w=800&h=1200&fit=crop"
+    "https://images.pexels.com/photos/32866211/pexels-photo-32866211.jpeg?auto=compress&cs=tinysrgb&w=800&h=1150&fit=crop",
+    "https://images.pexels.com/photos/32866213/pexels-photo-32866213.jpeg?auto=compress&cs=tinysrgb&w=800&h=1150&fit=crop",
+    "https://images.pexels.com/photos/32866210/pexels-photo-32866210.jpeg?auto=compress&cs=tinysrgb&w=800&h=1150&fit=crop",
+    "https://images.pexels.com/photos/32866209/pexels-photo-32866209.jpeg?auto=compress&cs=tinysrgb&w=800&h=1150&fit=crop",
+    "https://images.pexels.com/photos/32866208/pexels-photo-32866208.jpeg?auto=compress&cs=tinysrgb&w=800&h=1150&fit=crop",
+    "https://images.pexels.com/photos/32866207/pexels-photo-32866207.jpeg?auto=compress&cs=tinysrgb&w=800&h=1150&fit=crop",
+    "https://images.pexels.com/photos/32866206/pexels-photo-32866206.jpeg?auto=compress&cs=tinysrgb&w=800&h=1150&fit=crop",
+    "https://images.pexels.com/photos/32866205/pexels-photo-32866205.jpeg?auto=compress&cs=tinysrgb&w=800&h=1150&fit=crop",
+    "https://images.pexels.com/photos/32866204/pexels-photo-32866204.jpeg?auto=compress&cs=tinysrgb&w=800&h=1150&fit=crop",
+    "https://images.pexels.com/photos/32866203/pexels-photo-32866203.jpeg?auto=compress&cs=tinysrgb&w=800&h=1150&fit=crop",
+    "https://images.pexels.com/photos/32866202/pexels-photo-32866202.jpeg?auto=compress&cs=tinysrgb&w=800&h=1150&fit=crop",
+    "https://images.pexels.com/photos/32866201/pexels-photo-32866201.jpeg?auto=compress&cs=tinysrgb&w=800&h=1150&fit=crop",
+    "https://images.pexels.com/photos/32866200/pexels-photo-32866200.jpeg?auto=compress&cs=tinysrgb&w=800&h=1150&fit=crop",
+    "https://images.pexels.com/photos/32866199/pexels-photo-32866199.jpeg?auto=compress&cs=tinysrgb&w=800&h=1150&fit=crop",
+    "https://images.pexels.com/photos/32866198/pexels-photo-32866198.jpeg?auto=compress&cs=tinysrgb&w=800&h=1150&fit=crop",
+    "https://images.pexels.com/photos/32866197/pexels-photo-32866197.jpeg?auto=compress&cs=tinysrgb&w=800&h=1150&fit=crop",
+    "https://images.pexels.com/photos/32866195/pexels-photo-32866195.jpeg?auto=compress&cs=tinysrgb&w=800&h=1150&fit=crop",
+    "https://images.pexels.com/photos/32866194/pexels-photo-32866194.jpeg?auto=compress&cs=tinysrgb&w=800&h=1150&fit=crop",
+    "https://images.pexels.com/photos/32866193/pexels-photo-32866193.jpeg?auto=compress&cs=tinysrgb&w=800&h=1150&fit=crop",
+    "https://images.pexels.com/photos/32866192/pexels-photo-32866192.jpeg?auto=compress&cs=tinysrgb&w=800&h=1150&fit=crop",
+    "https://images.pexels.com/photos/32866191/pexels-photo-32866191.jpeg?auto=compress&cs=tinysrgb&w=800&h=1150&fit=crop",
+    "https://images.pexels.com/photos/32866190/pexels-photo-32866190.jpeg?auto=compress&cs=tinysrgb&w=800&h=1150&fit=crop",
+    "https://images.pexels.com/photos/32866189/pexels-photo-32866189.jpeg?auto=compress&cs=tinysrgb&w=800&h=1150&fit=crop",
+    "https://images.pexels.com/photos/32866188/pexels-photo-32866188.jpeg?auto=compress&cs=tinysrgb&w=800&h=1150&fit=crop",
+    "https://images.pexels.com/photos/32866187/pexels-photo-32866187.jpeg?auto=compress&cs=tinysrgb&w=800&h=1150&fit=crop",
+    "https://images.pexels.com/photos/32866186/pexels-photo-32866186.jpeg?auto=compress&cs=tinysrgb&w=800&h=1150&fit=crop",
+    "https://images.pexels.com/photos/32866184/pexels-photo-32866184.jpeg?auto=compress&cs=tinysrgb&w=800&h=1150&fit=crop",
+    "https://images.pexels.com/photos/32866183/pexels-photo-32866183.jpeg?auto=compress&cs=tinysrgb&w=800&h=1150&fit=crop",
+    "https://images.pexels.com/photos/32866182/pexels-photo-32866182.jpeg?auto=compress&cs=tinysrgb&w=800&h=1150&fit=crop",
+    "https://images.pexels.com/photos/32864600/pexels-photo-32864600.jpeg?auto=compress&cs=tinysrgb&w=800&h=1150&fit=crop"
   ], []);
 
   // Shuffled images state
@@ -228,16 +228,16 @@ const DesignCatalogue = () => {
           </p>
         </motion.div>
 
-        {/* 3D Carousel Container - FIXED MOBILE PADDING */}
+        {/* 3D Carousel Container - REDUCED HEIGHT BY 50px */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ duration: 0.8, delay: 0.2 }}
           className="relative mb-16 overflow-hidden"
           style={{ 
-            height: isMobile ? '600px' : '900px', // Fixed heights instead of clamp
-            paddingTop: isMobile ? '1rem' : '1rem', // Reduced mobile padding
-            paddingBottom: isMobile ? '1rem' : '1rem' // Reduced mobile padding
+            height: isMobile ? '550px' : '850px', // Reduced by 50px from 600px/900px
+            paddingTop: isMobile ? '0.5rem' : '1rem', // Reduced mobile padding
+            paddingBottom: isMobile ? '0.5rem' : '1rem' // Reduced mobile padding
           }}
         >
           <div 
@@ -267,9 +267,9 @@ const DesignCatalogue = () => {
               
               const dragAdjustment = isDragging ? dragOffset * 0.6 : 0;
               
-              // MUCH LARGER RESPONSIVE CARD DIMENSIONS
-              const cardWidth = isMobile ? '220px' : isTablet ? '480px' : '720px'; // 3x larger desktop
-              const cardHeight = isMobile ? '320px' : isTablet ? '320px' : '800px'; // 3x larger desktop
+              // REDUCED CARD DIMENSIONS BY 50px HEIGHT
+              const cardWidth = isMobile ? '220px' : isTablet ? '480px' : '720px';
+              const cardHeight = isMobile ? '270px' : isTablet ? '270px' : '750px'; // Reduced by 50px
               
               return (
                 <div
@@ -533,11 +533,12 @@ const DesignCatalogue = () => {
         .card-image {
           width: 100%;
           height: 100%;
-          object-fit: cover;
+          object-fit: contain; /* Changed from cover to contain to prevent cropping */
           object-position: center;
           transform: translateZ(0);
           will-change: transform;
           transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+          background: #f8f9fa; /* Light background to fill any gaps */
         }
 
         .card-overlay {
